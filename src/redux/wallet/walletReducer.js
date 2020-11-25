@@ -1,18 +1,18 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { walletActions } from "./";
+import { _4 } from "./walletActions";
 
-const transactions = createReducer({
-  [walletActions._]: (state) => state,
+const transactions = createReducer([], {
+  [_4]: (state) => state,
 });
-const categories = createReducer({
-  [walletActions._]: (state) => state,
+const categories = createReducer([], {
+  [_4]: (state) => state,
 });
-const balance = createReducer({
-  [walletActions._]: (state) => state,
+const balance = createReducer(null, {
+  [_4]: (state) => state,
 });
-const currencyRates = createReducer({
-  [walletActions._]: (state) => state,
+const currencyRates = createReducer([], {
+  [_4]: (state) => state,
 });
 
 const walletReducer = combineReducers({

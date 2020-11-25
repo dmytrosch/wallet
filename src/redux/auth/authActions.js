@@ -1,5 +1,4 @@
 import { createAction } from "@reduxjs/toolkit";
 
-const _ = createAction('temporary action')
+export const _1 = createAction('temporary action')
 
-export default {_};

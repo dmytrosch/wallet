@@ -1,12 +1,12 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { notificationActions } from "./";
+import { _3 } from "./notificationActions";
 
-const type = createReducer({
-  [notificationActions._]: (state) => state,
+const type = createReducer("", {
+  [_3]: (state) => state,
 });
-const message = createReducer({
-  [notificationActions._]: (state) => state,
+const message = createReducer("", {
+  [_3]: (state) => state,
 });
 
 const notificationReducer = combineReducers({

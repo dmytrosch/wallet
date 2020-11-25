@@ -1,8 +1,8 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { loadingAction } from "./";
+import { _2 } from './loadingAction';
 
-const loadingReducer = createReducer({
-  [loadingAction._]: (state) => state,
+const loadingReducer = createReducer(null, {
+  [_2]: (state) => state,
 });
 
 export default loadingReducer;

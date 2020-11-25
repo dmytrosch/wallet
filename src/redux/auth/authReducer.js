@@ -1,12 +1,12 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { authActions } from "./index";
+import { _1 } from "./authActions";
 
-const user = createReducer({
-  [authActions._]: (state, action) => state,
+const user = createReducer({},{
+  [_1]: (state, action) => state,
 });
-const token = createReducer({
-  [authActions._]: (state, action) => state,
+const token = createReducer('',{
+  [_1]: (state, action) => state,
 });
 
 const authReducer = combineReducers({

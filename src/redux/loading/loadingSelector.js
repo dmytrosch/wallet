@@ -1,3 +1,1 @@
-const isLoading = state => state.loading
-
-export default isLoading
+export const isLoading = (state) => state.loading;
