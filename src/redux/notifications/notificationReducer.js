@@ -4,7 +4,6 @@ import { setNotification, unsetNotification } from "./notificationActions";
 
 const type = createReducer(null, {
   [setNotification]: (_, action) => action.payload.type,
-  [unsetNotification]: () => null,
 });
 const message = createReducer(null, {
   [setNotification]: (_, action) => action.payload.message,
