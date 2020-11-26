@@ -1,12 +1,8 @@
-.container {
-  padding: 10px 0;
-  background-color: lightblue;
-}
-
 .table {
   width: 280px;
   margin: 0 auto;
 
+  font-family: var(--primeFont);
   font-size: 16px;
   line-height: 1.474;
   color: #000000;
@@ -18,7 +14,7 @@
 
 .row {
   margin-bottom: 10px;
-  background-color: #ffffff;
+  background-color: var(--whiteColor);
   border-radius: 10px;
   position: relative;
   overflow: hidden;
@@ -43,7 +39,7 @@
 }
 
 .rowRed::before {
-  background-color: #ff6596;
+  background-color: var(--redColor);
 }
 
 .rowGreen {
@@ -51,7 +47,7 @@
 }
 
 .rowGreen::before {
-  background-color: #24cca7;
+  background-color: var(--greenColor);
 }
 
 .item {
@@ -59,7 +55,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #dcdcdf;
 }
 
 .itemTitle {
@@ -75,16 +71,16 @@
 }
 
 .colorGreen {
-  color: #24cca7;
+  color: var(--greenColor);
   font-weight: 700;
 }
 
 .colorRed {
-  color: #ff6596;
+  color: var(--redColor);
   font-weight: 700;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
   .table {
     width: 688px;
     font-size: 18px;
@@ -98,8 +94,11 @@
     background-color: inherit;
     border-radius: 0;
     padding: 16px 20px;
-    border-bottom: 1px solid #eee;
-    /* text-align: center; */
+    border-bottom: 1px solid #dcdcdf;
+  }
+
+  .row:nth-last-child(1) {
+    border-bottom: none;
   }
 
   .row::before {
@@ -108,7 +107,7 @@
 
   .header {
     display: flex;
-    background-color: #ffffff;
+    background-color: var(--whiteColor);
     border-radius: 30px;
     border-bottom: none;
     font-weight: 700;
@@ -145,5 +144,14 @@
   }
   .balanceAfter {
     width: 10%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .table {
+    width: 700px;
+  }
+  .header {
+    font-size: 18px;
   }
 }
