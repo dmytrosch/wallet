@@ -1,10 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setClientWidth } from "../redux/clientWidth/clientWidthAction";
-import TransactionsTable from "../components/Wallet/TransactionsTable";
+import Notification from "./Notification";
+import Loader from "./Loader";
 
 function App() {
-  return <TransactionsTable />;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setClientWidth(document.documentElement.clientWidth));
+  }, []);
+  return <Loader />;
 }
 
 export default App;
