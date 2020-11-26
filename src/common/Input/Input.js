@@ -4,10 +4,10 @@ import styles from "./Input.module.css";
 
 const Input = ({ type, className, ...props }) => {
   return (
-    <label className={classNames(styles[type])}>
+    <label className={classNames(styles[className])}>
       <input
         type={type}
-        className={classNames(styles.input, className)}
+        className={classNames(styles.input, styles[type])}
         {...props}
       />
     </label>

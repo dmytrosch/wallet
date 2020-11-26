@@ -4,11 +4,11 @@
 //media-rules
 
 :root {
-  --primaryColor: #24cca7;
-  --secondaryColor: #ffffff;
+  --greenColor: #24cca7;
+  --whiteColor: #ffffff;
   --blueColor: #4a56e2;
-  --primeFont: "Circe";
-  --titleFont: "Poppins";
+  --primeFont: "Circe", sans-serif, serif;
+  --titleFont: "Poppins", sans-serif, serif;
 }
 
 //transition rule for hovers

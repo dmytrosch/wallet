@@ -4,7 +4,7 @@
 }
 
 .white {
-  background: var(--secondaryColor);
+  background: var(--whiteColor);
   border: 1px solid #4a56e2;
 
   font-family: Circe;
@@ -16,11 +16,11 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
 
-  color: #4A56E2;
+  color: #4a56e2;
 }
 
 .green {
-  background: var(--primaryColor);
+  background: var(--greenColor);
 
   font-family: Circe;
   font-style: normal;
@@ -30,8 +30,7 @@
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-
-  color: #ffffff;
+  color: var(--whiteColor);
 }
 
 .circle {

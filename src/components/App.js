@@ -12,17 +12,25 @@ function App() {
   }, [dispatch]);
   return (
     <>
-      <p>hello</p>
-      <Checkbox />
+      <p>hello</p> <Checkbox />
       <br></br>
-        <Button name="Login">
-            <span>Логин</span>
-        </Button>
-        <Button color="green">регистрация</Button>
-        <Button color="green" shape="circle">
-           <span>+</span>
-        </Button>
-        <Input type="email" placeholder="Type email..." />
+      <Button name="Login">
+        <span>Логин</span>
+      </Button>
+      <Button color="green">регистрация</Button>
+      <Button color="green" shape="circle">
+        <span>+</span>
+      </Button>
+      <br></br>
+      <Input type="email" placeholder="E-mail..." className="email" />
+      <br></br>
+      <Input type="text" placeholder="Name" className="name" />
+      <br></br>
+      <Input type="password" placeholder="Password" className="password" />
+      <br></br>
+      <Input type="text" placeholder="Comment" />
+      <br></br>
+      <Input type="number" placeholder="0.00" />
     </>
   );
 }

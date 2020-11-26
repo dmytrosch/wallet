@@ -1,9 +1,61 @@
 .input {
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  width: 410px;
+  height: 40px;
+  padding-left: 30px;
+}
+.number {
+  width: 190px;
+  text-align: center;
+  padding: 0;
 }
 
 .input::placeholder {
+  font-family: var(--primeFont);
+  font-size: 18px;
+}
+.email {
+  position: relative;
+}
+.name {
+  position: relative;
+}
+.password {
+  position: relative;
 }
 
 .email::before {
-  content: "icon";
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: hotpink;
+  z-index: 999;
+}
+
+.name::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: hotpink;
+  z-index: 999;
+}
+.password::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: hotpink;
+  z-index: 999;
 }
