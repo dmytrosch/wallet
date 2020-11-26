@@ -14,5 +14,5 @@ export const makeAlertNotification = (text) => (dispatch) => {
     message: text,
   };
   dispatch(setNotification(params));
-  setTimeout(() => dispatch(unsetNotification()));
+  setTimeout(() => dispatch(unsetNotification()), 2000);
 };
