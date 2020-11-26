@@ -3,7 +3,11 @@
   border-bottom: 1px solid #e0e0e0;
   width: 410px;
   height: 40px;
-  padding-left: 30px;
+  padding-left: 40px;
+  font-family: var(--primeFont);
+  font-weight: bolder;
+  color: black;
+  font-size: 18px;
 }
 .number {
   width: 190px;
@@ -23,6 +27,7 @@
 }
 .password {
   position: relative;
+  letter-spacing: 3px;
 }
 
 .email::before {
