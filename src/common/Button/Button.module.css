@@ -6,8 +6,7 @@
 .white {
   background: var(--whiteColor);
   border: 1px solid #4a56e2;
-
-  font-family: Circe;
+  font-family: var(--primeFont);
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -15,14 +14,12 @@
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-
   color: #4a56e2;
 }
 
 .green {
   background: var(--greenColor);
-
-  font-family: Circe;
+  font-family: var(--primeFont);
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
