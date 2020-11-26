@@ -3,15 +3,13 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import styles from "./Button.module.css";
 
-const Button = ({ color, shape, name, ...props }) => {
+const Button = ({ color, shape, children, ...props }) => {
   return (
     <button
       className={classNames(styles.button, styles[color], styles[shape])}
       {...props}
     >
-      <span className={color === "green" ? styles.name2 : styles.name}>
-        {name}
-      </span>
+      {children}
     </button>
   );
 };

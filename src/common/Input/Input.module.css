@@ -1,0 +1,9 @@
+.input {
+}
+
+.input::placeholder {
+}
+
+.email::before {
+  content: "icon";
+}

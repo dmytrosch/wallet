@@ -3,8 +3,11 @@
   box-sizing: border-box;
 }
 
-.name {
-  font-family: var(--primeFont);
+.white {
+  background: var(--secondaryColor);
+  border: 1px solid #4a56e2;
+
+  font-family: Circe;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -12,27 +15,29 @@
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--blueColor);
-}
-.name2 {
-  composes: name;
-  color: var(--secondaryColor);
-}
 
-.white {
-  background: var(--secondaryColor);
-  border: 1px solid #4a56e2;
+  color: #4A56E2;
 }
 
 .green {
   background: var(--primaryColor);
+
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  color: #ffffff;
 }
 
 .circle {
   border-radius: 50%;
   width: 44px;
   height: 44px;
-  background: var(--primaryColor);
   border: none;
 }
 

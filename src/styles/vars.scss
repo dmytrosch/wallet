@@ -3,14 +3,13 @@
 //secondary-color
 //media-rules
 
-
 :root {
-    --primaryColor:#24CCA7;
-    --secondaryColor: #FFFFFF;
-    --blueColor: #4a56e2;
-    --primeFont: 'Circe';
-    --titleFont: 'Poppins'
-  }
+  --primaryColor: #24cca7;
+  --secondaryColor: #ffffff;
+  --blueColor: #4a56e2;
+  --primeFont: "Circe";
+  --titleFont: "Poppins";
+}
 
 //transition rule for hovers
 $trans: all 0.25s ease-in-out;
