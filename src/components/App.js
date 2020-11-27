@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setClientWidth } from "../redux/clientWidth/clientWidthAction";
-import { loadingSelector } from "../redux/loading/loadingSelector";
+import { isLoading } from "../redux/loading/loadingSelector";
 import Notification from "./Notification";
 import Loader from "./Loader";
 import LoginView from "../views/LoginView";
@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     dispatch(setClientWidth(document.documentElement.clientWidth));
   }, []);
-  const loading = useSelector((state) => loadingSelector(state));
+  const loading = useSelector((state) => isLoading(state));
   return (
     <>
       <div>
