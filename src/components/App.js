@@ -9,7 +9,7 @@ function App() {
     dispatch(setClientWidth(document.documentElement.clientWidth));
   }, []);
 
-  return <Loader />;
+  return <Notification/>;
 }
 
 export default App;
