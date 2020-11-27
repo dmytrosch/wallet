@@ -1,18 +1,18 @@
 import { createAction } from "@reduxjs/toolkit";
 
-const SignUpRequest = createAction("auth/SignUpRequest");
-const SignUpSuccess = createAction("auth/SignUpSuccess");
-const SignUprError = createAction("auth/SignUpError");
+const signUpRequest = createAction("auth/signUpRequest");
+const signUpSuccess = createAction("auth/signUpSuccess");
+const signUpError = createAction("auth/signUpError");
 
 const logInRequest = createAction("auth/logInRequest");
 const logInSuccess = createAction("auth/logInSuccess");
 const logInError = createAction("auth/logInError");
 
 
-export default {
-  SignUpRequest,
-  SignUpSuccess,
-  SignUprError,
+export {
+  signUpRequest,
+  signUpSuccess,
+  signUpError,
   logInRequest,
   logInSuccess,
   logInError

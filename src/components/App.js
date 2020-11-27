@@ -20,8 +20,8 @@ function App() {
       <div>
         <LoginView />
         <SignupView />
-        <MainView />
-        <StatsView />
+        {/* <MainView /> */}
+        {/* <StatsView /> */}
       </div>
       <Notification />
       {loading && <Loader />}
