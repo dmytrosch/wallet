@@ -8,3 +8,9 @@ export const createUser = (credentials) => {
 export const loginUser = (credentials) => {
   return axios.post("/auth/sign-in", credentials);
 };
+export const loadTransactions = () => {
+  return axios.get("/transactions");
+};
+export const loadCategories = () => {
+  return axios.get("/transaction-categories");
+};

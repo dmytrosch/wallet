@@ -128,10 +128,10 @@
   }
 
   .date {
-    width: 14%;
+    width: 17%;
   }
   .type {
-    width: 11%;
+    width: 10%;
   }
   .category {
     width: 20%;
@@ -140,7 +140,7 @@
     width: 25%;
   }
   .amount {
-    width: 15%;
+    width: 13%;
   }
   .balanceAfter {
     width: 10%;
