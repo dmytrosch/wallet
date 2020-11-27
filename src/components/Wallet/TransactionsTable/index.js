@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import classNames from "classnames";
 
-// import { getAllTransactions } from "../../../redux/wallet/walletSelectors";
+import { getAllTransactions } from "../../../redux/wallet/walletSelectors";
 
 import styles from "./TransactionsTable.module.css";
 
