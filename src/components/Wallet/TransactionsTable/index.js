@@ -1,14 +1,14 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import classNames from "classnames";
 
-import { getAlltransactions } from "../../../redux/wallet/walletSelectors";
+import { getAllTransactions } from "../../../redux/wallet/walletSelectors";
 
 import styles from "./TransactionsTable.module.css";
 
-function TransactionsTable({ allTransactions }) {
+export default function TransactionsTable() {
   const INCOME = "INCOME";
-
+  const allTransactions = useSelector(getAllTransactions);
   return (
     <ul className={styles.table}>
       <li className={classNames(styles.row, styles.header)}>
@@ -52,7 +52,7 @@ function TransactionsTable({ allTransactions }) {
             <span className={styles.itemTitle}>Сумма</span>
             <span
               className={classNames(
-                `${item.type === INCOME ? styles.colorGreen : styles.colorRed}`,
+                item.type === INCOME ? styles.colorGreen : styles.colorRed,
                 styles.itemData
               )}
             >
@@ -68,13 +68,3 @@ function TransactionsTable({ allTransactions }) {
     </ul>
   );
 }
-
-const mapStateToProps = (state) => ({
-  allTransactions: getAlltransactions(state),
-});
-
-export default connect(mapStateToProps)(TransactionsTable);
-
-TransactionsTable.defaultProps = {
-  allTransactions: [],
-};
