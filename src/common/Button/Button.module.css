@@ -1,6 +1,8 @@
 .button {
   border-radius: 20px;
   box-sizing: border-box;
+  border: 1px solid transparent;
+  transition: var(--trans);
 }
 
 .white {
@@ -16,6 +18,10 @@
   text-transform: uppercase;
   color: #4a56e2;
 }
+.white:hover {
+  background: #4a56e2;
+  color: #fff;
+}
 
 .green {
   background: var(--greenColor);
@@ -29,12 +35,18 @@
   text-transform: uppercase;
   color: var(--whiteColor);
 }
+.green:hover {
+  background-color: #fff;
+  border: 1px solid var(--greenColor);
+  color: var(--greenColor);
+}
 
 .circle {
   border-radius: 50%;
   width: 44px;
   height: 44px;
-  border: none;
+  border: 1px solid transparent;
+  transition: var(--trans);
 }
 
 .square {
