@@ -20,11 +20,11 @@ export const signUp = (credentials) => (dispatch) => {
       dispatch(authActions.SignUpSuccess(response.data));
     })
     .catch((error) => {
-      switch (error.message) {
-        case "Request failed with status code 400":
+      switch (error.response.status) {
+        case 400:
           dispatch(makeAlertNotification("Что-то пошло не так. Введите данные заново"));
           break;
-        case "Request failed with status code 409":
+        case 409:
           dispatch(makeAlertNotification(
             "Пользователь с данной почтой уже зарегистрирован"
           ));
@@ -43,14 +43,14 @@ export const logIn = (credentials) => (dispatch) => {
       dispatch(authActions.logInSuccess(response.data));
     })
     .catch((error) => {
-      switch (error.message) {
-        case "Request failed with status code 400":
+      switch (error.response.status) {
+        case 400:
           dispatch(makeAlertNotification("Что-то пошло не так. Введите данные заново"));
           break;
-        case "Request failed with status code 403":
+        case 403:
           dispatch(makeAlertNotification("Неправильный пароль! Попробуйте снова"));
           break;
-        case "Request failed with status code 404":
+        case 404:
           dispatch(makeAlertNotification(
             "Пользователя с данной почтой не найдено. Попробуйте снова"
           ));
