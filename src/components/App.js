@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <Notification />
-      <Input type="number" />
+      <Input type="email" />
       <br></br>
       <br></br>
       <br></br>
