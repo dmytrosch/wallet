@@ -7,9 +7,7 @@ import {
 
 export const getCurrency = () => (dispatch) => {
   dispatch(gettingCurrencyRatesStart());
-  const fetchCurrencyPromise = fetchCurrency();
-
-  fetchCurrencyPromise
+  fetchCurrency()
     .then((response) => dispatch(gettingCurrencyRateSuccess(response.data)))
     .catch((error) => dispatch(gettingCurrencyRateError(error)));
 };
