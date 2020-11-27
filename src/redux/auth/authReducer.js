@@ -1,12 +1,12 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { _1 } from "./authActions";
+import { logoutSuccess } from "./authActions";
 
 const user = createReducer({},{
-  [_1]: (state, action) => state,
+  [logoutSuccess]: (state, action) => ({}),
 });
 const token = createReducer('',{
-  [_1]: (state, action) => state,
+  [logoutSuccess]: (state, action) => "",
 });
 
 const authReducer = combineReducers({
