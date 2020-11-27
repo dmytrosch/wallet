@@ -1,9 +1,17 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { _4 } from "./walletActions";
+import { _4, addTransactionSuccess } from "./walletActions";
+
+
+const addTransaction = (state, action) => {
+  return [action.payload, ...state];
+  // return action.payload; // Возможно это правильный вариант, если в транзакциях будут дубли
+
+}
+
 
 const transactions = createReducer([], {
-  [_4]: (state) => state,
+  [addTransactionSuccess]: addTransaction
 });
 const categories = createReducer([], {
   [_4]: (state) => state,

@@ -1,74 +1,72 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 480px;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 480px;
 }
 
-.form  {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
-    font-family: 'Poppins', sans-serif;
+  font-family: var(--titleFont);
+  font-size: 30px;
+  line-height: 45px;
+  font-style: normal;
+  font-weight: normal;
+  margin-bottom: 40px;
 }
 
+.wrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.spanText {
+  font-family: var(--primeFont);
+  color: #e0e0e0;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.spanTextLeft {
+  margin-right: 20px;
+}
+
+.spanTextRight {
+  margin-left: 20px;
+}
 
 .wrapper {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  width: 410px;
+  margin-bottom: 40px;
 }
-
 
 .longInput {
-    width: 410px;
+  width: 410px;
+  margin-bottom: 40px;
 }
 
-.shortInput {
-    width: 190px;
-    text-align: center;
-}
-
-
-.button {
-    width: 300px;
-    height: 50px;
-    border: 1px solid;
-    margin-bottom: 20px;
-    border-radius: 20px;
-}
-
-
-.checkBox {
-    color: black;
+.categoryOption {
+  color: #e0e0e0;
 }
 
 .textGreen {
-    color: #24CCA7;
+  color: var(--greenColor);
 }
 
 .textRose {
-    color: #FF6596;
+  color: var(--pinkColor);
 }
 
 .buttonAdd {
-    background-color: #24CCA7;
-    color: white;
+  margin-bottom: 20px;
 }
-
-/*
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-
-*/

@@ -2,8 +2,8 @@ import React from "react";
 import { CSSTransition } from "react-transition-group";
 import { useSelector } from "react-redux";
 import classNames from 'classnames'
-import styles from "./Notification.module.scss";
-import animation from "./animation.module.scss";
+import styles from "./Notification.module.css";
+import animation from "./animation.module.css";
 
 import { getNotification } from "../../redux/notifications/notificationSelectors";
 

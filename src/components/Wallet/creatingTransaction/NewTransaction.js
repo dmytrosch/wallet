@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 
+import Input from "../../../common/Input/Input";
+import Button from "../../../common/Button/Button";
+import Checkbox from "../../../common/Checkbox/Checkbox";
+
 import styles from "./NewTransaction.module.css";
+import { useDispatch } from "react-redux";
+
+import {addTransactionRequest} from '../../../redux/wallet/walletActions'
+import walletReducer from '../../../redux/wallet/walletReducer'
+
 
 function NewTransaction() {
   // convert to work with backend
-  const categories = ["Car", "Home", "Dog", "Health", "Sport"];
+  const categoriesCost = ["Car", "Home", "Dog", "Health", "Sport"];
+  const categoriesIncome = ["Regular", "Non Regular"];
 
   const currentDate = new Date();
   const currentDateText = currentDate
@@ -19,11 +29,16 @@ function NewTransaction() {
   const [transactionDate, setTransactionDate] = useState(currentDateText);
   const [comment, setComment] = useState("");
 
+  const dispatch = useDispatch();
+
+  // console.log(walletReducer);
+
+
   function handleInputChange(e) {
     switch (e.target.name) {
       case "cost":
         setCost(e.target.checked);
-         break;
+        break;
       case "categories":
         setCategory(e.target.value);
         break;
@@ -55,6 +70,10 @@ function NewTransaction() {
       amount,
     };
 
+    // () => {
+    //   dispatch(addTransactionRequest())
+    // }
+
     console.log("Submitted", objToPost);
   }
 
@@ -64,14 +83,14 @@ function NewTransaction() {
 
   function textIncomeColorSelect() {
     if (!cost) {
-      return classNames(styles.checkBox, styles.textGreen);
-    } else return classNames(styles.checkBox);
+      return classNames(styles.textGreen);
+    } else return classNames("");
   }
 
   function textCostColorSelect() {
     if (cost) {
-      return classNames(styles.checkBox, styles.textRose);
-    } else return classNames(styles.checkBox);
+      return classNames(styles.textRose);
+    } else return classNames("");
   }
 
   return (
@@ -79,70 +98,92 @@ function NewTransaction() {
       <h3 className={styles.title}>Добавить транзакцию</h3>
 
       <form className={styles.form} onSubmit={handleSubmit}>
-        <div>
-          <span className={classNames(textIncomeColorSelect())}>Income</span>
+        <div className={styles.wrap}>
+          <span
+            className={classNames(
+              styles.spanText,
+              styles.spanTextLeft,
+              textIncomeColorSelect()
+            )}
+          >
+            Income
+          </span>
 
-          <input type="checkbox" name="cost" onChange={handleInputChange} />
+          <Checkbox isOn={cost} name="cost" onChange={handleInputChange} />
 
-          <span className={classNames(textCostColorSelect())}>Cost</span>
+          <span
+            className={classNames(
+              styles.spanText,
+              styles.spanTextRight,
+              textCostColorSelect()
+            )}
+          >
+            Cost
+          </span>
         </div>
 
-        {cost && (
-          <select
-            name="categories"
-            className={styles.longInput}
-            onChange={handleInputChange}
-          >
-            <option value="" hidden>
-              Категория
-            </option>
+        <select
+          name="categories"
+          className={styles.longInput}
+          onChange={handleInputChange}
+        >
+          <option value="" hidden className={styles.categoryOption}>
+            Категория
+          </option>
 
-            {categories.map((category) => (
-              <option value={category} placeholder="Категория" key={category}>
-                {category}
-              </option>
-            ))}
-          </select>
-        )}
+          {cost
+            ? categoriesCost.map((category) => (
+                <option value={category} placeholder="Категория" key={category}>
+                  {category}
+                </option>
+              ))
+            : categoriesIncome.map((category) => (
+                <option value={category} placeholder="Категория" key={category}>
+                  {category}
+                </option>
+              ))}
+        </select>
 
         <div className={styles.wrapper}>
-          <input
+          <Input
             type="number"
             step="0.01"
             min="0"
             placeholder="0,00"
             name="amount"
-            className={styles.shortInput}
+            inputClassNames={styles.shortInput}
             onChange={handleInputChange}
           />
-          <input
+
+          <Input
             type="date"
             name="transactionDate"
             defaultValue={currentDateText}
             min={currentDateText}
-            className={styles.shortInput}
+            inputClassNames={styles.shortInput}
             onChange={handleInputChange}
-          ></input>
+          ></Input>
         </div>
 
-        <input
+        <Input
           type="text"
           name="comment"
           placeholder="Комментарий"
-          className={styles.longInput}
+          inputClassNames={styles.longInput}
           onChange={handleInputChange}
         />
 
-        <button type="submit" className={classNames(styles.button, styles.buttonAdd)}>
-          Добавить
-        </button>
-        <button
-          type="button"
-          className={classNames(styles.button)}
-          onClick={handleCancel}
+        <Button
+          color="green"
+          type="submit"
+          buttonCustomClass={styles.buttonAdd}
         >
+          Добавить
+        </Button>
+
+        <Button type="button" onClick={handleCancel}>
           Отмена
-        </button>
+        </Button>
       </form>
     </div>
   );
