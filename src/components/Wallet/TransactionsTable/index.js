@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import classNames from "classnames";
 
-// import { getAlltransactions } from "../../../redux/wallet/walletSelectors";
+import { getAlltransactions } from "../../../redux/wallet/walletSelectors";
 
 import styles from "./TransactionsTable.module.css";
 
@@ -69,55 +69,12 @@ function TransactionsTable({ allTransactions }) {
   );
 }
 
-// const mapStateToProps = (state) => ({
-//   allTransactions: getAlltransactions(state),
-// });
+const mapStateToProps = (state) => ({
+  allTransactions: getAlltransactions(state),
+});
 
-export default connect(null)(TransactionsTable);
+export default connect(mapStateToProps)(TransactionsTable);
 
 TransactionsTable.defaultProps = {
   allTransactions: [],
 };
-
-// [
-//     {
-//       id: "1",
-//       transactionDate: "04.01.19",
-//       type: "INCOME",
-//       category: "home",
-//       userId: "string",
-//       comment: "food fsjklds fsdfsdfsdsdf sdfsd sdfsdfsd",
-//       amount: 30,
-//       balanceAfter: 1300,
-//     },
-//     {
-//       id: "2",
-//       transactionDate: "04.01.19",
-//       type: "EXPENSE",
-//       category: "work",
-//       userId: "string",
-//       comment: "car",
-//       amount: 200,
-//       balanceAfter: 1100,
-//     },
-//     {
-//       id: "3",
-//       transactionDate: "04.01.19",
-//       type: "INCOME",
-//       category: "home",
-//       userId: "string",
-//       comment: "food fsjklds fsdfsdfsdsdf sdfsd sdfsdfsd",
-//       amount: 30,
-//       balanceAfter: 1300,
-//     },
-//     {
-//       id: "4",
-//       transactionDate: "04.01.19",
-//       type: "EXPENSE",
-//       category: "work",
-//       userId: "string",
-//       comment: "car",
-//       amount: 200,
-//       balanceAfter: 1100,
-//     },
-//   ],
