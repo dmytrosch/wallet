@@ -1,16 +1,15 @@
-import axios from "axios";
 import { fetchCurrency } from "../../utils/API/currencyAPI";
 import {
-  currencyRateRequest,
-  currencyRateSuccess,
-  currencyRateError,
+  gettingCurrencyRatesStart,
+  gettingCurrencyRateSuccess,
+  gettingCurrencyRateError,
 } from "./walletActions";
 
 export const getCurrency = () => (dispatch) => {
-  dispatch(currencyRateRequest());
+  dispatch(gettingCurrencyRatesStart());
   const fetchCurrencyPromise = fetchCurrency();
 
   fetchCurrencyPromise
-    .then((response) => dispatch(currencyRateSuccess(response.data)))
-    .catch((error) => dispatch(currencyRateError(error)));
+    .then((response) => dispatch(gettingCurrencyRateSuccess(response.data)))
+    .catch((error) => dispatch(gettingCurrencyRateError(error)));
 };

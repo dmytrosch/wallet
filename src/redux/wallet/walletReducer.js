@@ -1,9 +1,10 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import {
-  currencyRateRequest,
-  currencyRateSuccess,
-  currencyRateError,
+  gettingCurrencyRatesStart,
+  gettingCurrencyRateSuccess,
+  gettingCurrencyRateError,
+  gettingBalance,
 } from "./walletActions";
 
 // const transactions = createReducer([], {
@@ -12,19 +13,19 @@ import {
 // const categories = createReducer([], {
 //   [_4]: (state) => state,
 // });
-// const balance = createReducer(null, {
-//   [_4]: (state) => state,
-// });
+const balance = createReducer(24573.12, {
+  [gettingBalance]: (_, { payload }) => payload,
+});
 
 const currencyRates = createReducer([], {
-  [currencyRateSuccess]: (_, { payload }) => payload,
-  [currencyRateError]: (_, { payload }) => payload,
+  [gettingCurrencyRatesStart]: (_, { payload }) => payload,
+  [gettingCurrencyRateSuccess]: (_, { payload }) => payload,
 });
 
 const walletReducer = combineReducers({
   // transactions,
   // categories,
-  // balance,
+  balance,
   currencyRates,
 });
 

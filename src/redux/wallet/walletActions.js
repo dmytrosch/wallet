@@ -1,9 +1,7 @@
 import { createAction } from "@reduxjs/toolkit";
 
-export const _4 = createAction("temporary action");
+export const gettingBalance = createAction("wallet/balance");
 
-export const balance = createAction("wallet/balance");
-
-export const currencyRateRequest = createAction("wallet/currencyRequest");
-export const currencyRateSuccess = createAction("wallet/currencySuccess");
-export const currencyRateError = createAction("wallet/currencyError");
+export const gettingCurrencyRatesStart = createAction("wallet/currencyRequest");
+export const gettingCurrencyRateSuccess = createAction("wallet/currencySuccess");
+export const gettingCurrencyRateError = createAction("wallet/currencyError");
