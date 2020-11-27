@@ -8,11 +8,11 @@ import Checkbox from "../../../common/Checkbox/Checkbox";
 import styles from "./NewTransaction.module.css";
 import { useDispatch } from "react-redux";
 
-import {addTransactionRequest} from '../../../redux/wallet/walletActions'
-import walletReducer from '../../../redux/wallet/walletReducer'
+import walletOperation from '../../../redux/wallet/walletOperation';
 
 
-function NewTransaction() {
+
+function NewTransaction({onClose}) {
   // convert to work with backend
   const categoriesCost = ["Car", "Home", "Dog", "Health", "Sport"];
   const categoriesIncome = ["Regular", "Non Regular"];
@@ -23,6 +23,7 @@ function NewTransaction() {
     .slice(0, 10)
     .replace(/-/g, "-");
 
+
   const [cost, setCost] = useState(false);
   const [category, setCategory] = useState("");
   const [amount, setAmount] = useState(0);
@@ -32,7 +33,7 @@ function NewTransaction() {
   const dispatch = useDispatch();
 
   // console.log(walletReducer);
-
+  // dateObj.toISOString()
 
   function handleInputChange(e) {
     switch (e.target.name) {
@@ -63,23 +64,21 @@ function NewTransaction() {
     e.preventDefault();
 
     const objToPost = {
-      transactionDate,
-      type: !cost ? "INCOME" : "COST",
-      categoryId: category,
+      transactionDate: currentDateText,
+      type: !cost ? "INCOME" : "EXPENSE",
+      categoryId: "a6385df4-6696-4e73-89ce-2c52bda02a39",
       comment,
-      amount,
+      amount: !cost ? amount : -amount,
     };
 
-    // () => {
-    //   dispatch(addTransactionRequest())
-    // }
+
+    dispatch(
+      walletOperation.addTransaction(objToPost)
+    )
 
     console.log("Submitted", objToPost);
   }
 
-  function handleCancel() {
-    console.log("Close modal");
-  }
 
   function textIncomeColorSelect() {
     if (!cost) {
@@ -181,7 +180,7 @@ function NewTransaction() {
           Добавить
         </Button>
 
-        <Button type="button" onClick={handleCancel}>
+        <Button type="button" onClick={onClose}>
           Отмена
         </Button>
       </form>
