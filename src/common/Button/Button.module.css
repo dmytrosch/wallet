@@ -16,6 +16,10 @@
   text-transform: uppercase;
   color: #4a56e2;
 }
+.white:hover {
+  background: #4a56e2;
+  color: #fff;
+}
 
 .green {
   background: var(--greenColor);
@@ -28,6 +32,11 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--whiteColor);
+}
+.green:hover {
+  background-color: #fff;
+  border: 1px solid var(--greenColor);
+  color: var(--greenColor);
 }
 
 .circle {
