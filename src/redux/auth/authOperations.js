@@ -1,9 +1,9 @@
 import axios from "axios";
-<<<<<<< HEAD
-import {logoutRequest, logoutSuccess, logoutError} from './authActions.js';
-import {logoutApi} from '../../utils/API/walletAPI.js';
-=======
+
 import {
+  logoutRequest, 
+  logoutSuccess, 
+  logoutError,
   signUpRequest,
   signUpSuccess,
   signUpError,
@@ -11,9 +11,8 @@ import {
   logInSuccess,
   logInError,
 } from "./authActions";
-import { createUser, loginUser } from "../../utils/API/walletAPI";
+import { createUser, loginUser, logoutApi } from "../../utils/API/walletAPI";
 import { makeAlertNotification } from "../notifications/notificationOperations";
->>>>>>> 27cb7a41bea187c48b6d26a0dcf839bcc508026d
 
 const token = {
   set(tokenValue) {
@@ -24,8 +23,7 @@ const token = {
   },
 };
 
-<<<<<<< HEAD
-const logout = () => dispatch => {
+export const logout = () => dispatch => {
   dispatch(logoutRequest());
 
   logoutApi
@@ -36,8 +34,7 @@ const logout = () => dispatch => {
     .catch(error => dispatch(logoutError(error)));
 };
 
-export default {logout};
-=======
+
 export const signUp = (credentials) => (dispatch) => {
   dispatch(signUpRequest());
   createUser(credentials)
@@ -103,4 +100,3 @@ export const logIn = (credentials) => (dispatch) => {
       dispatch(logInError(error));
     });
 };
->>>>>>> 27cb7a41bea187c48b6d26a0dcf839bcc508026d
