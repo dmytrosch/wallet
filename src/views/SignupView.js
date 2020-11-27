@@ -1,5 +1,5 @@
 import React from "react";
-import Signup from "../components/authComponents/Signup";
+import Signup from "../components/authComponents/SignUp";
 
 const SignupView = () => <Signup />;
 
