@@ -22,8 +22,8 @@
   position: absolute;
   top: -4px;
   left: -14px;
-  width: 45px;
-  height: 45px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   transition: 0.3s;
   background: var(--greenColor);
@@ -43,7 +43,7 @@
 .checkbox + .button::before {
   content: "+";
   position: absolute;
-  bottom: 10px;
+  bottom: 9px;
   left: 8px;
   width: 100%;
   height: 100%;
@@ -55,7 +55,7 @@
 .checkbox:checked + .button::before {
   content: "–";
   position: absolute;
-  bottom: 11px;
+  bottom: 10px;
   left: 10px;
 }
 
