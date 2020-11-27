@@ -19,6 +19,7 @@
 .white:hover {
   background: #4a56e2;
   color: #fff;
+  transition: var(--trans);
 }
 
 .green {
@@ -37,6 +38,7 @@
   background-color: #fff;
   border: 1px solid var(--greenColor);
   color: var(--greenColor);
+  transition: var(--trans);
 }
 
 .circle {

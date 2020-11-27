@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setClientWidth } from "../redux/clientWidth/clientWidthAction";
 import Notification from "./Notification";
-import Input from "../common/Input/Input";
-import Button from "../common/Button/Button";
-import Dropdown from "../common/Dropdown/Dropdown";
+import Input from "../common/Input";
+import Button from "../common/Button";
+import Checkbox from "../common/Checkbox";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,12 +25,10 @@ function App() {
       <Button color="green">DDD</Button>
       <br></br>
       <br></br>
-      <Button>DDD</Button>
+      <Checkbox />
 
       <br></br>
       <br></br>
-
-      <Dropdown income={false} />
     </>
   );
 }
