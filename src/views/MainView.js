@@ -8,9 +8,9 @@ import TransactionsTable from "../components/Wallet/TransactionsTable";
 const MainView = () => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <section>
-        <Navigation />
+        {/* <Navigation /> */}
         <Balance />
       </section>
       <main>

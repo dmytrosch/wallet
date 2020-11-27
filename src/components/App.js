@@ -20,7 +20,7 @@ function App() {
       <div>
         <LoginView />
         <SignupView />
-        {/* <MainView /> */}
+        <MainView />
         {/* <StatsView /> */}
       </div>
       <Notification />
