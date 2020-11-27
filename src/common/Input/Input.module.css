@@ -14,8 +14,10 @@
 .number::-webkit-inner-spin-button {
   -webkit-appearance: none;
   appearance: none;
-  -moz-appearance: none;
   margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
 }
 .number {
   width: 190px;

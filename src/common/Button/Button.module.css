@@ -2,6 +2,7 @@
   border-radius: 20px;
   box-sizing: border-box;
   border: 1px solid transparent;
+  transition: var(--trans);
 }
 
 .white {
@@ -20,7 +21,6 @@
 .white:hover {
   background: #4a56e2;
   color: #fff;
-  transition: var(--trans);
 }
 
 .green {
@@ -39,7 +39,6 @@
   background-color: #fff;
   border: 1px solid var(--greenColor);
   color: var(--greenColor);
-  transition: var(--trans);
 }
 
 .circle {
@@ -47,6 +46,7 @@
   width: 44px;
   height: 44px;
   border: 1px solid transparent;
+  transition: var(--trans);
 }
 
 .square {
