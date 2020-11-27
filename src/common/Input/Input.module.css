@@ -13,6 +13,8 @@
 .number::-webkit-outer-spin-button,
 .number::-webkit-inner-spin-button {
   -webkit-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
   margin: 0;
 }
 .number {
@@ -39,6 +41,9 @@
 .password {
   position: relative;
   letter-spacing: 3px;
+}
+.password::placeholder {
+  letter-spacing: 0px;
 }
 
 .email::before {

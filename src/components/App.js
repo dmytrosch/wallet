@@ -4,6 +4,7 @@ import { setClientWidth } from "../redux/clientWidth/clientWidthAction";
 import Notification from "./Notification";
 import Input from "../common/Input/Input";
 import Button from "../common/Button/Button";
+import Dropdown from "../common/Dropdown/Dropdown";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,12 +16,21 @@ function App() {
       <Notification />
       <Input type="number" />
       <br></br>
+      <br></br>
+      <br></br>
       <Input type="date" />
+      <br></br>
+      <br></br>
       <br></br>
       <Button color="green">DDD</Button>
       <br></br>
       <br></br>
       <Button>DDD</Button>
+
+      <br></br>
+      <br></br>
+
+      <Dropdown income={false} />
     </>
   );
 }
