@@ -1,0 +1,84 @@
+.input {
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  width: 410px;
+  height: 36px;
+  padding-left: 40px;
+  font-family: var(--primeFont);
+  font-weight: bolder;
+  color: black;
+  font-size: 18px;
+}
+
+.number::-webkit-outer-spin-button,
+.number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.number {
+  width: 190px;
+  text-align: center;
+  padding: 0;
+}
+.date {
+  width: 190px;
+}
+::-webkit-calendar-picker-indicator {
+  filter: invert(50%) sepia() saturate(10000%) hue-rotate(265deg);
+}
+.input::placeholder {
+  font-family: var(--primeFont);
+  font-size: 18px;
+}
+.email {
+  position: relative;
+}
+.name {
+  position: relative;
+}
+.password {
+  position: relative;
+  letter-spacing: 3px;
+}
+.password::placeholder {
+  letter-spacing: 0px;
+}
+
+.email::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: hotpink;
+  z-index: 999;
+}
+
+.name::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: hotpink;
+  z-index: 999;
+}
+.password::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-color: hotpink;
+  z-index: 999;
+}

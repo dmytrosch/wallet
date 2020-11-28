@@ -5,14 +5,16 @@ import {
   gettingCurrencyRateSuccess,
   gettingCurrencyRateError,
   gettingBalance,
+  successAllTransactions,
+  successCategories,
 } from "./walletActions";
 
-// const transactions = createReducer([], {
-//   [_4]: (state) => state,
-// });
-// const categories = createReducer([], {
-//   [_4]: (state) => state,
-// });
+const transactions = createReducer([], {
+  [successAllTransactions]: (_, { payload }) => payload,
+});
+const categories = createReducer([], {
+  [successCategories]: (_, { payload }) => payload,
+});
 const balance = createReducer(24573.12, {
   [gettingBalance]: (_, { payload }) => payload,
 });
@@ -23,8 +25,8 @@ const currencyRates = createReducer([], {
 });
 
 const walletReducer = combineReducers({
-  // transactions,
-  // categories,
+  transactions,
+  categories,
   balance,
   currencyRates,
 });
