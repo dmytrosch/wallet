@@ -6,7 +6,9 @@ import StatsGraph from "../components/Wallet/stats/StatsGraph";
 import Filter from "../components/Wallet/stats/Filter";
 import StatsTable from "../components/Wallet/stats/StatsTable";
 
+
 const StatsView = () => {
+
   return (
     <>
       <Header />

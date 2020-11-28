@@ -1,0 +1,25 @@
+.diagramContainer {
+  width: 320px;
+  height: 320px;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  width: 815px;
+  margin-top: 30px;
+  border-left: 1px solid #e7e5f2;
+  box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+    1px 0px 0px rgba(255, 255, 255, 0.6);
+}
+.label {
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 45px;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+}
+.tableContainer {
+  padding-top: 60px;
+  padding-left: 30px;
+}

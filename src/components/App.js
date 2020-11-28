@@ -21,7 +21,7 @@ function App() {
         <LoginView />
         <SignupView />
         <MainView />
-        {/* <StatsView /> */}
+        <StatsView />
       </div>
       <Notification />
       {loading && <Loader />}
@@ -30,4 +30,3 @@ function App() {
 }
 
 export default App;
-

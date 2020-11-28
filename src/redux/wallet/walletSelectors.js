@@ -27,6 +27,7 @@ export const getBalance = (state) => {
 export const getCategories = (state) => state.wallet.categories;
 const transactions = (state) => state.wallet.transactions;
 
+
 export const getAllTransactions = createSelector(
   [transactions, getCategories],
   (transactions, categories) =>
