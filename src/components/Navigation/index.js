@@ -1,9 +1,9 @@
 import React from 'react';
 // import { NavLink } from 'react-router-dom';
 
-import home from '../../assets/Home.svg';
-import dollar from '../../assets/Dollar.svg';
-import statistics from '../../assets/Statistics.svg';
+import home from '../../assets/icons/Home.svg';
+import dollar from '../../assets/icons/Dollar.svg';
+import statistics from '../../assets/icons/Statistics.svg';
 import styles from './Navigation.module.css';
 
 const Navigation = () => {

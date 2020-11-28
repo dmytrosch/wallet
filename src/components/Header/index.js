@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 // import {NavLink} from 'react-router-dom';
 import {userName} from '../../redux/auth/authSelectors';
 import authOperations from '../../redux/auth/authOperations'
-import {ReactComponent as WalletImg} from '../../assets/WalletImg.svg';
-import {ReactComponent as ExitArrow} from '../../assets/Arrow_exit.svg';
+import {ReactComponent as WalletImg} from '../../assets/icons/WalletImg.svg';
+import {ReactComponent as ExitArrow} from '../../assets/icons/Arrow_exit.svg';
 import styles from './Header.module.css';
 
 
