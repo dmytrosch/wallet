@@ -10,12 +10,14 @@ import { useDispatch } from "react-redux";
 
 import walletOperation from '../../../redux/wallet/walletOperation';
 
+import { Dropdown } from 'semantic-ui-react'
+
 
 
 function NewTransaction({onClose}) {
   // convert to work with backend
-  const categoriesCost = ["Car", "Home", "Dog", "Health", "Sport"];
-  const categoriesIncome = ["Regular", "Non Regular"];
+  const categoriesCost = [{key: '1', text: "Car"}, {key: "2", text: "home"}, {key: "3", text: "health"}, {key: "4", text: "dog"}];
+  const categoriesIncome = [{key: '1', text: "Regular"}, {key: "2", text: "Non Regular"}];
 
   const currentDate = new Date();
   const currentDateText = currentDate
@@ -64,7 +66,7 @@ function NewTransaction({onClose}) {
     e.preventDefault();
 
     const objToPost = {
-      transactionDate: currentDateText,
+      transactionDate,
       type: !cost ? "INCOME" : "EXPENSE",
       categoryId: "a6385df4-6696-4e73-89ce-2c52bda02a39",
       comment,
@@ -121,6 +123,9 @@ function NewTransaction({onClose}) {
           </span>
         </div>
 
+        <Dropdown placeholder="Категория" search selection options={categoriesCost} />
+
+{/* 
         <select
           name="categories"
           className={styles.longInput}
@@ -132,16 +137,16 @@ function NewTransaction({onClose}) {
 
           {cost
             ? categoriesCost.map((category) => (
-                <option value={category} placeholder="Категория" key={category}>
-                  {category}
+                <option value={category.text} placeholder="Категория" key={category.text}>
+                  {category.text}
                 </option>
               ))
             : categoriesIncome.map((category) => (
-                <option value={category} placeholder="Категория" key={category}>
-                  {category}
+                <option value={category.text} placeholder="Категория" key={category.text}>
+                  {category.text}
                 </option>
               ))}
-        </select>
+        </select> */}
 
         <div className={styles.wrapper}>
           <Input
