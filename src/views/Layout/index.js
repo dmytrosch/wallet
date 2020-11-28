@@ -1,16 +1,20 @@
 import React from "react";
 import { CSSTransition } from "react-transition-group";
-import { useSelector } from "react-redux";
-import Header from "../../Header";
+// import { useSelector } from "react-redux";
+// import { isAuthentificated } from "../../redux/auth/authSelectors";
 
-import { isAuthentificated } from "../../../redux/auth/authSelectors";
+// import Header from "../../Header";
+
+import elipseOneAnimation from "./elipseOne.animation.module.css";
+import elipseTwoAnimation from "./elipseTwo.animation.module.css";
+import styles from "./Layout.module.css";
 
 export default function Layout({ children }) {
-  const isAuth = useSelector(isAuthentificated);
-  console.log(isAuth);
+  // const isAuth = useSelector(isAuthentificated);
+
   return (
-    <>
-      {isAuth && <Header />}
+    <div className={styles.container}>
+      {/* {isAuth && <Header />} */}
       {children}
       <CSSTransition
         in={true}
@@ -28,6 +32,6 @@ export default function Layout({ children }) {
       >
         <div className={styles.elipseTwo}></div>
       </CSSTransition>
-    </>
+    </div>
   );
 }
