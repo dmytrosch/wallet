@@ -18,8 +18,8 @@ function App() {
   return (
     <>
       <div>
-        <LoginView />
         <SignupView />
+        <LoginView />
         <MainView />
         {/* <StatsView /> */}
       </div>

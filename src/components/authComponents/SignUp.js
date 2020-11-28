@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../redux/auth/authOperations";
 import styles from "./styles.css";
+import PasswordStrengthBar from 'react-password-strength-bar';
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -59,6 +60,7 @@ export default function SignUp() {
         />
       </label>
       <br />
+      <PasswordStrengthBar password={password} />
       <br />
       <label className={styles.label}>
         Confirm Password
