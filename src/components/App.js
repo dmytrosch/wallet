@@ -19,8 +19,8 @@ function App() {
     <>
       <div>
         <LoginView />
-        <SignupView />
-        <MainView />
+        {/* <SignupView /> */}
+        {/* <MainView /> */}
         {/* <StatsView /> */}
       </div>
       <Notification />
@@ -30,4 +30,3 @@ function App() {
 }
 
 export default App;
-
