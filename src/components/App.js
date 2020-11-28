@@ -24,7 +24,7 @@ function App() {
         {/* <StatsView /> */}
       </div>
       <Notification />
-      {loading && <Loader />}
+      {/* {loading && <Loader />} */}
     </>
   );
 }

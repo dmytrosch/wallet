@@ -1,0 +1,164 @@
+@media screen and (max-width: 767px) {
+  .container {
+    position: relative;
+    display: inline-block;
+    padding: 0px 0px 30px 0px;
+  }
+  .CurrencyRates_text_Container {
+    position: relative;
+    width: 280px;
+    height: 50px;
+    background-color: #6e78e8;
+    border-radius: 30px 30px 0px 0px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .CurrencyRates_value_Container {
+    background: #4a56e2;
+    width: 280px;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    top: -1px;
+    border-radius: 0px 0px 30px 30px;
+  }
+  .container_span {
+    margin-bottom: 8px;
+  }
+  .span_text {
+    font-family: Circe;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 27px;
+    color: #ffffff;
+    padding: 12px 0px 0px 0px;
+  }
+  .span_value {
+    font-family: Circe;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #ffffff;
+  }
+  .box_span {
+    padding: 8px 0px 0px;
+    padding: 20px 6px 0px 0px;
+    z-index: 1000;
+  }
+  .svg {
+    position: absolute;
+    top: 58px;
+    width: 280px;
+    background: #4a56e2;
+    border-radius: 0px 0px 30px 30px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    position: relative;
+    display: inline-block;
+    padding: 0px 0px 30px 0px;
+  }
+  .CurrencyRates_text_Container {
+    position: relative;
+    width: 334px;
+    height: 50px;
+    background-color: #6e78e8;
+    border-radius: 30px 30px 0px 0px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .CurrencyRates_value_Container {
+    background: #4a56e2;
+    width: 334px;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    top: -1px;
+    border-radius: 0px 0px 30px 30px;
+  }
+  .container_span {
+    margin-bottom: 8px;
+  }
+  .span_text {
+    font-family: Circe;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 27px;
+    color: #ffffff;
+    padding: 12px 0px 0px 0px;
+  }
+  .span_value {
+    font-family: Circe;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #ffffff;
+  }
+  .box_span {
+    padding: 8px 0px 0px;
+    padding: 20px 6px 0px 0px;
+    z-index: 1000;
+  }
+  .svg {
+    position: absolute;
+    top: 58px;
+    width: 334px;
+    background: #4a56e2;
+    border-radius: 0px 0px 30px 30px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container {
+    padding: 0px 0px 138px 0px;
+    position: relative;
+  }
+  .CurrencyRates_text_Container {
+    width: 350px;
+    height: 60px;
+    
+  }
+  .span_text {
+    font-size: 18px;
+    line-height: 27px;
+    color: #ffffff;
+    padding: 17px 0px 0px 0px;
+  }
+  .svg {
+    width: 350px;
+    background: #4a56e2;
+    border-radius: 0px 0px 30px 30px;
+    position: absolute;
+    top: 207px;
+  }
+  .CurrencyRates_value_Container {
+    background: #4a56e2;
+    width: 350px;
+    height: 149px;
+    border-radius: 0px 0px 0px 0px;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 10px 0px 0px;
+    
+  }
+  .span_value {
+    font-family: Circe;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    color: #ffffff;
+  }
+  .box_span {
+    padding: 20px 0px 0px;
+    padding: 8px 6px 0px 0px;
+  }
+  .container_span {
+    margin-bottom: 24px;
+  }
+  
+}
