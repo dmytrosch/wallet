@@ -17,14 +17,14 @@ function App() {
   const loading = useSelector((state) => isLoading(state));
   return (
     <>
-      <div>
+      {/* <div> */}
         <LoginView />
-        <SignupView />
-        <MainView />
+        {/* <SignupView /> */}
+        {/* <MainView /> */}
         {/* <StatsView /> */}
-      </div>
+      {/* </div>
       <Notification />
-      {loading && <Loader />}
+      {loading && <Loader />} */}
     </>
   );
 }
