@@ -7,27 +7,20 @@ import { getBalance } from "../../../redux/wallet/walletSelectors";
 
 export default function Balance() {
   const balance = useSelector(getBalance);
-  const {
-    container,
-    text,
-    currentbalance,
-    testContainerWithBackground,
-  } = css;
+  const { container, text, currentbalance,  } = css;
   return (
-    <div className={testContainerWithBackground}>
-      <div className={container}>
-        <p className={text}>ВАШ БАЛАНС</p>
-        <NumberFormat
-          displayType={"text"}
-          prefix={"₴ "}
-          value={`${balance}`}
-          thousandSeparator={" "}
-          decimalSeparator={"."}
-          thousandsGroupStyle="lakh"
-          children
-          renderText={(value) => <p className={currentbalance}>{value}</p>}
-        ></NumberFormat>
-      </div>
+    <div className={container}>
+      <p className={text}>ВАШ БАЛАНС</p>
+      <NumberFormat
+        displayType={"text"}
+        prefix={"₴ "}
+        value={`${balance}`}
+        thousandSeparator={" "}
+        decimalSeparator={"."}
+        thousandsGroupStyle="lakh"
+        children
+        renderText={(value) => <p className={currentbalance}>{value}</p>}
+      ></NumberFormat>
     </div>
   );
 }

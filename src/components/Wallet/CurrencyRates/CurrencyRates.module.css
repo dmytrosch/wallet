@@ -17,13 +17,11 @@
     background: #4a56e2;
     width: 280px;
     display: flex;
-    justify-content: space-around;
     position: relative;
+    flex-direction: column;
+    justify-content: space-around;
     top: -1px;
     border-radius: 0px 0px 30px 30px;
-  }
-  .container_span {
-    margin-bottom: 8px;
   }
   .span_text {
     font-family: Circe;
@@ -46,6 +44,8 @@
     padding: 8px 0px 0px;
     padding: 20px 6px 0px 0px;
     z-index: 1000;
+    display: flex;
+    justify-content: space-around;
   }
   .svg {
     position: absolute;
@@ -59,7 +59,7 @@
   .container {
     position: relative;
     display: inline-block;
-    padding: 0px 0px 30px 0px;
+    padding: 0px 0px 14px 0px
   }
   .CurrencyRates_text_Container {
     position: relative;
@@ -74,6 +74,7 @@
     background: #4a56e2;
     width: 334px;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     position: relative;
     top: -1px;
@@ -100,9 +101,10 @@
     color: #ffffff;
   }
   .box_span {
-    padding: 8px 0px 0px;
-    padding: 20px 6px 0px 0px;
+    padding: 12px 6px 0px 0px;
     z-index: 1000;
+    display: flex;
+    justify-content: space-around
   }
   .svg {
     position: absolute;
@@ -114,7 +116,7 @@
 }
 @media screen and (min-width: 1024px) {
   .container {
-    padding: 0px 0px 138px 0px;
+    padding: 0px 0px 136px 0px;
     position: relative;
   }
   .CurrencyRates_text_Container {
@@ -142,7 +144,7 @@
     border-radius: 0px 0px 0px 0px;
     display: flex;
     justify-content: space-around;
-    padding: 10px 10px 0px 0px;
+    padding: 60px 10px 0px 0px;
     
   }
   .span_value {
