@@ -11,7 +11,7 @@ const StatsTable = ({
   selectedYear,
   handleChangeMonth,
   handleChangeYear,
-  arrData,
+  arrDataForTable,
 }) => {
   const customStyles = {
     container: () => ({
@@ -65,7 +65,7 @@ const StatsTable = ({
           <p className={style.labelText}>Категория</p>
           <p className={style.labelText}>Сумма</p>
         </li>
-        {arrData.map((el, indx) => (
+        {arrDataForTable.map((el, indx) => (
           <li key={indx} className={style.listItems}>
             <span
               className={style.listColor}

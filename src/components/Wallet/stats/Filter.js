@@ -6,7 +6,6 @@ import StatsTable from "./StatsTable";
 import "chartjs-plugin-labels";
 import styles from "./Filter.module.css";
 
-
 const colors = [
   "#ecb22a",
   "#e28b20",
@@ -42,7 +41,6 @@ const optionsYear = [
   { value: "2020", label: "2020" },
   { value: "2021", label: "2021" },
 ];
-
 
 export default class Filter extends Component {
   state = {
