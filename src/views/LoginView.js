@@ -9,9 +9,9 @@ const LoginView = () => {
       <div className={styles.loginContainer}>
         <Input type="email" className="email" />
 
-        <Input type="text" className="name" />
+        <Input type="text" className="name" error={false} />
 
-        <Input type="password" className="password" />
+        <Input type="password" className="password" error={true} />
         {/* <div className={styles.leftBg}>
           <div className={styles.bgContainer}></div>
           <div className={styles.eclipsContainer}>

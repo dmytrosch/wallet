@@ -8,6 +8,14 @@
   font-weight: bolder;
   color: black;
   font-size: 18px;
+  outline: none;
+}
+
+.inputError {
+  border: 1px solid red;
+  width: 410px;
+  height: 36px;
+  border-radius: 5px;
 }
 
 .number::-webkit-outer-spin-button,
