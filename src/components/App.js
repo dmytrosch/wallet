@@ -18,9 +18,9 @@ function App() {
   return (
     <>
       <div>
-        <LoginView />
+        {/* <LoginView /> */}
         {/* <SignupView /> */}
-        {/* <MainView /> */}
+        <MainView />
         {/* <StatsView /> */}
       </div>
       <Notification />
