@@ -3,3 +3,7 @@
 @import "./typography.css";
 
 @import "./customSemanticUI.css";
+
+#root{
+    z-index: -10;
+}

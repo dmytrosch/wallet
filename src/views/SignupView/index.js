@@ -1,6 +1,6 @@
 import React from "react";
 
-import Layout from "../Layout";
+import Layout from "../Layout/";
 import Signup from "../../components/authComponents/SignUp";
 
 import styles from "./SignupView.module.css";

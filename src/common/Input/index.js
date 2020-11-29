@@ -3,9 +3,8 @@ import classNames from "classnames";
 import styles from "./Input.module.css";
 
 const Input = ({ type, labelClassName, inputClassNames, ...props }) => {
-
   return (
-    <label className={classNames(styles[labelClassName])}>
+    <label className={classNames(styles[labelClassName], styles[type])}>
       <input
         type={type}
         className={classNames(styles.input, styles[type], ...[inputClassNames])}
