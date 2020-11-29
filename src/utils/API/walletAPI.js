@@ -15,3 +15,6 @@ export const loadTransactions = () => {
 export const loadCategories = () => {
   return axios.get("/transaction-categories");
 };
+export const currentUser = () => {
+  return axios.post('/api/users/current');
+};

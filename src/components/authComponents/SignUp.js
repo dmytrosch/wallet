@@ -3,6 +3,9 @@ import { useDispatch } from "react-redux";
 import { signUp } from "../../redux/auth/authOperations";
 import styles from "./styles.css";
 import PasswordStrengthBar from 'react-password-strength-bar';
+import {makeAlertNotification} from '../../redux/notifications/notificationOperations';
+// import validator from 'validator';
+
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -26,12 +29,24 @@ export default function SignUp() {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
+    const elements = e.target.elements;
+    console.log(elements)
+
+    if(password.length < 8) {
+      dispatch(makeAlertNotification('Введите пароль не менее 8 символов!'));
+      return
+    }
+    if(confirmedPassword !== password){
+      dispatch(makeAlertNotification('Не совпадает пароль!'));
+      return
+    }
     dispatch(signUp({ username: name, email, password }));
     setEmail("");
     setPassword("");
     setConfirmedPasswod("");
     setName("");
   };
+  
 
   return (
     <form className={styles.form} onSubmit={handlerSubmit}>
@@ -43,7 +58,6 @@ export default function SignUp() {
           name="email"
           value={email}
           onChange={updateEmail}
-          required
         />
       </label>
       <br />
@@ -56,7 +70,7 @@ export default function SignUp() {
           name="password"
           value={password}
           onChange={updatePassword}
-          required
+          
         />
       </label>
       <br />
@@ -70,7 +84,7 @@ export default function SignUp() {
           name="password"
           value={confirmedPassword}
           onChange={updateConfirmedPassword}
-          required
+          
         />
       </label>
       <br />
@@ -83,7 +97,7 @@ export default function SignUp() {
           name="name"
           value={name}
           onChange={updateName}
-          required
+          
         />
       </label>
       <br />
