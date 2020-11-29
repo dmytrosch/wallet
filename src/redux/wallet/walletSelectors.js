@@ -22,7 +22,7 @@ export const getCurrencyRateFiltered = createSelector(
 export const getBalance = (state) => state.wallet.balance;
 
 export const getCategories = (state) => state.wallet.categories;
-const transactions = (state) => state.wallet.transactions;
+export const transactions = (state) => state.wallet.transactions;
 
 export const getAllTransactions = createSelector(
   [transactions, getCategories],

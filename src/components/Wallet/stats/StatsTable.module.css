@@ -1,0 +1,78 @@
+path {
+  fill: #000000;
+  stroke-width: 1px;
+}
+.selectContainer {
+  display: flex;
+}
+.labelContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+  height: 58px;
+  border-radius: 30px;
+  background-color: white;
+  align-items: center;
+  padding: 0 35px;
+}
+
+.labelText {
+  font-weight: 700;
+  font-family: "Circe";
+  font-size: 18px;
+}
+
+.listItems {
+  display: flex;
+  align-items: center;
+  width: 350px;
+  height: 54px;
+  border-bottom: 1px solid #dcdcdf;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+}
+.listColor {
+  width: 28px;
+  height: 24px;
+  margin-left: 26px;
+  margin-right: 16px;
+  border-radius: 2px;
+}
+.transInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: 50px;
+}
+.amountContainer {
+  margin-top: 16px;
+}
+
+.itemsAmount {
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 50px;
+}
+.amounthCategory {
+  margin-left: 20px;
+  margin-bottom: 16px;
+}
+.expensAmount,
+.incomeAmount,
+.amounthCategory {
+  font-family: "Circe";
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.expensAmount {
+  color: #ff6596;
+}
+.incomeAmount {
+  color: #24cca7;
+}
+.totalAmount {
+  font-family: "Circe";
+  font-size: 16px;
+  font-weight: 400;
+}
