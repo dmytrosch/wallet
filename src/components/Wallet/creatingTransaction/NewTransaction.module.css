@@ -1,0 +1,78 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 480px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-family: var(--titleFont);
+  font-size: 30px;
+  line-height: 45px;
+  font-style: normal;
+  font-weight: normal;
+  margin-bottom: 40px;
+}
+
+.wrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.spanText {
+  font-family: var(--primeFont);
+  color: #e0e0e0;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.spanTextLeft {
+  margin-right: 20px;
+}
+
+.spanTextRight {
+  margin-left: 20px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 410px;
+  margin-bottom: 40px;
+  /* overflow:hidden; */
+}
+
+.longInput {
+  width: 410px;
+  margin-bottom: 40px;
+}
+
+.categoryOption {
+  color: #e0e0e0;
+}
+
+.textGreen {
+  color: var(--greenColor);
+}
+
+.textRose {
+  color: var(--pinkColor);
+}
+
+.buttonAdd {
+  margin-bottom: 20px;
+}
+
+
+.datePickerContainer {
+  border: none;
+}

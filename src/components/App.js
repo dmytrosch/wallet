@@ -14,6 +14,11 @@ import routes from "../utils/routes";
 import PrivateRoute from "../components/Routes/PrivateRoute";
 import PublicRoute from "../components/Routes/PublicRoute";
 
+import ModalPortal from "./Wallet/creatingTransaction/ModalPortal";
+import Modal from "./Wallet/creatingTransaction/Modal";
+
+import NewTransaction from "./Wallet/creatingTransaction/NewTransaction";
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -45,7 +50,14 @@ function App() {
         </Suspense>
       </BrowserRouter>
       <Notification />
-      {/* {loading && <Loader />} */}
+      {loading && <Loader />}
+
+      <Modal>
+        <NewTransaction />
+      </Modal>
+
+      {/* <NewTransaction />
+    <Notification /> */}
     </>
   );
 }

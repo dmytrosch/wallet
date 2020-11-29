@@ -1,0 +1,52 @@
+[
+  {
+    "id": "d9ee2284-4673-44f4-ab76-6258512ea409",
+    "name": "test income",
+    "type": "INCOME"
+  },
+  {
+    "id": "84db5fe1-1309-4ea7-8329-f73b08b14305",
+    "name": "test expense",
+    "type": "EXPENSE"
+  },
+  {
+    "id": "a6385df4-6696-4e73-89ce-2c52bda02a39",
+    "name": "Основной",
+    "type": "EXPENSE"
+  },
+  {
+    "id": "703f4c6f-8af8-4b47-b371-cc08792150f8",
+    "name": "Еда",
+    "type": "EXPENSE"
+  },
+  {
+    "id": "8d64dbd7-deb4-42e0-8749-43394b2ecb9f",
+    "name": "Авто",
+    "type": "EXPENSE"
+  },
+  {
+    "id": "86b53ffe-fb63-4170-84df-f758a1b45de5",
+    "name": "Развитие",
+    "type": "EXPENSE"
+  },
+  {
+    "id": "44c4256f-57f5-4ac2-a567-980715d0d02d",
+    "name": "Дети",
+    "type": "EXPENSE"
+  },
+  {
+    "id": "e3c8e828-bfaa-40bc-9a55-5fd901d926ae",
+    "name": "Дом",
+    "type": "EXPENSE"
+  },
+  {
+    "id": "d332b99f-3a8b-4272-9288-fb54a0e3ce83",
+    "name": "Образование",
+    "type": "EXPENSE"
+  },
+  {
+    "id": "119ca0cf-0d07-43a3-82a9-9dc2863c11c5",
+    "name": "Остальные",
+    "type": "EXPENSE"
+  }
+]

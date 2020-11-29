@@ -1,5 +1,9 @@
 import { createAction } from "@reduxjs/toolkit";
 
+export const addTransactionRequest = createAction("transaction/addRequest");
+export const addTransactionSuccess = createAction("transaction/addSuccess");
+export const addTransactionError = createAction("transaction/addError");
+
 export const gettingBalance = createAction("wallet/balance");
 
 export const gettingCurrencyRatesStart = createAction("wallet/currencyRequest");
