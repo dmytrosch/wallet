@@ -9,7 +9,7 @@ const SignupView = () => (
   <Layout>
     <div className={styles.container}>
       <div className={styles.header}>
-        <div className={styles.img}></div>
+        <div className={styles.img} />
         <p className={styles.title}>Finance App</p>
       </div>
       <div className={styles.formContainer}>

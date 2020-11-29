@@ -5,33 +5,39 @@ import { CSSTransition } from "react-transition-group";
 
 // import Header from "../../Header";
 
-import elipseOneAnimation from "./elipseOne.animation.module.css";
-import elipseTwoAnimation from "./elipseTwo.animation.module.css";
+import ellipseVioletAnimation from "./ellipseViolet.animation.module.css";
+import ellipseOrangeAnimation from "./ellipseOrange.animation.module.css";
 import styles from "./Layout.module.css";
 
-export default function Layout({ children }) {
+const Background = () => {
+  const config = {
+    in: true,
+    appear: true,
+    timeout: 500,
+  };
+
+  return (
+    <div className={styles.background}>
+      <CSSTransition {...config} classNames={ellipseVioletAnimation}>
+        <div className={styles.ellipseViolet} />
+      </CSSTransition>
+      <CSSTransition {...config} classNames={ellipseOrangeAnimation}>
+        <div className={styles.ellipseOrange} />
+      </CSSTransition>
+    </div>
+  );
+};
+
+const Layout = ({ children }) => {
   // const isAuth = useSelector(isAuthentificated);
 
   return (
     <div className={styles.container}>
       {/* {isAuth && <Header />} */}
       {children}
-      <CSSTransition
-        in={true}
-        appear={true}
-        classNames={elipseOneAnimation}
-        timeout={500}
-      >
-        <div className={styles.elipseOne}></div>
-      </CSSTransition>
-      <CSSTransition
-        in={true}
-        appear={true}
-        classNames={elipseTwoAnimation}
-        timeout={500}
-      >
-        <div className={styles.elipseTwo}></div>
-      </CSSTransition>
+      <Background />
     </div>
   );
-}
+};
+
+export default Layout;
