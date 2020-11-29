@@ -1,18 +1,9 @@
 import React from "react";
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getCurrency } from "../../../redux/wallet/walletOperation";
-import {
-  getCurrencyRateFiltered,
-} from "../../../redux/wallet/walletSelectors";
+import { useSelector } from "react-redux";
+import { getCurrencyRateFiltered } from "../../../redux/wallet/walletSelectors";
 
 export default function CurrencyRates() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getCurrency());
-  }, [dispatch]);
   const currencyRate = useSelector((state) => getCurrencyRateFiltered(state));
-;
   return (
     <>
       {currencyRate.length && (
