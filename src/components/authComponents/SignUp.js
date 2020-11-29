@@ -16,6 +16,7 @@ export default function SignUp() {
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
+    
   };
   const updatePassword = (e) => {
     setPassword(e.target.value);
@@ -30,8 +31,10 @@ export default function SignUp() {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    const elements = e.target.elements;
-    console.log(elements)
+    if(!validator.isEmail(email)){
+      dispatch(makeAlertNotification('Введите корректный email!'));
+      return
+    }
     
     if(password.length < 8) {
       dispatch(makeAlertNotification('Введите пароль не менее 8 символов!'));
@@ -55,7 +58,7 @@ export default function SignUp() {
         type="email"
         value={email}
         onChange={updateEmail}
-        required
+        
       />
       <br />
       <br />
@@ -63,7 +66,7 @@ export default function SignUp() {
         type="password"
         value={password}
         onChange={updatePassword}
-        required
+        
       />
       <br />
       <PasswordStrengthBar password={password} />
@@ -73,7 +76,7 @@ export default function SignUp() {
         type="password"
         value={confirmedPassword}
         onChange={updateConfirmedPassword}
-        required
+        
       />
       <br />
       <br />
@@ -82,7 +85,7 @@ export default function SignUp() {
         type="text"
         value={name}
         onChange={updateName}
-        required
+        
       />
       <br />
       <br />
