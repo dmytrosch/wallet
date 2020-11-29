@@ -1,8 +1,8 @@
 import axios from "axios";
 
 import {
-  logoutRequest, 
-  logoutSuccess, 
+  logoutRequest,
+  logoutSuccess,
   logoutError,
   signUpRequest,
   signUpSuccess,
@@ -13,6 +13,7 @@ import {
 } from "./authActions";
 import { createUser, loginUser, logoutApi } from "../../utils/API/walletAPI";
 import { makeAlertNotification } from "../notifications/notificationOperations";
+import { getCurrency } from "../wallet/walletOperation";
 
 const token = {
   set(tokenValue) {
@@ -23,7 +24,7 @@ const token = {
   },
 };
 
-export const logout = () => dispatch => {
+export const logout = () => (dispatch) => {
   dispatch(logoutRequest());
 
   logoutApi
@@ -31,9 +32,8 @@ export const logout = () => dispatch => {
       token.unset();
       dispatch(logoutSuccess());
     })
-    .catch(error => dispatch(logoutError(error)));
+    .catch((error) => dispatch(logoutError(error)));
 };
-
 
 export const signUp = (credentials) => (dispatch) => {
   dispatch(signUpRequest());
@@ -71,6 +71,7 @@ export const logIn = (credentials) => (dispatch) => {
     .then((response) => {
       token.set(response.data.token);
       dispatch(logInSuccess(response.data));
+      dispatch(getCurrency());
     })
     .catch((error) => {
       switch (error.response.status) {
