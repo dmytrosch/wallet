@@ -14,7 +14,12 @@ import {
   getCurrentUserSuccess,
   getCurrentUserError,
 } from "./authActions";
-import { createUser, loginUser, logoutApi, currentUser } from "../../utils/API/walletAPI";
+import {
+  createUser,
+  loginUser,
+  logoutApi,
+  getCurrentUserApi,
+} from "../../utils/API/walletAPI";
 import { makeAlertNotification } from "../notifications/notificationOperations";
 import { getCurrency } from "../wallet/walletOperation";
 
@@ -105,26 +110,24 @@ export const logIn = (credentials) => (dispatch) => {
     });
 };
 export const getCurrentUser = () => (dispatch, getState) => {
-  const {
-    auth: {token: persistedToken},
-  } = getState();
-  if (!persistedToken);
+  const persistedToken = getState().auth.token
+  console.log(persistedToken);
+  if (!persistedToken) {
+    return;
+  }
+  token.set(persistedToken);
   dispatch(getCurrentUserRequest());
-  currentUser()
-  .then(({data}) => dispatch(getCurrentUserSuccess(data)))
-  .catch((error) => {
-    switch (error.response.status) {
-      case 401:
-        dispatch(
-          makeAlertNotification(
-            "Войдите заново"
-          )
-        );
-        token.unset();
-        break;
-      default:
-        break;
-    }
-    dispatch(getCurrentUserError());
-  }); 
-}
+  getCurrentUserApi()
+    .then(({ data }) => dispatch(getCurrentUserSuccess(data)))
+    .catch((error) => {
+      switch (error.response.status) {
+        case 401:
+          dispatch(makeAlertNotification("Войдите заново"));
+          token.unset();
+          break;
+        default:
+          break;
+      }
+      dispatch(getCurrentUserError());
+    });
+};
