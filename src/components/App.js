@@ -24,6 +24,7 @@ function App() {
   useEffect(() => {
     dispatch(setClientWidth(document.documentElement.clientWidth));
   }, []);
+  
   const loading = useSelector(isLoading);
   const isMobileMode = useSelector(isMobile);
   return (
