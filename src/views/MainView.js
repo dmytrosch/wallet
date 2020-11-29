@@ -1,4 +1,5 @@
 import React from "react";
+import Input from "../common/Input";
 import Header from "../components/Header";
 import Navigation from "../components/Navigation";
 import Balance from "../components/Wallet/Balance";
@@ -17,6 +18,7 @@ const MainView = () => {
           <CurrencyRates />
         </div>
         <div className={styles.transactions}>
+          <br></br>
           <TransactionsTable />
         </div>
       </div>
