@@ -30,6 +30,12 @@ input[type=number] {
 ::-webkit-calendar-picker-indicator {
   filter: invert(50%) sepia() saturate(10000%) hue-rotate(265deg);
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .input::placeholder {
   font-family: var(--primeFont);
   font-size: 18px;
