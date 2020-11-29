@@ -15,7 +15,7 @@ const transactions = createReducer([], {
 const categories = createReducer([], {
   [successCategories]: (_, { payload }) => payload,
 });
-const balance = createReducer(24573.12, {
+const balance = createReducer(2457.13, {
   [gettingBalance]: (_, { payload }) => payload,
 });
 
