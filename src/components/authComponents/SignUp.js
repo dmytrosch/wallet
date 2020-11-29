@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../redux/auth/authOperations";
-import styles from "./styles.css";
 import PasswordStrengthBar from 'react-password-strength-bar';
+import {makeAlertNotification} from '../../redux/notifications/notificationOperations';
+import validator from 'validator';
+
+import Input from "../../common/Input/";
+import styles from "./styles.module.css";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -12,6 +16,7 @@ export default function SignUp() {
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
+    
   };
   const updatePassword = (e) => {
     setPassword(e.target.value);
@@ -26,66 +31,62 @@ export default function SignUp() {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
+    if(!validator.isEmail(email)){
+      dispatch(makeAlertNotification('Введите корректный email!'));
+      return
+    }
+    
+    if(password.length < 8) {
+      dispatch(makeAlertNotification('Введите пароль не менее 8 символов!'));
+      return
+    }
+    if(confirmedPassword !== password){
+      dispatch(makeAlertNotification('Не совпадает пароль!'));
+      return
+    }
     dispatch(signUp({ username: name, email, password }));
     setEmail("");
     setPassword("");
     setConfirmedPasswod("");
     setName("");
   };
+  
 
   return (
     <form className={styles.form} onSubmit={handlerSubmit}>
-      <label className={styles.label}>
-        Email
-        <input
-          className={styles.input}
-          type="email"
-          name="email"
-          value={email}
-          onChange={updateEmail}
-          required
-        />
-      </label>
+      <Input
+        type="email"
+        value={email}
+        onChange={updateEmail}
+        
+      />
       <br />
       <br />
-      <label className={styles.label}>
-        Password
-        <input
-          className={styles.input}
-          type="password"
-          name="password"
-          value={password}
-          onChange={updatePassword}
-          required
-        />
-      </label>
+      <Input
+        type="password"
+        value={password}
+        onChange={updatePassword}
+        
+      />
       <br />
       <PasswordStrengthBar password={password} />
       <br />
-      <label className={styles.label}>
-        Confirm Password
-        <input
-          className={styles.input}
-          type="password"
-          name="password"
-          value={confirmedPassword}
-          onChange={updateConfirmedPassword}
-          required
-        />
-      </label>
+      <Input
+        className={styles.input}
+        type="password"
+        value={confirmedPassword}
+        onChange={updateConfirmedPassword}
+        
+      />
       <br />
       <br />
-      <label className={styles.label}>
-        Name
-        <input
-          className={styles.input}
-          type="text"
-          name="name"
-          value={name}
-          onChange={updateName}
-          required
-        />
-      </label>
+      <Input
+        className={styles.input}
+        type="text"
+        value={name}
+        onChange={updateName}
+        
+      />
       <br />
       <br />
       <button type="submit" className={styles.button}>

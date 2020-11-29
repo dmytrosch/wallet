@@ -39,7 +39,7 @@ export default [
     label: "Signup",
     exact: true,
     component: lazy(() =>
-      import("../views/SignupView" /* webpackChunkName: "signup" */)
+      import("../views/SignupView/" /* webpackChunkName: "signup" */)
     ),
     private: false,
     restricted: true,
@@ -50,7 +50,7 @@ export default [
     label: "Login",
     exact: true,
     component: lazy(() =>
-      import("../views/LoginView" /* webpackChunkName: "login" */)
+      import("../views/LoginView/" /* webpackChunkName: "login" */)
     ),
     private: false,
     restricted: true,
