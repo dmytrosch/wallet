@@ -8,6 +8,14 @@
   font-weight: bolder;
   color: black;
   font-size: 18px;
+  outline: none;
+}
+
+.inputError {
+  border: 1px solid red;
+  width: 410px;
+  height: 36px;
+  border-radius: 5px;
 }
 
 .number::-webkit-outer-spin-button,
@@ -16,7 +24,7 @@
   appearance: none;
   margin: 0;
 }
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 .number {
@@ -56,36 +64,36 @@ input::-webkit-inner-spin-button {
 
 .email::before {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 2px;
+  top: 10px;
   content: "";
   display: inline-block;
   width: 20px;
-  height: 20px;
-  background-color: hotpink;
+  height: 16px;
+  background-image: url("../../assets/loginIcons/email.svg");
   z-index: 999;
 }
 
 .name::before {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 2px;
+  top: 10px;
   content: "";
   display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-color: hotpink;
+  width: 18px;
+  height: 18px;
+  background-image: url("../../assets/loginIcons/name.svg");
   z-index: 999;
 }
 .password::before {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 2px;
+  top: 7px;
   content: "";
   display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-color: hotpink;
+  width: 16px;
+  height: 21px;
+  background-image: url("../../assets/loginIcons/password.svg");
   z-index: 999;
 }
 
