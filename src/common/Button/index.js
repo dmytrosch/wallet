@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import styles from "./Button.module.css";
 
-const Button = ({ color, shape, children, ...props }) => {
+const Button = ({ color, shape, children, buttonCustomClass, ...props }) => {
   return (
     <button
-      className={classNames(styles.button, styles[color], styles[shape])}
+      className={classNames(styles.button, styles[color], styles[shape], ...[buttonCustomClass])}
       {...props}
     >
       {children}

@@ -1,17 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
 import styles from "./Checkbox.module.css";
 
-const Checkbox = () => {
-  const [isOn, setOn] = useState(false);
+const Checkbox = ({isOn, ...props}) => {
+  // const [isOn, setOn] = useState(false);
 
   return (
     <label className={styles.label}>
       <input
-        checked={isOn}
-        onChange={() => setOn(!isOn)}
+        // onChange={() => setOn(!isOn)}
+        // checked={isOn}
         className={styles.checkbox}
         type="checkbox"
+        {...props}
       />
       <span className={classNames(styles.button, isOn && styles.active)} />
     </label>

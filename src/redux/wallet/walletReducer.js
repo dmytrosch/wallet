@@ -1,6 +1,8 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
+
 import {
+  addTransactionSuccess,
   gettingCurrencyRatesStart,
   gettingCurrencyRateSuccess,
   gettingCurrencyRateError,
@@ -9,13 +11,23 @@ import {
   successCategories,
 } from "./walletActions";
 
+const addTransaction = (state, action) => {
+  return [action.payload, ...state];
+  // return action.payload; // Возможно это правильный вариант, если в транзакциях будут дубли
+
+}
+
+
+
+
 const transactions = createReducer([], {
   [successAllTransactions]: (_, { payload }) => payload,
+  [addTransactionSuccess]: addTransaction,
 });
 const categories = createReducer([], {
   [successCategories]: (_, { payload }) => payload,
 });
-const balance = createReducer(24573.12, {
+const balance = createReducer(2457.13, {
   [gettingBalance]: (_, { payload }) => payload,
 });
 

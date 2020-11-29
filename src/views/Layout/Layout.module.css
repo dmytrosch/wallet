@@ -1,0 +1,52 @@
+.container {
+  min-height: 100vh;
+  background-color: #e7eaf2;
+  position: relative;
+  overflow: hidden;
+
+  z-index: -2;
+}
+
+@media screen and (min-width: 768px) {
+  .elipseOne {
+    width: 618px;
+    height: 547px;
+
+    position: absolute;
+    bottom: -10%;
+    left: -10%;
+
+    background-image: url("../../assets/icons/ellipse.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    z-index: -1;
+  }
+  .elipseTwo {
+    width: 618px;
+    height: 547px;
+
+    position: absolute;
+    top: -10%;
+    right: -30%;
+
+    background-image: url("../../assets/icons/ellipse2.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    z-index: -1;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .elipseOne {
+    bottom: -20%;
+    left: -10%;
+  }
+  .elipseTwo {
+    top: -10%;
+    right: -10%;
+  }
+}

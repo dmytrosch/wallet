@@ -1,1 +1,1 @@
-export const isMobile = (state) => state.clientWidth <= 460;
+export const isMobile = (state) => state.clientWidth < 768;

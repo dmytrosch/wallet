@@ -27,3 +27,5 @@ yarn-error.log*
 .prettierignore
 
 .eslintcache
+
+debug.log

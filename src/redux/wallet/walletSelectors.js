@@ -19,10 +19,7 @@ export const getCurrencyRateFiltered = createSelector(
   }
 );
 ////////////////////// balance
-export const getBalance = (state) => {
-  const balance = state.wallet.balance;
-  return balance.toFixed(2);
-};
+export const getBalance = (state) => state.wallet.balance;
 
 export const getCategories = (state) => state.wallet.categories;
 const transactions = (state) => state.wallet.transactions;
