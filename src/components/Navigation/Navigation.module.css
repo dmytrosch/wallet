@@ -1,0 +1,29 @@
+.navList {
+    display: block;
+    
+}
+
+.navListItem {
+
+    text-align: left;
+    transition: all 200ms linear;
+}
+:hover .navListItemIcon {
+  color: #4A56E2;
+  cursor: pointer;
+  transition: all 250ms linear;
+}
+
+:hover .navListType{
+  font-weight: bold;
+} 
+.activeNavLink {
+  font-weight: bold;
+  color: #4A56E2;
+}
+
+:hover .navListItemIcon,
+:hover .navListType {
+  cursor: pointer;
+  transition: all 250ms linear;
+}

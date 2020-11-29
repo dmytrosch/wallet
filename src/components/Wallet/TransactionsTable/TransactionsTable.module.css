@@ -1,0 +1,157 @@
+.table {
+  width: 280px;
+  margin: 0 auto;
+
+  font-family: var(--primeFont);
+  font-size: 16px;
+  line-height: 1.474;
+  color: #000000;
+}
+
+.header {
+  display: none;
+}
+
+.row {
+  margin-bottom: 10px;
+  background-color: var(--whiteColor);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.row::before {
+  display: block;
+  content: "";
+  width: 5px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.row:nth-last-child(1) {
+  margin-bottom: 0;
+}
+
+.rowRed {
+  composes: row;
+}
+
+.rowRed::before {
+  background-color: var(--redColor);
+}
+
+.rowGreen {
+  composes: row;
+}
+
+.rowGreen::before {
+  background-color: var(--greenColor);
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #dcdcdf;
+}
+
+.itemTitle {
+  max-width: 45%;
+  padding-left: 20px;
+  font-weight: 700;
+}
+
+.itemData {
+  max-width: 45%;
+  padding-right: 20px;
+  text-align: right;
+}
+
+.colorGreen {
+  color: var(--greenColor);
+  font-weight: 700;
+}
+
+.colorRed {
+  color: var(--redColor);
+  font-weight: 700;
+}
+
+@media screen and (min-width: 768px) {
+  .table {
+    width: 688px;
+    font-size: 18px;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+    background-color: inherit;
+    border-radius: 0;
+    padding: 16px 20px;
+    border-bottom: 1px solid #dcdcdf;
+  }
+
+  .row:nth-last-child(1) {
+    border-bottom: none;
+  }
+
+  .row::before {
+    display: none;
+  }
+
+  .header {
+    display: flex;
+    background-color: var(--whiteColor);
+    border-radius: 30px;
+    border-bottom: none;
+    font-weight: 700;
+  }
+  .itemTitle {
+    display: none;
+  }
+  .item {
+    width: 16.6%;
+    border-bottom: none;
+    padding: 0;
+    display: block;
+  }
+  .itemData {
+    width: 90%;
+    padding-right: 0;
+    text-align: left;
+  }
+
+  .date {
+    width: 17%;
+  }
+  .type {
+    width: 10%;
+  }
+  .category {
+    width: 20%;
+  }
+  .comment {
+    width: 25%;
+  }
+  .amount {
+    width: 13%;
+  }
+  .balanceAfter {
+    width: 10%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .table {
+    width: 700px;
+  }
+  .header {
+    font-size: 18px;
+  }
+}

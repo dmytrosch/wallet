@@ -2,16 +2,43 @@ import {
   addTransactionRequest,
   addTransactionSuccess,
   addTransactionError,
+  gettingCurrencyRatesStart,
+  gettingCurrencyRateSuccess,
+  gettingCurrencyRateError,
+  requestAllTransactions,
+  successAllTransactions,
+  errorAllTransactions,
+  requestCategories,
+  successCategories,
+  errorCategories,
 } from "./walletActions";
 
+import { fetchCurrency } from "../../utils/API/currencyAPI";
+
+import { loadTransactions, loadCategories } from "../../utils/API/walletAPI";
 
 import { makeAlertNotification } from "../notifications/notificationOperations"
 
-
 import { addTransactionApi } from "../../utils/API/walletAPI";
-import { findRenderedComponentWithType } from "react-dom/test-utils";
 
-const addTransaction = (transaction) => (dispatch) => {
+
+
+const getTransactionsErrorHandler = (errCode) => {
+  let message = "";
+  switch (errCode) {
+    case 400:
+      message = "Ошибка данных";
+      break;
+    case 401:
+      message = "Выполните перерегистрацию";
+      break;
+    default:
+      message = "Что-то пошло не так...";
+  }
+  return message;
+};
+
+export const addTransaction = (transaction) => (dispatch) => {
   dispatch(addTransactionRequest());
 
   addTransactionApi(transaction)
@@ -22,6 +49,29 @@ const addTransaction = (transaction) => (dispatch) => {
     });
 };
 
-export default {
-  addTransaction,
+export const getCurrency = () => (dispatch) => {
+  dispatch(gettingCurrencyRatesStart());
+  fetchCurrency()
+    .then((response) => dispatch(gettingCurrencyRateSuccess(response.data)))
+    .catch((error) => dispatch(gettingCurrencyRateError(error)));
+};
+
+export const getTransactions = () => (dispatch) => {
+  dispatch(requestAllTransactions());
+  loadTransactions()
+    .then((response) => {
+      dispatch(successAllTransactions(response.data));
+    })
+    .catch((error) => {
+      const message = getTransactionsErrorHandler(error.response.status);
+      dispatch(makeAlertNotification(message));
+      dispatch(errorAllTransactions());
+    });
+};
+
+export const getCategories = () => (dispatch) => {
+  dispatch(requestCategories());
+  loadCategories()
+    .then((response) => dispatch(successCategories(response.data)))
+    .catch((error) => dispatch(errorCategories()));
 };

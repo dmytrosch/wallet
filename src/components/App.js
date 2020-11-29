@@ -1,37 +1,43 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { setClientWidth } from "../redux/clientWidth/clientWidthAction";
+import { isLoading } from "../redux/loading/loadingSelector";
 import Notification from "./Notification";
-import Loader from './Loader'
+import Loader from "./Loader";
+import LoginView from "../views/LoginView";
+import SignupView from "../views/SignupView";
+import MainView from "../views/MainView";
+import StatsView from "../views/StatsView";
 
-import ModalPortal from './Wallet/creatingTransaction/ModalPortal'
-import Modal from './Wallet/creatingTransaction/Modal'
+import ModalPortal from "./Wallet/creatingTransaction/ModalPortal";
+import Modal from "./Wallet/creatingTransaction/Modal";
 
-import NewTransaction from './Wallet/creatingTransaction/NewTransaction';
-
+import NewTransaction from "./Wallet/creatingTransaction/NewTransaction";
 
 function App() {
-  const [showModal, setShowModal] = useState(false);
-
-  const toggleModal = () => {
-    setShowModal(prevState => !prevState);
-  };
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setClientWidth(document.documentElement.clientWidth));
+  }, []);
+  const loading = useSelector((state) => isLoading(state));
   return (
-    <div className="App">
-      <header className="App-header">
-        <button onClick={toggleModal}>Show portal</button>
-        <ModalPortal>
-          {showModal && <Modal onClose={toggleModal}>
-             {/* Сюда рендерить детей */}
-
-            <NewTransaction onClose={toggleModal}/>
-
-            </Modal>}
-        </ModalPortal>
-      </header>
+    <>
+      <div>
+        <LoginView />
+        <SignupView />
+        <MainView />
+        {/* <StatsView /> */}
+      </div>
       <Notification />
-    </div>
+      {loading && <Loader />}
+
+      <Modal>
+        <NewTransaction />
+      </Modal>
+
+      {/* <NewTransaction />
+    <Notification /> */}
+    </>
   );
 }
 

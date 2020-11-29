@@ -1,58 +1,80 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 
-import Input from "../../../common/Input/Input";
-import Button from "../../../common/Button/Button";
-import Checkbox from "../../../common/Checkbox/Checkbox";
+import Input from "../../../common/Input";
+import Button from "../../../common/Button";
+import Checkbox from "../../../common/Checkbox";
 
 import styles from "./NewTransaction.module.css";
 import { useDispatch } from "react-redux";
 
-import walletOperation from '../../../redux/wallet/walletOperation';
+import { addTransaction } from "../../../redux/wallet/walletOperation";
 
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown } from "semantic-ui-react";
 
+import categiries from "./categories.json";
 
+import DatePicker from "react-datepicker";
 
-function NewTransaction({onClose}) {
+import "semantic-ui-css/semantic.min.css";
+import "react-datepicker/dist/react-datepicker.css";
+
+function NewTransaction({ onClose }) {
   // convert to work with backend
-  const categoriesCost = [{key: '1', text: "Car"}, {key: "2", text: "home"}, {key: "3", text: "health"}, {key: "4", text: "dog"}];
-  const categoriesIncome = [{key: '1', text: "Regular"}, {key: "2", text: "Non Regular"}];
+
+  const categoriesIncome = categiries
+    .filter((category) => category.type === "INCOME")
+    .map((category) => {
+      return {
+        key: category.id,
+        text: category.name,
+        value: category.name,
+        type: category.type,
+      };
+    });
+  const categoriesCost = categiries
+    .filter((category) => category.type === "EXPENSE")
+    .map((category) => {
+      return {
+        key: category.id,
+        text: category.name,
+        value: category.name,
+        type: category.type,
+      };
+    });
 
   const currentDate = new Date();
-  const currentDateText = currentDate
-    .toISOString()
-    .slice(0, 10)
-    .replace(/-/g, "-");
-
+  // const currentDateText = currentDate
+  //   .toISOString()
+  //   .slice(0, 10)
+  //   .replace(/-/g, "-");
 
   const [cost, setCost] = useState(false);
-  const [category, setCategory] = useState("");
+  const [categoryName, setCategory] = useState("");
   const [amount, setAmount] = useState(0);
-  const [transactionDate, setTransactionDate] = useState(currentDateText);
+  // const [transactionDate, setTransactionDate] = useState(currentDateText);
   const [comment, setComment] = useState("");
 
-  const dispatch = useDispatch();
+  const [pickerDate, setPickerDate] = useState(new Date());
 
-  // console.log(walletReducer);
-  // dateObj.toISOString()
+  const dispatch = useDispatch();
 
   function handleInputChange(e) {
     switch (e.target.name) {
       case "cost":
         setCost(e.target.checked);
         break;
-      case "categories":
-        setCategory(e.target.value);
-        break;
+      // case "categories":
+      //   setCategory(e.target.firstElementChild.textContent);
+      //   break;
 
       case "amount":
         setAmount(e.target.value);
         break;
 
-      case "transactionDate":
-        setTransactionDate(e.target.value);
-        break;
+      // case "transactionDate":
+      //   setTransactionDate(e.target.value);
+      //   break;
 
       case "comment":
         setComment(e.target.value);
@@ -66,21 +88,22 @@ function NewTransaction({onClose}) {
     e.preventDefault();
 
     const objToPost = {
-      transactionDate,
+      transactionDate: pickerDate.toISOString().slice(0, 10).replace(/-/g, "-"),
       type: !cost ? "INCOME" : "EXPENSE",
-      categoryId: "a6385df4-6696-4e73-89ce-2c52bda02a39",
+      categoryId: !cost
+        ? categoriesIncome.find((category) => category.text === categoryName)
+            .key
+        : categoriesCost.find((category) => category.text === categoryName).key,
+      // categoryId: categoryName,
+
       comment,
       amount: !cost ? amount : -amount,
     };
 
+    dispatch(addTransaction(objToPost));
 
-    dispatch(
-      walletOperation.addTransaction(objToPost)
-    )
-
-    console.log("Submitted", objToPost);
+    // console.log("Submitted", objToPost);
   }
-
 
   function textIncomeColorSelect() {
     if (!cost) {
@@ -110,7 +133,12 @@ function NewTransaction({onClose}) {
             Income
           </span>
 
-          <Checkbox isOn={cost} name="cost" onChange={handleInputChange} />
+          <Checkbox
+            isOn={cost}
+            name="cost"
+            onChange={handleInputChange}
+            width={410}
+          />
 
           <span
             className={classNames(
@@ -123,30 +151,18 @@ function NewTransaction({onClose}) {
           </span>
         </div>
 
-        <Dropdown placeholder="Категория" search selection options={categoriesCost} />
-
-{/* 
-        <select
-          name="categories"
-          className={styles.longInput}
-          onChange={handleInputChange}
-        >
-          <option value="" hidden className={styles.categoryOption}>
-            Категория
-          </option>
-
-          {cost
-            ? categoriesCost.map((category) => (
-                <option value={category.text} placeholder="Категория" key={category.text}>
-                  {category.text}
-                </option>
-              ))
-            : categoriesIncome.map((category) => (
-                <option value={category.text} placeholder="Категория" key={category.text}>
-                  {category.text}
-                </option>
-              ))}
-        </select> */}
+        <Dropdown
+          placeholder="Категория"
+          search
+          selection
+          options={cost ? categoriesCost : categoriesIncome}
+          onChange={(e) => {
+            if (e.target.className === "search") {
+              return;
+            }
+            setCategory(e.target.firstElementChild.textContent);
+          }}
+        />
 
         <div className={styles.wrapper}>
           <Input
@@ -159,14 +175,18 @@ function NewTransaction({onClose}) {
             onChange={handleInputChange}
           />
 
-          <Input
-            type="date"
-            name="transactionDate"
-            defaultValue={currentDateText}
-            min={currentDateText}
-            inputClassNames={styles.shortInput}
-            onChange={handleInputChange}
-          ></Input>
+          <div className={styles.datePickerContainer}>
+            <DatePicker
+              selected={pickerDate}
+              dateFormat="yyyy/MM/dd"
+              maxDate={currentDate}
+              // onChange={(date) => setPickerDate(date)}
+              onChange={(date) =>
+                setPickerDate(new Date(date - date.getTimezoneOffset() * 60000))
+              }
+              // customInput={<Input type="date"/>}
+            />
+          </div>
         </div>
 
         <Input
