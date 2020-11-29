@@ -52,9 +52,9 @@ function App() {
       <Notification />
       {loading && <Loader />}
 
-      <Modal>
+      {/* <Modal>
         <NewTransaction />
-      </Modal>
+      </Modal> */}
 
       {/* <NewTransaction />
     <Notification /> */}
