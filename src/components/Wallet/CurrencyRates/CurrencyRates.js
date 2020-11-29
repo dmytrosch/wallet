@@ -3,19 +3,18 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCurrency } from "../../../redux/wallet/walletOperation";
 import { getCurrencyRateFiltered } from "../../../redux/wallet/walletSelectors";
-import CurrencySVG from "./CurrencySVG";
+import CurrencyGraphSVG from "./CurrencyGraphSVG";
 import css from "./CurrencyRates.module.css";
 
 export default function CurrencyRates() {
   const {
     container,
-    CurrencyRates_text_Container,
-    CurrencyRates_value_Container,
-    span_text,
-    span_value,
-    container_span,
-    box_span,
-    svg,
+    header,
+    header__item,
+    container_body,
+    body,
+    body__item,
+    graphSVG,
   } = css;
 
   const dispatch = useDispatch();
@@ -27,33 +26,26 @@ export default function CurrencyRates() {
 
   return (
     <>
-      {currencyRate.length && (
-        <div className={container}>
-          <div className={CurrencyRates_text_Container}>
-            <span className={span_text}>Валюта</span>
-            <span className={span_text}>Покупка</span>
-            <span className={span_text}>Продажа</span>
-          </div>
-          <div className={CurrencyRates_value_Container}>
-            {currencyRate.map((item) => (
-              <div className={box_span} key={item.ccy}>
-                <div className={container_span}>
-                  <span className={span_value}> {item.ccy}</span>
-                </div>
-                <div className={container_span}>
-                  <span className={span_value}>{item.buy}</span>
-                </div>
-                <div className={container_span}>
-                  <span className={span_value}>{item.sale}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className={svg}>
-            <CurrencySVG />
+      <div className={container}>
+        <ul className={header}>
+          <li className={header__item}>Валюта</li>
+          <li className={header__item}>Покупка</li>
+          <li className={header__item}>Продажа</li>
+        </ul>
+
+        <div className={container_body}>
+          {currencyRate.map((item) => (
+            <ul key={item.ccy} className={body}>
+              <li className={body__item}>{item.ccy}</li>
+              <li className={body__item}>{item.buy}</li>
+              <li className={body__item}>{item.sale}</li>
+            </ul>
+          ))}
+          <div className={graphSVG}>
+            <CurrencyGraphSVG />
           </div>
         </div>
-      )}
+      </div>
     </>
   );
 }

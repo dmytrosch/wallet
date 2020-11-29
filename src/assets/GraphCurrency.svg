@@ -1,9 +1,4 @@
-import React from "react";
-
-export default function CurrencySVG() {
-  return (
-    <>
-      <svg
+<svg
         width="348"
         height="134"
         viewBox="0 0 348 134"
@@ -29,6 +24,3 @@ export default function CurrencySVG() {
           </linearGradient>
         </defs>
       </svg>
-    </>
-  );
-}
