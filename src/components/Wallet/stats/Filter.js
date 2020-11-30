@@ -1,4 +1,6 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { transactions } from "../../../redux/wallet/walletSelectors";
 import StatsGraph from "./StatsGraph";
 import moment from "moment";
 import "moment/locale/ru";
@@ -7,7 +9,7 @@ import "chartjs-plugin-labels";
 import styles from "./styles/Filter.module.css";
 import { colors, optionsMonth, optionsYear } from "./assetsForStats";
 
-export default class Filter extends Component {
+class Filter extends Component {
   state = {
     currentMonth: moment().format("MMMM"),
     currentYear: moment().format("YYYY"),
@@ -146,3 +148,11 @@ export default class Filter extends Component {
     );
   }
 }
+
+// const mapStateToProps = (state) => ({
+//   allTransactions: transactions(state),
+// });
+
+// export default connect(mapStateToProps)(Filter);
+
+export default Filter;
