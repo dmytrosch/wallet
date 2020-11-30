@@ -19,6 +19,7 @@ import ModalPortal from "./Wallet/creatingTransaction/ModalPortal";
 import Modal from "./Wallet/creatingTransaction/Modal";
 
 import NewTransaction from "./Wallet/creatingTransaction/NewTransaction";
+import TransactionsTable from "../components/Wallet/TransactionsTable";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ function App() {
     <>
       <BrowserRouter>
         <Suspense fallback={<Loader />}>
+          <TransactionsTable />
           <Switch>
             {routes
               .filter((route) => route.onlyMobile === false)
