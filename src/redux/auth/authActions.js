@@ -1,8 +1,8 @@
 import { createAction } from "@reduxjs/toolkit";
 
-export const logoutRequest = createAction("auth/logoutRequest");
-export const logoutSuccess = createAction("auth/logoutSuccess");
-export const logoutError = createAction("auth/logoutError");
+const logoutRequest = createAction("auth/logoutRequest");
+const logoutSuccess = createAction("auth/logoutSuccess");
+const logoutError = createAction("auth/logoutError");
 
 const signUpRequest = createAction("auth/signUpRequest");
 const signUpSuccess = createAction("auth/signUpSuccess");
@@ -16,7 +16,7 @@ const getCurrentUserRequest = createAction("auth/getCurrentUserRequest");
 const getCurrentUserSuccess = createAction("auth/getCurrentUserSuccess");
 const getCurrentUserError = createAction("auth/getCurrentUserError");
 
-const removeUnauthorizedUser = createAction('auth/removeUnauthorizedUser');
+const removeUnauthorizedUser = createAction("auth/removeUnauthorizedUser");
 
 export {
   signUpRequest,
@@ -29,4 +29,7 @@ export {
   getCurrentUserSuccess,
   getCurrentUserError,
   removeUnauthorizedUser,
+  logoutRequest,
+  logoutSuccess,
+  logoutError,
 };
