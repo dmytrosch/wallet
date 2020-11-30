@@ -6,10 +6,12 @@ import Balance from "../components/Wallet/Balance/Balance";
 import CurrencyRates from "../components/Wallet/CurrencyRates/CurrencyRates";
 import TransactionsTable from "../components/Wallet/TransactionsTable";
 import styles from "./MainView.module.css";
+import Header from "../components/Header";
 
 const MainView = () => {
   return (
     <>
+      <Header />
       <Layout>
         <div className={styles.container}>
           <div className={styles.tabletContainer}>
