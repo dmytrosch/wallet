@@ -1,29 +1,115 @@
-.navList {
-    display: block;
-    
-}
+.img{
+  display: block;
+  width: 38px;
+  height: 38px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: #6E78E8;
+  
 
+}
+.statistics{
+  background-image: url(../../assets/icons/Statistics.svg);
+}
+.home{
+  background-image: url(../../assets/icons/Home.svg)
+}
+.currency{
+  background-image: url(../../assets/icons/Dollar.svg)
+}
 .navListItem {
 
-    text-align: left;
-    transition: all 200ms linear;
-}
-:hover .navListItemIcon {
-  color: #4A56E2;
-  cursor: pointer;
-  transition: all 250ms linear;
+  text-align: left;
+  transition: all 200ms linear;
 }
 
-:hover .navListType{
-  font-weight: bold;
-} 
-.activeNavLink {
-  font-weight: bold;
-  color: #4A56E2;
+
+@media (min-width: 270px) and (max-width: 767px) {
+  .navcontainer {
+    margin: 0 auto;
+  }
+
+  .navList{
+    padding: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 192px;
+    max-height: 44px;
+   
+  }
+  
+  .navListType{
+    display: none;
+  }
 }
 
-:hover .navListItemIcon,
-:hover .navListType {
-  cursor: pointer;
-  transition: all 250ms linear;
+@media (min-width: 768px) {
+  .navContainer {
+    margin-left: 40px;
+  }
+  .navList{
+    display: block;
+    position: absolute;
+    align-items: center;
+   
+  }
+  .img{
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    
+  }
+  .statistics{
+    background-image: url(../../assets/icons/Statistics.svg);
+    
+  }
+  .home{
+    background-image: url(../../assets/icons/Home.svg)
+  }
+  .box{
+    display: flex;
+    align-items: center;
+  }
+  .navListType{
+    margin-left: 23px;
+    font-family: var(--titleFont);
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 27px;
+    width: 99px;
+    color: #000000;
+   
+  }
+  .navListItem{
+   
+    height: 27px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items:center;
+  }
+
+  .navListItem:last-child {
+    display: none;
+  }
+}
+@media (min-width: 1024px){
+  .navContainer {
+    margin-left: 85px;
+  }
+  .navList{
+    display: block;
+    
+  }
+  .navListItem{
+    display: block;
+    height: 27px;
+    line-height: 18px;
+    margin-bottom: 10px;
+  }
 }
