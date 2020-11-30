@@ -19,6 +19,7 @@ import DatePicker from "react-datepicker";
 import "semantic-ui-css/semantic.min.css";
 import "react-datepicker/dist/react-datepicker.css";
 
+
 function NewTransaction({ onClose }) {
   // convert to work with backend
 
@@ -152,7 +153,7 @@ function NewTransaction({ onClose }) {
         </div>
 
         <Dropdown
-          placeholder="Категория"
+          placeholder="Выберите категорию"
           search
           selection
           options={cost ? categoriesCost : categoriesIncome}
@@ -176,10 +177,11 @@ function NewTransaction({ onClose }) {
             placeholder="0,00"
             name="amount"
             inputClassNames={styles.shortInput}
+            labelClassNames={styles.labelNumber}
             onChange={handleInputChange}
           />
 
-          <div className={styles.datePickerContainer}>
+          <div className={classNames(styles.datePickerContainer)}>
             <DatePicker
               selected={pickerDate}
               dateFormat="yyyy/MM/dd"

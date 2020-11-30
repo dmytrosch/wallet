@@ -1,13 +1,14 @@
 .ui.search {
-  width: 410px;
+  width: 100%;
 }
 
 .react-datepicker-wrapper {
-  width: 190px;
+  width: 100%;
+  margin-bottom: 40px;
 }
 
 .react-datepicker__input-container > input {
-  width: 190px;
+  width: 100%;
   height: 36px;
   text-align: center;
   font-family: var(--primeFont);
@@ -31,4 +32,15 @@ right: 0;
 
 .react-datepicker-ignore-onclickoutside {
     border: none;
+}
+
+
+@media (min-width: 768px) {
+  .ui.search {
+    width: 410px;
+  }
+
+  .react-datepicker-wrapper {
+    width: 190px;
+  }
 }
