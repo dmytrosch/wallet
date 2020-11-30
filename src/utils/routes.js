@@ -19,7 +19,7 @@ export default [
     component: lazy(() =>
       import("../views/StatsView" /* webpackChunkName: "stats" */)
     ),
-    private: true,
+    private: false,
     restricted: false,
     onlyMobile: false,
   },
