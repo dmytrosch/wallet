@@ -1,25 +1,89 @@
 .headerContainer {
-   width: 100%;
-   height: 80px;
-   padding: 20px 85px;
-   margin-bottom: 40px;
-   background-color: #ffffff;
-   display: flex;
-   justify-content: space-between;
-   
-    /* align-items: center; */
-  
+  padding-top: 28px;
+  margin-bottom: 40px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+}
+.headerUserName {
+  padding-right: 10px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  font-family: var(--primeFont);
+  color: #bdbdbd;
+  text-align: right;
+  border-right: 1px solid #bdbdbd;
 }
 
-.headerUserName{
-      font-size: 18px;
-      font-weight: 500;
+.ulExit {
+  display: flex;
+  list-style: none;
+  align-items: center;
 }
 
-.headerButton{
-      
-      font-size: 16px;
-      font-weight: 700;
-      color: grey;
-      /* outline: none; */
+.headerButton {
+  display: flex;
+  justify-content: space-between;
+  height: 27px;
+  padding-left: 10px;
+  background-color: var(--whiteColor);
+  border: none;
+  align-items: center;
+}
+
+.headerExitWord {
+  padding-left: 10px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  font-family: var(--primeFont);
+  color: #bdbdbd;
+}
+
+@media (min-width: 270px) and (max-width: 767px) {
+  .headerContainer {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    min-width: 320px;
+    height: 60px;
+  }
+  .logo {
+    display: block;
+    min-width: 119px;
+    height: 30px;
+    background-image: url(../../assets/icons/logoMac.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .headerExitWord {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .headerContainer {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .logo {
+    display: block;
+    width: 181px;
+    height: 40px;
+    background-image: url(../../assets/icons/logoMac.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+@media (min-width: 1024px) {
+  .headerContainer {
+    padding-left: 85px;
+    padding-right: 85px;
+  }
 }
