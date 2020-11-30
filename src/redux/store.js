@@ -21,11 +21,16 @@ const authPersistConfig = {
   storage,
   whitelist: ["token"],
 };
+const categoriesPersistConfig = {
+  key: "wallet",
+  storage,
+  whitelist: ["categories"],
+};
 
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    wallet: walletReducer,
+    wallet: persistReducer(categoriesPersistConfig, walletReducer),
     notification: notificationReducer,
     loading: loadingReducer,
     clientWidth: clientWidthReducer,
