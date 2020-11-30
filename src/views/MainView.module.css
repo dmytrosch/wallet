@@ -1,6 +1,13 @@
 @media screen and (max-width: 767px) {
   .navigation {
-    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .balance {
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -12,28 +19,46 @@
     flex-direction: column;
     align-items: center;
   }
+  .tabletContainer {
+    display: flex;
+    align-items: center;
+  }
 }
 @media screen and (min-width: 1024px) {
   .container {
     height: 100vh;
-
     padding: 0;
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
   }
   .navigation {
     display: flex;
     flex-direction: column;
-    width: 30%;
     border-right: 2px solid #e7e5f2;
     height: 100%;
   }
   .transactions {
     height: 100%;
-    width: 70%;
+    width: 65%;
+  }
+  .tabletContainer {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    justify-content: space-evenly;
+    align-items: center;
   }
 }
+.btnContainer {
+  position: absolute;
+  bottom: 30px;
+  right: 120px;
+}
 
-.container {
-  background-color: azure;
+.btnLogo {
+  font-size: 54px;
+  position: absolute;
+  top: 13px;
+  right: 4px;
 }

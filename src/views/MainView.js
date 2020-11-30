@@ -1,6 +1,6 @@
 import React from "react";
-import Input from "../common/Input";
-import Header from "../components/Header";
+import Button from "../common/Button";
+import Layout from "../views/Layout";
 import Navigation from "../components/Navigation";
 import Balance from "../components/Wallet/Balance/Balance";
 import CurrencyRates from "../components/Wallet/CurrencyRates/CurrencyRates";
@@ -10,18 +10,28 @@ import styles from "./MainView.module.css";
 const MainView = () => {
   return (
     <>
-      <Header />
-      <div className={styles.container}>
-        <div className={styles.navigation}>
-          <Navigation />
-          <Balance />
-          <CurrencyRates />
+      <Layout>
+        <div className={styles.container}>
+          <div className={styles.tabletContainer}>
+            <div className={styles.navigation}>
+              <Navigation />
+              <Balance />
+            </div>
+            <div className={styles.balance}>
+              <CurrencyRates />
+            </div>
+          </div>
+          <div className={styles.transactions}>
+            <br></br>
+            <TransactionsTable />
+          </div>
         </div>
-        <div className={styles.transactions}>
-          <br></br>
-          <TransactionsTable />
+        <div className={styles.btnContainer}>
+          <Button shape="circle" color="green">
+            <span className={styles.btnLogo}>+</span>
+          </Button>
         </div>
-      </div>
+      </Layout>
     </>
   );
 };
