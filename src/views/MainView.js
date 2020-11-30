@@ -17,19 +17,18 @@ const MainView = () => {
               <Navigation />
               <Balance />
             </div>
-            <div className={styles.balance}>
+            <div className={styles.currency}>
               <CurrencyRates />
             </div>
           </div>
           <div className={styles.transactions}>
-            <br></br>
             <TransactionsTable />
           </div>
-        </div>
-        <div className={styles.btnContainer}>
-          <Button shape="circle" color="green">
-            <span className={styles.btnLogo}>+</span>
-          </Button>
+          <div className={styles.btnContainer}>
+            <Button shape="circle" color="green">
+              <span className={styles.btnLogo}>+</span>
+            </Button>
+          </div>
         </div>
       </Layout>
     </>
