@@ -54,7 +54,7 @@ function App() {
                 .map((route) => <PrivateRoute key={route.path} {...route} />)}
 
             <Redirect to="/" />
-          </Switch> */}
+          </Switch>
         </Suspense>
       </BrowserRouter>
       <Notification />
