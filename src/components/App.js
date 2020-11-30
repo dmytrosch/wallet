@@ -5,7 +5,8 @@ import { setClientWidth } from "../redux/clientWidth/clientWidthAction";
 
 import { isLoading } from "../redux/loading/loadingSelector";
 import { isMobile } from "../redux/clientWidth/clientWidthSelectors";
-
+import { isAuthentificated } from "../redux/auth/authSelectors";
+import { getCurrentUser } from "../redux/auth/authOperations";
 import Notification from "./Notification";
 import Loader from "./Loader";
 
@@ -13,19 +14,31 @@ import { Switch, Redirect, BrowserRouter } from "react-router-dom";
 import routes from "../utils/routes";
 import PrivateRoute from "../components/Routes/PrivateRoute";
 import PublicRoute from "../components/Routes/PublicRoute";
+import CurrencyMobileView from "../views/CurrencyMobileView/CurrencyMobileView";
+import ModalPortal from "./Wallet/creatingTransaction/ModalPortal";
+import Modal from "./Wallet/creatingTransaction/Modal";
+
+import NewTransaction from "./Wallet/creatingTransaction/NewTransaction";
 
 function App() {
   const dispatch = useDispatch();
+  const isUserAuthentificated = useSelector((state) =>
+    isAuthentificated(state)
+  );
   useEffect(() => {
     dispatch(setClientWidth(document.documentElement.clientWidth));
   }, []);
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [isUserAuthentificated, dispatch]);
   const loading = useSelector(isLoading);
   const isMobileMode = useSelector(isMobile);
   return (
     <>
       <BrowserRouter>
         <Suspense fallback={<Loader />}>
-          <Switch>
+          <CurrencyMobileView />
+          {/* <Switch>
             {routes
               .filter((route) => route.onlyMobile === false)
               .map((route) =>
@@ -41,11 +54,18 @@ function App() {
                 .map((route) => <PrivateRoute key={route.path} {...route} />)}
 
             <Redirect to="/" />
-          </Switch>
+          </Switch> */}
         </Suspense>
       </BrowserRouter>
       <Notification />
-      {/* {loading && <Loader />} */}
+      {loading && <Loader />}
+
+      {/* <Modal>
+        <NewTransaction />
+      </Modal> */}
+
+      {/* <NewTransaction />
+    <Notification /> */}
     </>
   );
 }

@@ -16,7 +16,7 @@ const StatsView = () => {
       </section>
       <main>
         <StatsGraph />
-        <Filter />
+        {/* <Filter /> */}
         <StatsTable />
       </main>
     </>

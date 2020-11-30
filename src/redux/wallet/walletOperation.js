@@ -1,7 +1,7 @@
-import { fetchCurrency } from "../../utils/API/currencyAPI";
-import { loadTransactions, loadCategories } from "../../utils/API/walletAPI";
-import { makeAlertNotification } from "../notifications/notificationOperations";
 import {
+  addTransactionRequest,
+  addTransactionSuccess,
+  addTransactionError,
   gettingCurrencyRatesStart,
   gettingCurrencyRateSuccess,
   gettingCurrencyRateError,
@@ -12,6 +12,16 @@ import {
   successCategories,
   errorCategories,
 } from "./walletActions";
+
+import { fetchCurrency } from "../../utils/API/currencyAPI";
+
+import { loadTransactions, loadCategories } from "../../utils/API/walletAPI";
+
+import { makeAlertNotification } from "../notifications/notificationOperations"
+
+import { addTransactionApi } from "../../utils/API/walletAPI";
+
+
 
 const getTransactionsErrorHandler = (errCode) => {
   let message = "";
@@ -28,10 +38,22 @@ const getTransactionsErrorHandler = (errCode) => {
   return message;
 };
 
+export const addTransaction = (transaction) => (dispatch) => {
+  dispatch(addTransactionRequest());
+
+  addTransactionApi(transaction)
+    .then((resp) => dispatch(addTransactionSuccess(resp.data)))
+    .catch((error) => {
+      dispatch(addTransactionError(error))
+      dispatch(makeAlertNotification("Ошибка добавления"))
+    });
+};
+
 export const getCurrency = () => (dispatch) => {
   dispatch(gettingCurrencyRatesStart());
   fetchCurrency()
-    .then((response) => dispatch(gettingCurrencyRateSuccess(response.data)))
+    .then((j) => j.json())
+    .then((response) => dispatch(gettingCurrencyRateSuccess(response)))
     .catch((error) => dispatch(gettingCurrencyRateError(error)));
 };
 
