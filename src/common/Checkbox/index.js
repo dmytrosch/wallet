@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import styles from "./Checkbox.module.css";
 
-const Checkbox = ({isOn, ...props}) => {
+const Checkbox = ({ isOn, ...props }) => {
   // const [isOn, setOn] = useState(false);
 
   return (

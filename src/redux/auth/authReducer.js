@@ -7,7 +7,8 @@ import {
   logInRequest,
   logInSuccess,
   logInError,
-  logoutSuccess
+  logoutSuccess,
+  getCurrentUserSuccess
 } from "./authActions";
 
 const user = createReducer(
@@ -15,6 +16,7 @@ const user = createReducer(
   {
     [signUpSuccess]: (_, { payload }) => payload.user,
     [logInSuccess]: (_, { payload }) => payload.user,
+    [getCurrentUserSuccess]: (_, { payload }) => payload,
     [logoutSuccess]: () => ({}),
   }
 );

@@ -10,8 +10,16 @@ import {
   logInRequest,
   logInSuccess,
   logInError,
+  getCurrentUserRequest,
+  getCurrentUserSuccess,
+  getCurrentUserError,
 } from "./authActions";
-import { createUser, loginUser, logoutApi } from "../../utils/API/walletAPI";
+import {
+  createUser,
+  loginUser,
+  logoutApi,
+  getCurrentUserApi,
+} from "../../utils/API/walletAPI";
 import { makeAlertNotification } from "../notifications/notificationOperations";
 import { getCurrency } from "../wallet/walletOperation";
 
@@ -27,7 +35,7 @@ const token = {
 export const logout = () => (dispatch) => {
   dispatch(logoutRequest());
 
-  logoutApi
+  logoutApi()
     .then(() => {
       token.unset();
       dispatch(logoutSuccess());
@@ -99,5 +107,27 @@ export const logIn = (credentials) => (dispatch) => {
           break;
       }
       dispatch(logInError(error));
+    });
+};
+export const getCurrentUser = () => (dispatch, getState) => {
+  const persistedToken = getState().auth.token
+  console.log(persistedToken);
+  if (!persistedToken) {
+    return;
+  }
+  token.set(persistedToken);
+  dispatch(getCurrentUserRequest());
+  getCurrentUserApi()
+    .then(({ data }) => dispatch(getCurrentUserSuccess(data)))
+    .catch((error) => {
+      switch (error.response.status) {
+        case 401:
+          dispatch(makeAlertNotification("Войдите заново"));
+          token.unset();
+          break;
+        default:
+          break;
+      }
+      dispatch(getCurrentUserError());
     });
 };

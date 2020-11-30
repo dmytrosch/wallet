@@ -5,7 +5,8 @@ import { setClientWidth } from "../redux/clientWidth/clientWidthAction";
 
 import { isLoading } from "../redux/loading/loadingSelector";
 import { isMobile } from "../redux/clientWidth/clientWidthSelectors";
-
+import { isAuthentificated } from "../redux/auth/authSelectors";
+import { getCurrentUser } from "../redux/auth/authOperations";
 import Notification from "./Notification";
 import Loader from "./Loader";
 
@@ -21,9 +22,15 @@ import NewTransaction from "./Wallet/creatingTransaction/NewTransaction";
 
 function App() {
   const dispatch = useDispatch();
+  const isUserAuthentificated = useSelector((state) =>
+    isAuthentificated(state)
+  );
   useEffect(() => {
     dispatch(setClientWidth(document.documentElement.clientWidth));
   }, []);
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, [isUserAuthentificated, dispatch]);
   const loading = useSelector(isLoading);
   const isMobileMode = useSelector(isMobile);
   return (

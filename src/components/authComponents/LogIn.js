@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../redux/auth/authOperations";
-import styles from "./styles.css";
+import styles from "./styles.module.css";
+import Input from '../../common/Input/';
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
@@ -24,27 +25,22 @@ export default function LogIn() {
 
   return (
     <form className={styles.form} onSubmit={handlerSubmit}>
-      <label className={styles.label}>
         Email
-        <input
+        <Input
           className={styles.input}
           type="email"
           name="email"
           value={email}
           onChange={updateEmail}
         />
-      </label>
       <br />
-      <label className={styles.label}>
-        Password
-        <input
+        <Input
           className={styles.input}
           type="password"
           name="password"
           value={password}
           onChange={updatePassword}
         />
-      </label>
       <br />
       <button className={styles.button} type="submit">
         logIn
