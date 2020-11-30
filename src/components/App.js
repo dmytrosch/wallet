@@ -64,13 +64,8 @@ function App() {
         <NewTransaction />
       </Modal> */}
 
-<<<<<<< HEAD
       <NewTransaction />
       <Notification />
-=======
-      {/* <NewTransaction />
-    <Notification /> */}
->>>>>>> currency
     </>
   );
 }
