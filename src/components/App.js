@@ -14,7 +14,7 @@ import { Switch, Redirect, BrowserRouter } from "react-router-dom";
 import routes from "../utils/routes";
 import PrivateRoute from "../components/Routes/PrivateRoute";
 import PublicRoute from "../components/Routes/PublicRoute";
-
+import CurrencyMobileView from "../views/CurrencyMobileView/CurrencyMobileView";
 import ModalPortal from "./Wallet/creatingTransaction/ModalPortal";
 import Modal from "./Wallet/creatingTransaction/Modal";
 
@@ -38,7 +38,6 @@ function App() {
     <>
       <BrowserRouter>
         <Suspense fallback={<Loader />}>
-          <TransactionsTable />
           <Switch>
             {routes
               .filter((route) => route.onlyMobile === false)
@@ -55,7 +54,7 @@ function App() {
                 .map((route) => <PrivateRoute key={route.path} {...route} />)}
 
             <Redirect to="/" />
-          </Switch>
+          </Switch> */}
         </Suspense>
       </BrowserRouter>
       <Notification />
@@ -65,8 +64,13 @@ function App() {
         <NewTransaction />
       </Modal> */}
 
+<<<<<<< HEAD
       <NewTransaction />
       <Notification />
+=======
+      {/* <NewTransaction />
+    <Notification /> */}
+>>>>>>> currency
     </>
   );
 }

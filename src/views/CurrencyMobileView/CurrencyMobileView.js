@@ -1,14 +1,15 @@
 import React from "react";
-import Header from "../../components/Header/index";
+import Header from "../../components/Header";
+import Navigation from "../../components/Navigation";
+import CurrencyRates from "../../components/Wallet/CurrencyRates/CurrencyRates";
 import css from "./CurrencyMobileView.module.css";
-import Balance from "../../components/Wallet/Balance/Balance";
 
 export default function CurrencyMobileView() {
-  const { container } = css;
   return (
-    <div className={container}>
+    <main className={css.main}>
       <Header />
-      <Balance />
-    </div>
+      <Navigation />
+      <CurrencyRates />
+    </main>
   );
 }
