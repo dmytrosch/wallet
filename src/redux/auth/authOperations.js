@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getTransactions, getCategories } from "../wallet/walletOperation";
 
 import {
   logoutRequest,
@@ -112,7 +113,6 @@ export const logIn = (credentials) => (dispatch) => {
 };
 export const getCurrentUser = () => (dispatch, getState) => {
   const persistedToken = getState().auth.token;
-  console.log(persistedToken);
   if (!persistedToken) {
     return;
   }
@@ -134,4 +134,9 @@ export const getCurrentUser = () => (dispatch, getState) => {
       }
       dispatch(getCurrentUserError());
     });
+};
+export const getAllUserInfo = () => (dispatch) => {
+  dispatch(getCurrentUser());
+  dispatch(getCategories());
+  dispatch(getTransactions());
 };
