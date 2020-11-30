@@ -28,7 +28,7 @@ export default [
     label: "Currency",
     exact: true,
     component: lazy(() =>
-      import("../views/CurrencyView" /* webpackChunkName: "currency" */)
+      import("../views/CurrencyMobileView/CurrencyMobileView" /* webpackChunkName: "currency" */)
     ),
     private: true,
     restricted: false,

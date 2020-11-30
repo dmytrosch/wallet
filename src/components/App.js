@@ -14,6 +14,7 @@ import routes from "../utils/routes";
 import PrivateRoute from "../components/Routes/PrivateRoute";
 import PublicRoute from "../components/Routes/PublicRoute";
 
+import CurrencyMobileView from "../views/CurrencyMobileView/CurrencyMobileView";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
