@@ -13,6 +13,7 @@ import {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
+  removeUnauthorizedUser,
 } from "./authActions";
 import {
   createUser,
@@ -110,7 +111,7 @@ export const logIn = (credentials) => (dispatch) => {
     });
 };
 export const getCurrentUser = () => (dispatch, getState) => {
-  const persistedToken = getState().auth.token
+  const persistedToken = getState().auth.token;
   console.log(persistedToken);
   if (!persistedToken) {
     return;
@@ -122,8 +123,11 @@ export const getCurrentUser = () => (dispatch, getState) => {
     .catch((error) => {
       switch (error.response.status) {
         case 401:
-          dispatch(makeAlertNotification("Войдите заново"));
+          dispatch(removeUnauthorizedUser());
           token.unset();
+          localStorage.removeItem("persist:auth");
+          dispatch(makeAlertNotification("Ошибка авторизации. Войдите заново"));
+          setTimeout(() => window.history.go(window.location.hostname), 1000);
           break;
         default:
           break;
