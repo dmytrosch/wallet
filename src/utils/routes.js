@@ -8,7 +8,7 @@ export default [
     component: lazy(() =>
       import("../views/MainView" /* webpackChunkName: "home" */)
     ),
-    private: true,
+    private: false,
     restricted: false,
     onlyMobile: false,
   },
