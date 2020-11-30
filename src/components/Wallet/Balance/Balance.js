@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./Balance.module.css";
 
-import formatNumber from "../../../utils/formatNumber/formatNumber";
+import formatNumber from "../../../utils/formatNumber";
 import { useSelector } from "react-redux";
 import { getBalance } from "../../../redux/wallet/walletSelectors";
 const { container, text, currentbalance } = css;
