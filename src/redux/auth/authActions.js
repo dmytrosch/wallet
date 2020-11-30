@@ -16,6 +16,8 @@ const getCurrentUserRequest = createAction("auth/getCurrentUserRequest");
 const getCurrentUserSuccess = createAction("auth/getCurrentUserSuccess");
 const getCurrentUserError = createAction("auth/getCurrentUserError");
 
+const removeUnauthorizedUser = createAction('auth/removeUnauthorizedUser');
+
 export {
   signUpRequest,
   signUpSuccess,
@@ -26,4 +28,5 @@ export {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
+  removeUnauthorizedUser,
 };
