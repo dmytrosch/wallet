@@ -10,7 +10,7 @@ const Header = ({ userName, onLogout }) => {
     <section className={styles.headerContainer}>
         <div className={styles.logo}></div>
         <ul className={styles.ulExit}>
-            <p className={styles.headerUserName}>userName</p>
+            <p className={styles.headerUserName}>{userName}</p>
             <button className={styles.headerButton} type="button" onClick={onLogout}><ExitArrow/>
                 <span className={styles.headerExitWord}>Выход</span>
             </button>
