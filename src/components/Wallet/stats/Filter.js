@@ -1,46 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import StatsGraph from "./StatsGraph";
 import moment from "moment";
 import "moment/locale/ru";
 import StatsTable from "./StatsTable";
 import "chartjs-plugin-labels";
-import styles from "./Filter.module.css";
-
-const colors = [
-  "#ecb22a",
-  "#e28b20",
-  "#d25925",
-  "#67b7d0",
-  "#5593d7",
-  "#3e6ba8",
-  "#9cc254",
-  "#73ad57",
-  "#507c3a",
-];
-
-const optionsMonth = [
-  { value: "Месяц", label: "Месяц" },
-  { value: "январь", label: "Январь" },
-  { value: "февраль", label: "Февраль" },
-  { value: "март", label: "Mарт" },
-  { value: "апрель", label: "Апрель" },
-  { value: "май", label: "Май" },
-  { value: "июнь", label: "Июнь" },
-  { value: "июль", label: "Июль" },
-  { value: "август", label: "Август" },
-  { value: "сентябрь", label: "Сентябрь" },
-  { value: "октябрь", label: "Октябрь" },
-  { value: "ноябрь", label: "Ноябрь" },
-  { value: "декабрь", label: "Декабрь" },
-];
-
-const optionsYear = [
-  { value: "Год", label: "Год" },
-  { value: "2018", label: "2018" },
-  { value: "2019", label: "2019" },
-  { value: "2020", label: "2020" },
-  { value: "2021", label: "2021" },
-];
+import styles from "./styles/Filter.module.css";
+import { colors, optionsMonth, optionsYear } from "./assetsForStats";
 
 export default class Filter extends Component {
   state = {
@@ -55,9 +20,7 @@ export default class Filter extends Component {
 
   componentDidMount() {
     const { allTransactions } = this.props;
-    console.log(allTransactions);
-    const { currentMonth, currentYear } = this.state;
-    this.filterTransactionData(allTransactions, currentMonth, currentYear);
+    this.allDataOnMount(allTransactions);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -82,6 +45,11 @@ export default class Filter extends Component {
       this.changeCurrentMonthOrYear(selectedMonth.value, selectedYear.value);
     }
   }
+  allDataOnMount = (data) => {
+    this.setState({
+      filteredData: data,
+    });
+  };
 
   filterTransactionData = (allTransactions, currentMonth, currentYear) => {
     this.setState({
@@ -105,9 +73,9 @@ export default class Filter extends Component {
       }))
       .reduce((acc, el) => {
         if (acc.length > 0) {
-          if (acc.find((item) => item.category === el.categoryId)) {
+          if (acc.find((item) => item.category === el.category)) {
             return acc.map((mapItem) =>
-              mapItem.category === el.categoryId
+              mapItem.category === el.category
                 ? { ...mapItem, amount: mapItem.amount + el.amount }
                 : mapItem
             );
@@ -155,26 +123,11 @@ export default class Filter extends Component {
     );
     const arrData = this.addColor(this.filterDataFromTable(filteredData));
 
-    const diagramData = () => {
-      let option = {
-        labels: arrData.map(({ comment }) => comment),
-        datasets: [
-          {
-            label: "wallet",
-            fill: false,
-            lineTension: 0.1,
-            data: arrData.map(({ totalAmount }) => totalAmount),
-            backgroundColor: arrData.map(({ color }) => color),
-          },
-        ],
-      };
-      return option;
-    };
     return (
       <div className={styles.container}>
         <div className={styles.diagramContainer}>
           <p className={styles.label}>Cтатистика</p>
-          <StatsGraph chartData={diagramData} />
+          <StatsGraph arrData={arrData} />
         </div>
         <div className={styles.tableContainer}>
           <StatsTable

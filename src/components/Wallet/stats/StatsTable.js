@@ -1,6 +1,8 @@
 import React from "react";
 import Select from "react-select";
-import style from "./StatsTable.module.css";
+import style from "./styles/StatsTable.module.css";
+import { customStyles } from "./assetsForStats";
+import NumberFormat from "react-number-format";
 
 const StatsTable = ({
   totalMonthExpense,
@@ -13,37 +15,6 @@ const StatsTable = ({
   handleChangeYear,
   arrDataForTable,
 }) => {
-  const customStyles = {
-    container: () => ({
-      padding: "10px",
-    }),
-    control: () => ({
-      width: "160px",
-      height: "50px",
-      border: "1px solid black",
-      borderRadius: "30px",
-      display: "flex",
-      backgroundColor: "transparent",
-    }),
-    singleValue: () => ({
-      fontSize: "16px",
-      fontWeight: "400",
-      fontFamily: "Circe",
-      marginLeft: "21px",
-    }),
-    indicatorSeparator: () => ({
-      display: "none",
-    }),
-    indicatorContainer: () => ({
-      paddingLeft: "0px",
-    }),
-    menu: () => ({
-      position: "absolute",
-      backgroundColor: "white",
-      width: "200px",
-    }),
-  };
-
   return (
     <div>
       <div className={style.selectContainer}>
@@ -60,8 +31,9 @@ const StatsTable = ({
           onChange={handleChangeYear}
         />
       </div>
+
       <ul>
-        <li key="1" className={style.labelContainer}>
+        <li key={"1"} className={style.labelContainer}>
           <p className={style.labelText}>Категория</p>
           <p className={style.labelText}>Сумма</p>
         </li>
@@ -74,20 +46,53 @@ const StatsTable = ({
               }}
             ></span>
             <div className={style.transInfo}>
-              <p>{el.comment}</p>
-              <p className={style.totalAmount}>{el.totalAmount}</p>
+              <p>{el.category}</p>
+              <NumberFormat
+                displayType={"text"}
+                value={el.totalAmount}
+                thousandSeparator={" "}
+                decimalSeparator={"."}
+                thousandsGroupStyle="lakh"
+                children
+                renderText={(value) => (
+                  <p className={style.totalAmount}>{value}</p>
+                )}
+              ></NumberFormat>
             </div>
           </li>
         ))}
       </ul>
+
       <div className={style.amountContainer}>
         <div className={style.itemsAmount}>
           <p className={style.amounthCategory}>Расходы:</p>
-          <p className={style.expensAmount}>{totalMonthExpense}.00</p>
+          <NumberFormat
+            displayType={"text"}
+            prefix={"₴ "}
+            value={totalMonthExpense}
+            thousandSeparator={" "}
+            decimalSeparator={"."}
+            thousandsGroupStyle="lakh"
+            children
+            renderText={(value) => (
+              <p className={style.expensAmount}>{value}</p>
+            )}
+          ></NumberFormat>
         </div>
         <div className={style.itemsAmount}>
           <p className={style.amounthCategory}>Доходы:</p>
-          <p className={style.incomeAmount}>{totalMonthIncome}.00</p>
+          <NumberFormat
+            displayType={"text"}
+            prefix={"₴ "}
+            value={totalMonthIncome}
+            thousandSeparator={" "}
+            decimalSeparator={"."}
+            thousandsGroupStyle="lakh"
+            children
+            renderText={(value) => (
+              <p className={style.incomeAmount}>{value}</p>
+            )}
+          ></NumberFormat>
         </div>
       </div>
     </div>
