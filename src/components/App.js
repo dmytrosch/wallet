@@ -14,7 +14,8 @@ import routes from "../utils/routes";
 import PrivateRoute from "../components/Routes/PrivateRoute";
 import PublicRoute from "../components/Routes/PublicRoute";
 
-import CurrencyMobileView from "../views/CurrencyMobileView/CurrencyMobileView";
+import TransactionsTable from "../components/Wallet/TransactionsTable";
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -26,6 +27,7 @@ function App() {
     <>
       <BrowserRouter>
         <Suspense fallback={<Loader />}>
+          <TransactionsTable />
           <Switch>
             {routes
               .filter((route) => route.onlyMobile === false)
