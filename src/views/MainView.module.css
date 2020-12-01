@@ -13,35 +13,28 @@
 
 @media screen and (min-width: 768px) {
   .container {
-    height: 100vh;
-    padding: 60px 0 196px 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 30px 40px;
+    min-height: 100vh;
     backdrop-filter: blur(50px);
   }
   .tabletContainer {
-    display: flex;
-    align-items: center;
     height: 100%;
-    width: 768px;
+
+    display: flex;
     justify-content: space-between;
     margin-bottom: 40px;
+    align-items: flex-end;
   }
 }
 @media screen and (min-width: 1024px) {
   .container {
-    height: 100vh;
     padding: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     backdrop-filter: blur(50px);
-  }
-  .navigation {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: 20px;
+    min-height: 100vh;
   }
 
   .transactions {
@@ -49,13 +42,10 @@
     width: 65%;
   }
   .tabletContainer {
-    display: flex;
-    flex-direction: column;
     width: 35%;
-    justify-content: space-evenly;
-    align-items: center;
+    flex-direction: column;
     border-right: 2px solid #e7e5f2;
-    height: 100%;
+    align-items: center;
   }
 }
 .btnContainer {

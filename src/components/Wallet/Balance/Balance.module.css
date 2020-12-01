@@ -56,5 +56,6 @@
 @media (min-width: 1024px) {
   .container {
     width: 350px;
+    margin-bottom: 30px;
   }
 }

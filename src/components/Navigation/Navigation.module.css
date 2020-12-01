@@ -35,10 +35,15 @@
     max-width: 192px;
     max-height: 44px;
     width: 100%;
-    margin-bottom: 30px;
+    padding-top: 30px;
+    margin-bottom: 50px;
   }
   .navListItem {
     justify-content: space-between;
+    margin-right: 40px;
+  }
+  .navListItem:last-child {
+    margin-right: 0;
   }
 
   .navListType {
