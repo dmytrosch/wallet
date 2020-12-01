@@ -67,7 +67,6 @@ function App() {
       {/* <NewTransaction /> */}
       <Notification />
     </div>
-  );
-}
-
+  )};
+    
 export default App;
