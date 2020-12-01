@@ -11,7 +11,7 @@ import {
 } from "./walletActions";
 
 const addTransaction = (state, action) => {
-  return [action.payload, ...state];
+  return [ ...state, action.payload];
   // return action.payload; // Возможно это правильный вариант, если в транзакциях будут дубли
 
 }

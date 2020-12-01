@@ -6,22 +6,31 @@ import Button from "../../../common/Button";
 import Checkbox from "../../../common/Checkbox";
 
 import styles from "./NewTransaction.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { addTransaction } from "../../../redux/wallet/walletOperation";
 
 import { Dropdown } from "semantic-ui-react";
 
-import categiries from "./categories.json";
 
 import DatePicker from "react-datepicker";
+
+
+import { makeAlertNotification } from '../../../redux/notifications/notificationOperations'
+import { getCategories,  getAllTransactions} from '../../../redux/wallet/walletSelectors'
+
 
 import "semantic-ui-css/semantic.min.css";
 import "react-datepicker/dist/react-datepicker.css";
 
 
+
 function NewTransaction({ onClose }) {
-  // convert to work with backend
+
+  const categiries = useSelector(getCategories)
+
+  console.log(categiries)
+
 
   const categoriesIncome = categiries
     .filter((category) => category.type === "INCOME")
@@ -85,8 +94,29 @@ function NewTransaction({ onClose }) {
     }
   }
 
+  
+  console.log(categoryName)
+
+  const allTransactions = useSelector(getAllTransactions)
+
+  console.log(allTransactions);
+
+
+
+
+
   function handleSubmit(e) {
     e.preventDefault();
+
+    if(categoryName === "") {
+      dispatch(makeAlertNotification("Выберите категорию"))
+      return;
+    }
+
+    if(amount <= 0) {
+      dispatch(makeAlertNotification("Значение суммы операции должно быть больше 0"))
+      return;
+    }
 
     const objToPost = {
       transactionDate: pickerDate.toISOString().slice(0, 10).replace(/-/g, "-"),
@@ -100,6 +130,12 @@ function NewTransaction({ onClose }) {
       comment,
       amount: !cost ? amount : -amount,
     };
+
+
+
+
+   
+    // console.log(objToPost);
 
     dispatch(addTransaction(objToPost));
 
