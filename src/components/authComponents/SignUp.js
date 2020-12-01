@@ -101,7 +101,8 @@ export default function SignUp() {
           onChange={updateName}
           placeholder="Ваше имя"
         />
-        <Button type="submit">РЕГИСТРАЦИЯ</Button>
+        <Button type="submit">регистрация</Button>
+        <Button type="submit">вход</Button>
       </form>
     </div>
   );

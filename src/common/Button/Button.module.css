@@ -55,3 +55,11 @@
   margin: 0 auto;
   display: block;
 }
+.square:first-of-type {
+  margin-bottom: 20px;
+}
+@media screen and (max-width: 767px) {
+  .square {
+    width: 280px;
+  }
+}

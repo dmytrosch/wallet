@@ -51,10 +51,8 @@ export default function LogIn() {
           onChange={updatePassword}
           placeholder="Пароль"
         />
-        {/* <button className={styles.button} type="submit">
-        logIn
-      </button> */}
-        <Button type="submit">ВХОД</Button>
+        <Button type="submit">вход</Button>
+        <Button type="submit">регистрация</Button>
       </form>
     </div>
   );

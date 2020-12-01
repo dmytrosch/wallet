@@ -21,6 +21,7 @@ import Modal from "./Wallet/creatingTransaction/Modal";
 import NewTransaction from "./Wallet/creatingTransaction/NewTransaction";
 import TransactionsTable from "../components/Wallet/TransactionsTable";
 
+
 function App() {
   const dispatch = useDispatch();
   const isUserAuthentificated = useSelector((state) =>
@@ -36,6 +37,7 @@ function App() {
   const isMobileMode = useSelector(isMobile);
   return (
     <div>
+      
       <BrowserRouter>
         <Suspense fallback={<Loader />}>
           <Switch>

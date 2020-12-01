@@ -115,7 +115,6 @@ input::-webkit-inner-spin-button {
 .container {
   width: 410px;
   margin: 0 auto 35px;
-  border-bottom: 1px solid #E0E0E0;
 }
 
 .container:nth-child(4n+2) {
@@ -123,4 +122,12 @@ input::-webkit-inner-spin-button {
 }
 .container:last-of-type {
   margin: 0 auto 50px;
+}
+@media screen and (max-width: 767px) {
+  .container {
+    width: 280px;
+  }
+  .input {
+    width: 280px;
+  }
 }
