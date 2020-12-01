@@ -6,7 +6,7 @@ import Input from "../../common/Input/";
 import Button from "../../common/Button";
 import { makeAlertNotification } from "../../redux/notifications/notificationOperations";
 import validator from "validator";
-import logoSvg from "../../assets/icons/logoMac.svg";
+import logoSvg from "../../assets/icons/WalletImg.svg";
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
