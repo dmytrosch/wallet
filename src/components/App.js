@@ -35,7 +35,7 @@ function App() {
   const loading = useSelector(isLoading);
   const isMobileMode = useSelector(isMobile);
   return (
-    <>
+    <div>
       <BrowserRouter>
         <Suspense fallback={<Loader />}>
           <Switch>
@@ -64,10 +64,9 @@ function App() {
         <NewTransaction />
       </Modal> */}
 
-      <NewTransaction />
+      {/* <NewTransaction /> */}
       <Notification />
-    </>
-  );
-}
-
+    </div>
+  )};
+    
 export default App;

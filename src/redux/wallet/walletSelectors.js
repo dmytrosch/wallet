@@ -1,7 +1,5 @@
 import { createSelector } from "@reduxjs/toolkit";
-// тут я беру все валюты, округляю до десятых, создаю новый масив объектов.
-// фильтрую его от лишнего. Получилась онлайн курс валют от приватбанка.
-///////////////////// currency rate
+
 export const getCurrencyRate = (state) => state.wallet.currencyRates;
 const roundCurrencyRate = (state) => {
   return getCurrencyRate(state).map((item) => {
@@ -18,17 +16,17 @@ export const getCurrencyRateFiltered = createSelector(
     return items.filter((item) => item.ccy !== "BTC");
   }
 );
-////////////////////// balance
 export const getBalance = (state) => state.wallet.balance;
-
 export const getCategories = (state) => state.wallet.categories;
 export const transactions = (state) => state.wallet.transactions;
-
 export const getAllTransactions = createSelector(
   [transactions, getCategories],
   (transactions, categories) =>
-    transactions.map((item) => ({
-      ...item,
-      category: categories.find((_) => _.id === item.categoryId).name,
-    }))
+    transactions.map((item) => {
+      const category = categories.find((_) => _.id === item.categoryId);
+      return {
+        ...item,
+        category: category ? category.name : "",
+      };
+    })
 );

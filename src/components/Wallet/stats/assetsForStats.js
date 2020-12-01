@@ -12,6 +12,7 @@ export const customStyles = {
     },
   }),
   control: () => ({
+    cursor: "pointer",
     width: "160px",
     height: "50px",
     border: "1px solid black",
@@ -19,20 +20,21 @@ export const customStyles = {
     display: "flex",
     flexWrap: "wrap",
     backgroundColor: "transparent",
-    "@media(min-width: 730px)": {
+    "@media(min-width: 767px)": {
       width: "160px",
       marginRight: "26px",
     },
-    "@media(max-width: 730px)": {
+    "@media(max-width: 766px)": {
       width: "280px",
     },
   }),
 
   singleValue: () => ({
     fontSize: "16px",
-    fontWeight: "400",
+    fontWeight: "500",
     fontFamily: "Circe",
     marginLeft: "21px",
+    lineHeight: "24px",
   }),
   indicatorSeparator: () => ({
     display: "none",
