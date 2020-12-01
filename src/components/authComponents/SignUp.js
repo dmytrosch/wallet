@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../redux/auth/authOperations";
-import PasswordStrengthBar from 'react-password-strength-bar';
-import {makeAlertNotification} from '../../redux/notifications/notificationOperations';
-import validator from 'validator';
+import PasswordStrengthBar from "react-password-strength-bar";
+import { makeAlertNotification } from "../../redux/notifications/notificationOperations";
+import validator from "validator";
 
 import Input from "../../common/Input/";
 import styles from "./styles.module.css";
@@ -16,7 +16,6 @@ export default function SignUp() {
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
-    
   };
   const updatePassword = (e) => {
     setPassword(e.target.value);
@@ -31,18 +30,18 @@ export default function SignUp() {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    if(!validator.isEmail(email)){
-      dispatch(makeAlertNotification('Введите корректный email!'));
-      return
+    if (!validator.isEmail(email)) {
+      dispatch(makeAlertNotification("Введите корректный email!"));
+      return;
     }
-    
-    if(password.length < 8) {
-      dispatch(makeAlertNotification('Введите пароль не менее 8 символов!'));
-      return
+
+    if (password.length < 8) {
+      dispatch(makeAlertNotification("Введите пароль не менее 8 символов!"));
+      return;
     }
-    if(confirmedPassword !== password){
-      dispatch(makeAlertNotification('Не совпадает пароль!'));
-      return
+    if (confirmedPassword !== password) {
+      dispatch(makeAlertNotification("Не совпадает пароль!"));
+      return;
     }
     dispatch(signUp({ username: name, email, password }));
     setEmail("");
@@ -50,24 +49,13 @@ export default function SignUp() {
     setConfirmedPasswod("");
     setName("");
   };
-  
 
   return (
     <form className={styles.form} onSubmit={handlerSubmit}>
-      <Input
-        type="email"
-        value={email}
-        onChange={updateEmail}
-        
-      />
+      <Input type="email" value={email} onChange={updateEmail} />
       <br />
       <br />
-      <Input
-        type="password"
-        value={password}
-        onChange={updatePassword}
-        
-      />
+      <Input type="password" value={password} onChange={updatePassword} />
       <br />
       <PasswordStrengthBar password={password} />
       <br />
@@ -76,7 +64,6 @@ export default function SignUp() {
         type="password"
         value={confirmedPassword}
         onChange={updateConfirmedPassword}
-        
       />
       <br />
       <br />
@@ -85,7 +72,6 @@ export default function SignUp() {
         type="text"
         value={name}
         onChange={updateName}
-        
       />
       <br />
       <br />
