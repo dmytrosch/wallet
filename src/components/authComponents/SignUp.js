@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../redux/auth/authOperations";
-import PasswordStrengthBar from 'react-password-strength-bar';
-import {makeAlertNotification} from '../../redux/notifications/notificationOperations';
-import validator from 'validator';
+import PasswordStrengthBar from "react-password-strength-bar";
+import { makeAlertNotification } from "../../redux/notifications/notificationOperations";
+import validator from "validator";
+import logoSvg from '../../assets/icons/WalletImg.svg';
 
 import Input from "../../common/Input/";
+import Button from '../../common/Button';
 import styles from "./styles.module.css";
 
 export default function SignUp() {
@@ -16,7 +18,6 @@ export default function SignUp() {
 
   const updateEmail = (e) => {
     setEmail(e.target.value);
-    
   };
   const updatePassword = (e) => {
     setPassword(e.target.value);
@@ -31,18 +32,18 @@ export default function SignUp() {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    if(!validator.isEmail(email)){
-      dispatch(makeAlertNotification('Введите корректный email!'));
-      return
+    if (!validator.isEmail(email)) {
+      dispatch(makeAlertNotification("Введите корректный email!"));
+      return;
     }
-    
-    if(password.length < 8) {
-      dispatch(makeAlertNotification('Введите пароль не менее 8 символов!'));
-      return
+
+    if (password.length < 8) {
+      dispatch(makeAlertNotification("Введите пароль не менее 8 символов!"));
+      return;
     }
-    if(confirmedPassword !== password){
-      dispatch(makeAlertNotification('Не совпадает пароль!'));
-      return
+    if (confirmedPassword !== password) {
+      dispatch(makeAlertNotification("Не совпадает пароль!"));
+      return;
     }
     dispatch(signUp({ username: name, email, password }));
     setEmail("");
@@ -50,48 +51,47 @@ export default function SignUp() {
     setConfirmedPasswod("");
     setName("");
   };
-  
 
   return (
-    <form className={styles.form} onSubmit={handlerSubmit}>
-      <Input
-        type="email"
-        value={email}
-        onChange={updateEmail}
-        
-      />
-      <br />
-      <br />
-      <Input
-        type="password"
-        value={password}
-        onChange={updatePassword}
-        
-      />
-      <br />
-      <PasswordStrengthBar password={password} />
-      <br />
-      <Input
-        className={styles.input}
-        type="password"
-        value={confirmedPassword}
-        onChange={updateConfirmedPassword}
-        
-      />
-      <br />
-      <br />
-      <Input
-        className={styles.input}
-        type="text"
-        value={name}
-        onChange={updateName}
-        
-      />
-      <br />
-      <br />
-      <button type="submit" className={styles.button}>
-        SignUp
-      </button>
-    </form>
+    <div className={styles.containerSignUp}>
+      <div className={styles.wrapper}>
+        <img className={styles.logo} src={logoSvg} alt='#'/>
+        <h1 className={styles.title}>Wallet</h1>
+      </div>
+      <form className={styles.form}  onSubmit={handlerSubmit}>
+        <Input
+          type="email"
+          value={email}
+          onChange={updateEmail}
+          error={email.length > 0 && !validator.isEmail(email)}
+          placeholder="E-mail"
+        />
+        <Input
+          type="password"
+          value={password}
+          onChange={updatePassword}
+          error={password.length > 0 && password.length < 8}
+          placeholder="Пароль"
+        />
+        <div className={styles.passwordLengthContainer}>
+          <PasswordStrengthBar password={password} />
+        </div>
+        <Input
+          type="password"
+          value={confirmedPassword}
+          onChange={updateConfirmedPassword}
+          error={confirmedPassword !== password}
+          placeholder="Подтвердите пароль"
+        />
+        <Input
+          type="text"
+          name="name"
+          value={name}
+          onChange={updateName}
+          placeholder="Ваше имя"
+        />
+        <Button type="submit">РЕГИСТРАЦИЯ</Button>
+      </form>
+    </div>
   );
 }

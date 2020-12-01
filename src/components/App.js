@@ -18,6 +18,8 @@ import ModalPortal from "./Wallet/creatingTransaction/ModalPortal";
 import Modal from "./Wallet/creatingTransaction/Modal";
 
 import NewTransaction from "./Wallet/creatingTransaction/NewTransaction";
+import SignUp from './authComponents/SignUp';
+import LogIn from './authComponents/LogIn';
 
 function App() {
   const dispatch = useDispatch();
@@ -29,7 +31,7 @@ function App() {
   const isMobileMode = useSelector(isMobile);
   return (
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Suspense fallback={<Loader />}>
           <Switch>
             {routes
@@ -49,7 +51,11 @@ function App() {
             <Redirect to="/" />
           </Switch>
         </Suspense>
-      </BrowserRouter>
+      </BrowserRouter> */}
+      <SignUp/>
+      <br/>
+      <br/>
+      <LogIn/>
       <Notification />
       {loading && <Loader />}
 
