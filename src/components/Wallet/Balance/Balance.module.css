@@ -1,4 +1,4 @@
-g@media (max-width: 767px) {
+@media (max-width: 767px) {
   .container {
     height: 80px;
     width: 280px;
@@ -10,7 +10,6 @@ g@media (max-width: 767px) {
   .text {
     font-family: Circe;
     height: 12.799999237060547px;
-    width: 81px;
     font-size: 12px;
     font-weight: 700;
     line-height: 18px;
@@ -44,7 +43,6 @@ g@media (max-width: 767px) {
   .text {
     font-family: Circe;
     height: 12.799999237060547px;
-    width: 81px;
     font-size: 12px;
     font-weight: 700;
     line-height: 18px;
