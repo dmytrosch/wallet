@@ -5,13 +5,15 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import formatNumber from "../../../utils/formatNumber";
 
 import { getAllTransactions } from "../../../redux/wallet/walletSelectors";
+import { isLoading } from "../../../redux/loading/loadingSelector";
 
 import styles from "./TransactionsTable.module.css";
-import animation from "./transTable.animation.module.css";
+import animation from "../../../styles/tableItem.animation.module.css";
 
 export default function TransactionsTable() {
   const INCOME = "INCOME";
   const allTransactions = useSelector(getAllTransactions);
+  const loading = useSelector(isLoading);
   return (
     <ul className={styles.table}>
       <li className={classNames(styles.row, styles.header)}>
@@ -78,6 +80,11 @@ export default function TransactionsTable() {
           </CSSTransition>
         ))}
       </TransitionGroup>
+      {!loading && !allTransactions.length && (
+        <li className={styles.text}>
+          <span>Список операций пуст</span>
+        </li>
+      )}
     </ul>
   );
 }
