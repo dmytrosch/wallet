@@ -23,17 +23,17 @@ export default [
     restricted: false,
     onlyMobile: false,
   },
-  // {
-  //   path: "/currency",
-  //   label: "Currency",
-  //   exact: true,
-  //   component: lazy(() =>
-  //     import("../views/CurrencyView" /* webpackChunkName: "currency" */)
-  //   ),
-  //   private: true,
-  //   restricted: false,
-  //   onlyMobile: true,
-  // },
+  {
+    path: "/currency",
+    label: "Currency",
+    exact: true,
+    component: lazy(() =>
+      import("../views/CurrencyMobileView/CurrencyMobileView" /* webpackChunkName: "currency" */)
+    ),
+    private: true,
+    restricted: false,
+    onlyMobile: true,
+  },
   {
     path: "/signup",
     label: "Signup",

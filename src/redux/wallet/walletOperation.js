@@ -14,14 +14,10 @@ import {
 } from "./walletActions";
 
 import { fetchCurrency } from "../../utils/API/currencyAPI";
-
 import { loadTransactions, loadCategories } from "../../utils/API/walletAPI";
-
-import { makeAlertNotification } from "../notifications/notificationOperations"
-
+import { makeAlertNotification } from "../notifications/notificationOperations";
 import { addTransactionApi } from "../../utils/API/walletAPI";
-
-
+import { pathOr } from "ramda";
 
 const getTransactionsErrorHandler = (errCode) => {
   let message = "";
@@ -44,8 +40,8 @@ export const addTransaction = (transaction) => (dispatch) => {
   addTransactionApi(transaction)
     .then((resp) => dispatch(addTransactionSuccess(resp.data)))
     .catch((error) => {
-      dispatch(addTransactionError(error))
-      dispatch(makeAlertNotification("Ошибка добавления"))
+      dispatch(addTransactionError(error));
+      dispatch(makeAlertNotification("Ошибка добавления"));
     });
 };
 
@@ -64,7 +60,7 @@ export const getTransactions = () => (dispatch) => {
       dispatch(successAllTransactions(response.data));
     })
     .catch((error) => {
-      const message = getTransactionsErrorHandler(error.response.status);
+      const message = getTransactionsErrorHandler(pathOr("", ["response", "status"], error));
       dispatch(makeAlertNotification(message));
       dispatch(errorAllTransactions());
     });

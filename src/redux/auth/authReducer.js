@@ -1,14 +1,11 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import {
-  signUpRequest,
   signUpSuccess,
-  signUpError,
-  logInRequest,
   logInSuccess,
-  logInError,
   logoutSuccess,
-  getCurrentUserSuccess
+  getCurrentUserSuccess,
+  removeUnauthorizedUser,
 } from "./authActions";
 
 const user = createReducer(
@@ -18,12 +15,14 @@ const user = createReducer(
     [logInSuccess]: (_, { payload }) => payload.user,
     [getCurrentUserSuccess]: (_, { payload }) => payload,
     [logoutSuccess]: () => ({}),
+    [removeUnauthorizedUser]: () => ({}),
   }
 );
 const token = createReducer(null, {
   [signUpSuccess]: (_, { payload }) => payload.token,
   [logInSuccess]: (_, { payload }) => payload.token,
-  [logoutSuccess]: () => null
+  [logoutSuccess]: () => null,
+  [removeUnauthorizedUser]: null,
 });
 
 export default combineReducers({

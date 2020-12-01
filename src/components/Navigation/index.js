@@ -1,45 +1,29 @@
 import React from "react";
-// import { NavLink } from 'react-router-dom';
-
-import home from "../../assets/icons/Home.svg";
-import dollar from "../../assets/icons/Dollar.svg";
-import statistics from "../../assets/icons/Statistics.svg";
+import { NavLink } from "react-router-dom";
 import styles from "./Navigation.module.css";
 
 const Navigation = () => {
+ 
   return (
-    <div>
+    <div className={styles.navContainer}>
       <ul className={styles.navList}>
         <li key="home" className={styles.navListItem}>
-          <a href="/home" className={styles.activeNavLink}>
-            <img
-              src={home}
-              alt="main page"
-              className={styles.navListItemIcon}
-            />
-
-            <span className={styles.navListType}>Главная</span>
-          </a>
+          <NavLink to="/home" className={[styles.activeNavLink, styles.box].join(' ')}>
+            <div className={[styles.img, styles.home ].join(' ')}/>  
+            <p className={styles.navListType}>Главная</p>
+          </NavLink>
         </li>
         <li key="statistics" className={styles.navListItem}>
-          <a href="/statistics" className={styles.activeNavLink}>
-            <img
-              src={statistics}
-              alt="statistics"
-              className={styles.navListItemIcon}
-            />
-            <span className={styles.navListType}>Статистика</span>
-          </a>
+          <NavLink to="/statistics" className={[styles.activeNavLink, styles.box].join(' ')}>
+          <div className={[styles.img, styles.statistics ].join(' ')}/>
+          <p className={styles.navListType}>Статистика</p>
+          </NavLink>
         </li>
-        <li key="currency" className={styles.navListItem}>
-          <a href="/currency" exact="true" className={styles.activeNavLink}>
-            <img
-              src={dollar}
-              alt="statistics"
-              className={styles.navListItemIcon}
-            />
+        <li key="currency" className={styles.navListItem} >
+          <NavLink to="/currency" exact className={styles.activeNavLink}>
+          <div className={[styles.img, styles.currency].join(' ')}/>
             <span className={styles.navListType}></span>
-          </a>
+          </NavLink>
         </li>
       </ul>
     </div>

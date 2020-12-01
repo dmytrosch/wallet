@@ -23,3 +23,7 @@
     url("../fonts/poppins-v15-latin-regular.ttf") format("truetype"),
     url("../fonts/poppins-v15-latin-regular.svg#Poppins") format("svg");
 }
+
+body{
+  font-family: var(--primeFont);
+}
