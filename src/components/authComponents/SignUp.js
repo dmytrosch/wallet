@@ -4,10 +4,10 @@ import { signUp } from "../../redux/auth/authOperations";
 import PasswordStrengthBar from "react-password-strength-bar";
 import { makeAlertNotification } from "../../redux/notifications/notificationOperations";
 import validator from "validator";
-import logoSvg from '../../assets/icons/WalletImg.svg';
+import logoSvg from "../../assets/icons/WalletImg.svg";
 
 import Input from "../../common/Input/";
-import Button from '../../common/Button';
+import Button from "../../common/Button";
 import styles from "./styles.module.css";
 
 export default function SignUp() {
@@ -55,10 +55,10 @@ export default function SignUp() {
   return (
     <div className={styles.containerSignUp}>
       <div className={styles.wrapper}>
-        <img className={styles.logo} src={logoSvg} alt='#'/>
+        <img className={styles.logo} src={logoSvg} alt="#" />
         <h1 className={styles.title}>Wallet</h1>
       </div>
-      <form className={styles.form}  onSubmit={handlerSubmit}>
+      <form className={styles.form} onSubmit={handlerSubmit}>
         <Input
           type="email"
           value={email}
@@ -74,7 +74,18 @@ export default function SignUp() {
           placeholder="Пароль"
         />
         <div className={styles.passwordLengthContainer}>
-          <PasswordStrengthBar password={password} />
+          <PasswordStrengthBar
+            password={password}
+            minLength={8}
+            scoreWords={[
+              "ненадежный",
+              "слабый",
+              "нормальный",
+              "хороший",
+              "надежный",
+            ]}
+            shortScoreWord="слишком короткий"
+          />
         </div>
         <Input
           type="password"
