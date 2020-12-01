@@ -2,20 +2,12 @@ import React from "react";
 import { useSelector } from "react-redux";
 import classNames from "classnames";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import formatNumber from "../../../utils/formatNumber";
 
 import { getAllTransactions } from "../../../redux/wallet/walletSelectors";
 
 import styles from "./TransactionsTable.module.css";
 import animation from "./transTable.animation.module.css";
-
-/**
- * добавить папку компоненты с TransitionsTable:
- * - header
- * - item
- * 
- * Добавить форматирование чисел
- */
-
 
 export default function TransactionsTable() {
   const INCOME = "INCOME";
@@ -73,12 +65,14 @@ export default function TransactionsTable() {
                     styles.itemData
                   )}
                 >
-                  {item.amount}
+                  {formatNumber(item.amount)}
                 </span>
               </div>
               <div className={classNames(styles.item, styles.balanceAfter)}>
                 <span className={styles.itemTitle}>Баланс</span>
-                <span className={styles.itemData}>{item.balanceAfter}</span>
+                <span className={styles.itemData}>
+                  {formatNumber(item.balanceAfter)}
+                </span>
               </div>
             </li>
           </CSSTransition>
