@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../redux/auth/authOperations";
 import styles from "./styles.module.css";
-import Input from '../../common/Input/';
+import Input from "../../common/Input/";
+import Button from "../../common/Button";
+import { makeAlertNotification } from "../../redux/notifications/notificationOperations";
+import validator from "validator";
+import logoSvg from "../../assets/icons/WalletImg.svg";
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
@@ -18,33 +22,40 @@ export default function LogIn() {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    dispatch(logIn({email, password}));
-    setEmail('');
-    setPassword('');
+    if (!validator.isEmail(email)) {
+      dispatch(makeAlertNotification("Введите корректный email!"));
+      return;
+    }
+    dispatch(logIn({ email, password }));
+    setEmail("");
+    setPassword("");
   };
 
   return (
-    <form className={styles.form} onSubmit={handlerSubmit}>
-        Email
+    <div className={styles.containerLogIn}>
+      <div className={styles.wrapper}>
+        <img className={styles.logo} src={logoSvg} alt="#" />
+        <h1 className={styles.title}>Wallet</h1>
+      </div>
+      <form className={styles.form} onSubmit={handlerSubmit}>
         <Input
-          className={styles.input}
           type="email"
-          name="email"
           value={email}
           onChange={updateEmail}
+          error={email.length > 0 && !validator.isEmail(email)}
+          placeholder="E-mail"
         />
-      <br />
         <Input
-          className={styles.input}
           type="password"
-          name="password"
           value={password}
           onChange={updatePassword}
+          placeholder="Пароль"
         />
-      <br />
-      <button className={styles.button} type="submit">
+        {/* <button className={styles.button} type="submit">
         logIn
-      </button>
-    </form>
+      </button> */}
+        <Button type="submit">ВХОД</Button>
+      </form>
+    </div>
   );
 }

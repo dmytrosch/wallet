@@ -5,7 +5,6 @@ import {
   addTransactionSuccess,
   gettingCurrencyRatesStart,
   gettingCurrencyRateSuccess,
-  gettingCurrencyRateError,
   successAllTransactions,
   successCategories,
 } from "./walletActions";
