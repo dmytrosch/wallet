@@ -9,6 +9,8 @@ import {
   successCategories,
 } from "./walletActions";
 
+import {getCurrentUserSuccess} from '../auth/authActions';
+
 const addTransaction = (state, action) => {
   return [action.payload, ...state];
   // return action.payload; // Возможно это правильный вариант, если в транзакциях будут дубли
@@ -25,10 +27,10 @@ const transactions = createReducer([], {
 const categories = createReducer([], {
   [successCategories]: (_, { payload }) => payload,
 });
-// const balance = createReducer(2457.13, {
-//   [gettingBalance]: (_, { payload }) => payload,
-// });
-//gettingbalance убрать
+const balance = createReducer(0, {
+  [getCurrentUserSuccess]: (_, { payload }) => payload.balance,
+  [addTransactionSuccess]: (_, { payload }) => payload.balanceAfter,
+});
 
 const currencyRates = createReducer([], {
   [gettingCurrencyRatesStart]: (_, { payload }) => payload,
@@ -38,7 +40,7 @@ const currencyRates = createReducer([], {
 const walletReducer = combineReducers({
   transactions,
   categories,
-  // balance,
+  balance,
   currencyRates,
 });
 
