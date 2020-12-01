@@ -20,7 +20,8 @@ import Modal from "./Wallet/creatingTransaction/Modal";
 
 import NewTransaction from "./Wallet/creatingTransaction/NewTransaction";
 import TransactionsTable from "../components/Wallet/TransactionsTable";
-
+import Login from './authComponents/LogIn';
+import Signup from './authComponents/SignUp';
 
 function App() {
   const dispatch = useDispatch();
@@ -37,8 +38,12 @@ function App() {
   const isMobileMode = useSelector(isMobile);
   return (
     <div>
+      <Signup/>
+      <br/>
+      <br/>
+      <Login/>
       
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Suspense fallback={<Loader />}>
           <Switch>
             {routes
@@ -58,7 +63,7 @@ function App() {
             <Redirect to="/" />
           </Switch>
         </Suspense>
-      </BrowserRouter>
+      </BrowserRouter> */}
       <Notification />
       {loading && <Loader />}
 

@@ -32,12 +32,13 @@ export default function LogIn() {
   };
 
   return (
-    <div className={styles.containerLogIn}>
+    <div className={styles.container}>
       <div className={styles.wrapper}>
         <img className={styles.logo} src={logoSvg} alt="#" />
         <h1 className={styles.title}>Wallet</h1>
       </div>
       <form className={styles.form} onSubmit={handlerSubmit}>
+        <div className={styles.inputWrapper}>
         <Input
           type="email"
           value={email}
@@ -45,12 +46,15 @@ export default function LogIn() {
           error={email.length > 0 && !validator.isEmail(email)}
           placeholder="E-mail"
         />
+        </div>
+        <div className={styles.inputWrapper}>
         <Input
           type="password"
           value={password}
           onChange={updatePassword}
           placeholder="Пароль"
         />
+        </div>
         <Button type="submit">вход</Button>
         <Button type="submit">регистрация</Button>
       </form>

@@ -53,12 +53,13 @@ export default function SignUp() {
   };
 
   return (
-    <div className={styles.containerSignUp}>
+    <div className={styles.container}>
       <div className={styles.wrapper}>
         <img className={styles.logo} src={logoSvg} alt="#" />
         <h1 className={styles.title}>Wallet</h1>
       </div>
       <form className={styles.form} onSubmit={handlerSubmit}>
+        <div className={styles.inputWrapper}>
         <Input
           type="email"
           value={email}
@@ -66,6 +67,8 @@ export default function SignUp() {
           error={email.length > 0 && !validator.isEmail(email)}
           placeholder="E-mail"
         />
+        </div>
+        <div className={styles.inputWrapper}>
         <Input
           type="password"
           value={password}
@@ -73,7 +76,6 @@ export default function SignUp() {
           error={password.length > 0 && password.length < 8}
           placeholder="Пароль"
         />
-        <div className={styles.passwordLengthContainer}>
           <PasswordStrengthBar
             password={password}
             minLength={8}
@@ -87,6 +89,7 @@ export default function SignUp() {
             shortScoreWord="слишком короткий"
           />
         </div>
+        <div className={styles.inputWrapper}>
         <Input
           type="password"
           value={confirmedPassword}
@@ -94,6 +97,8 @@ export default function SignUp() {
           error={confirmedPassword !== password}
           placeholder="Подтвердите пароль"
         />
+        </div>
+        <div className={styles.inputWrapper}>
         <Input
           type="text"
           name="name"
@@ -101,6 +106,7 @@ export default function SignUp() {
           onChange={updateName}
           placeholder="Ваше имя"
         />
+        </div>
         <Button type="submit">регистрация</Button>
         <Button type="submit">вход</Button>
       </form>

@@ -5,7 +5,6 @@ import styles from "./Input.module.css";
 
 const Input = ({ name, type, error, inputClassNames, ...props }) => {
   return (
-    <div className={styles.container}>
     <label className={classNames(styles[type], styles[name])}>
       <input
         type={type}
@@ -18,7 +17,6 @@ const Input = ({ name, type, error, inputClassNames, ...props }) => {
         {...props}
       />
     </label>
-    </div>
   );
 };
 
