@@ -11,27 +11,31 @@ path {
   width: 350px;
   height: 58px;
   border-radius: 30px;
-  background-color: white;
+  background-color: var(--whiteColor);
   align-items: center;
   padding: 0 35px;
 }
 
 .labelText {
-  font-weight: 700;
-  font-family: "Circe";
+  font-weight: bold;
+  font-style: normal;
+  font-family: var(--primeFont);
   font-size: 18px;
+  margin: 0;
+  line-height: 27px;
 }
 
 .listItems {
   display: flex;
   align-items: center;
+  align-content: center;
   width: 350px;
   height: 54px;
   border-bottom: 1px solid #dcdcdf;
   box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
 }
 .listColor {
-  width: 28px;
+  width: 32px;
   height: 24px;
   margin-left: 26px;
   margin-right: 16px;
@@ -42,6 +46,14 @@ path {
   justify-content: space-between;
   width: 100%;
   padding-right: 50px;
+  padding-top: 4px;
+}
+.transInfo p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  font-style: normal;
 }
 .amountContainer {
   margin-top: 16px;
@@ -52,6 +64,8 @@ path {
   display: flex;
   justify-content: space-between;
   padding-right: 50px;
+  margin-bottom: 13px;
+  padding-left: 26px;
 }
 .amounthCategory {
   margin-left: 20px;
@@ -60,19 +74,43 @@ path {
 .expensAmount,
 .incomeAmount,
 .amounthCategory {
-  font-family: "Circe";
-  font-size: 16px;
-  font-weight: 700;
+  font-weight: bold;
+  font-style: normal;
+  font-family: var(--primeFont);
+  font-size: 18px;
+  margin: 0;
+  line-height: 27px;
 }
 
 .expensAmount {
-  color: #ff6596;
+  color: var(--pinkColor);
 }
 .incomeAmount {
-  color: #24cca7;
+  color: var(--greenColor);
 }
 .totalAmount {
-  font-family: "Circe";
+  font-family: var(--primeFont);
   font-size: 16px;
-  font-weight: 400;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 24px;
+}
+
+@media (max-width: 767px) {
+  .labelContainer {
+    width: 280px;
+  }
+  .listItems {
+    width: 280px;
+  }
+
+  ul {
+    margin: 0 auto;
+  }
+  .itemsAmount {
+    width: 280px;
+  }
+  .selectContainer {
+    flex-direction: column;
+  }
 }

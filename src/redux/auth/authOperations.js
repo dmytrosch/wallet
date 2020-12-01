@@ -1,4 +1,6 @@
 import axios from "axios";
+import { getTransactions, getCategories } from "../wallet/walletOperation";
+import { pathOr } from "ramda";
 
 import {
   logoutRequest,
@@ -13,6 +15,7 @@ import {
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
+  removeUnauthorizedUser,
 } from "./authActions";
 import {
   createUser,
@@ -40,7 +43,7 @@ export const logout = () => (dispatch) => {
       token.unset();
       dispatch(logoutSuccess());
     })
-    .catch((error) => dispatch(logoutError(error)));
+    .catch(() => dispatch(logoutError()));
 };
 
 export const signUp = (credentials) => (dispatch) => {
@@ -51,7 +54,7 @@ export const signUp = (credentials) => (dispatch) => {
       dispatch(signUpSuccess(response.data));
     })
     .catch((error) => {
-      switch (error.response.status) {
+      switch (pathOr("", ["response", "status"], error)) {
         case 400:
           dispatch(
             makeAlertNotification("Что-то пошло не так. Введите данные заново")
@@ -82,7 +85,7 @@ export const logIn = (credentials) => (dispatch) => {
       dispatch(getCurrency());
     })
     .catch((error) => {
-      switch (error.response.status) {
+      switch (pathOr("", ["response", "status"], error)) {
         case 400:
           dispatch(
             makeAlertNotification("Что-то пошло не так. Введите данные заново")
@@ -110,8 +113,7 @@ export const logIn = (credentials) => (dispatch) => {
     });
 };
 export const getCurrentUser = () => (dispatch, getState) => {
-  const persistedToken = getState().auth.token
-  console.log(persistedToken);
+  const persistedToken = getState().auth.token;
   if (!persistedToken) {
     return;
   }
@@ -120,14 +122,25 @@ export const getCurrentUser = () => (dispatch, getState) => {
   getCurrentUserApi()
     .then(({ data }) => dispatch(getCurrentUserSuccess(data)))
     .catch((error) => {
-      switch (error.response.status) {
+      switch (pathOr("", ["response", "status"], error)) {
         case 401:
-          dispatch(makeAlertNotification("Войдите заново"));
+          dispatch(removeUnauthorizedUser());
           token.unset();
+          localStorage.removeItem("persist:auth");
+          dispatch(makeAlertNotification("Ошибка авторизации. Войдите заново"));
+          setTimeout(() => window.history.go(window.location.hostname), 1000);
           break;
         default:
           break;
       }
       dispatch(getCurrentUserError());
     });
+};
+export const getAllUserInfo = () => (dispatch, useState) => {
+  const isLogin = useState().auth.user.id ? true : false;
+  if (!isLogin) {
+    dispatch(getCurrentUser());
+  }
+  dispatch(getCategories());
+  dispatch(getTransactions());
 };
