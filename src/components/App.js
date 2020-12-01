@@ -38,7 +38,6 @@ function App() {
     <div>
       <BrowserRouter>
         <Suspense fallback={<Loader />}>
-        <Balance/>
           <Switch>
             {routes
               .filter((route) => route.onlyMobile === false)
@@ -68,6 +67,7 @@ function App() {
       {/* <NewTransaction /> */}
       <Notification />
     </div>
-  )};
-    
+  );
+}
+
 export default App;
