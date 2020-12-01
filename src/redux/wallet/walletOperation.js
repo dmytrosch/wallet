@@ -40,7 +40,7 @@ export const addTransaction = (transaction) => (dispatch) => {
   addTransactionApi(transaction)
     .then((resp) => dispatch(addTransactionSuccess(resp.data)))
     .catch((error) => {
-      dispatch(addTransactionError(error));
+      dispatch(addTransactionError());
       dispatch(makeAlertNotification("Ошибка добавления"));
     });
 };
@@ -50,7 +50,7 @@ export const getCurrency = () => (dispatch) => {
   fetchCurrency()
     .then((j) => j.json())
     .then((response) => dispatch(gettingCurrencyRateSuccess(response)))
-    .catch((error) => dispatch(gettingCurrencyRateError(error)));
+    .catch((error) => dispatch(gettingCurrencyRateError()));
 };
 
 export const getTransactions = () => (dispatch) => {
