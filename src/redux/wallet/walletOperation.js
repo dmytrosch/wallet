@@ -74,5 +74,5 @@ export const getCategories = () => (dispatch) => {
   dispatch(requestCategories());
   loadCategories()
     .then((response) => dispatch(successCategories(response.data)))
-    .catch((error) => dispatch(errorCategories()));
+    .catch((error) => dispatch(errorCategories(error)));
 };
