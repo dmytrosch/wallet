@@ -8,6 +8,15 @@ import { getAllTransactions } from "../../../redux/wallet/walletSelectors";
 import styles from "./TransactionsTable.module.css";
 import animation from "./transTable.animation.module.css";
 
+/**
+ * добавить папку компоненты с TransitionsTable:
+ * - header
+ * - item
+ * 
+ * Добавить форматирование чисел
+ */
+
+
 export default function TransactionsTable() {
   const INCOME = "INCOME";
   const allTransactions = useSelector(getAllTransactions);
@@ -27,7 +36,7 @@ export default function TransactionsTable() {
           Баланс
         </div>
       </li>
-      <TransitionGroup>
+      <TransitionGroup component={null}>
         {allTransactions.map((item) => (
           <CSSTransition
             timeout={250}
