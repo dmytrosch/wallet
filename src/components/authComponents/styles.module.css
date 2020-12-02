@@ -25,6 +25,7 @@
   font-weight: 700;
   line-height: 45px;
   margin-top: 0;
+  font-family: var(--titleFont);
 }
 @media screen and (max-width: 767px) {
   .container {
