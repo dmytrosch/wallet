@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import classNames from "classnames";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import formatNumber from "../../../utils/formatNumber";
+import formatDate from "../../../utils/formatDate";
 
 import { getAllTransactions } from "../../../redux/wallet/walletSelectors";
 import { isLoading } from "../../../redux/loading/loadingSelector";
@@ -43,7 +44,9 @@ export default function TransactionsTable() {
             >
               <div className={classNames(styles.item, styles.date)}>
                 <span className={styles.itemTitle}>Дата</span>
-                <span className={styles.itemData}>{item.transactionDate}</span>
+                <span className={styles.itemData}>
+                  {formatDate(item.transactionDate)}
+                </span>
               </div>
               <div className={classNames(styles.item, styles.type)}>
                 <span className={styles.itemTitle}>Тип</span>
