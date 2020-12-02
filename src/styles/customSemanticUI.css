@@ -19,21 +19,20 @@
   border-bottom: 1px solid#e0e0e0;
 }
 
-
-.react-datepicker__input-container > input:active, :hover, :focus {
-    outline: 0;
-    outline-offset: 0;
-} 
-
+.react-datepicker__input-container > input:active,
+:hover,
+:focus {
+  outline: 0;
+  outline-offset: 0;
+}
 
 .react-datepicker__input-container {
-right: 0;
+  right: 0;
 }
 
 .react-datepicker-ignore-onclickoutside {
-    border: none;
+  border: none;
 }
-
 
 @media (min-width: 768px) {
   .ui.search {
@@ -43,4 +42,7 @@ right: 0;
   .react-datepicker-wrapper {
     width: 190px;
   }
+}
+p {
+  margin: 0;
 }
