@@ -76,7 +76,7 @@ export const getCurrency = () => (dispatch) => {
   fetchCurrency()
     .then((j) => j.json())
     .then((response) => dispatch(gettingCurrencyRateSuccess(response)))
-    .catch((error) => dispatch(gettingCurrencyRateError(error)));
+    .catch(() => dispatch(gettingCurrencyRateError()));
 };
 
 export const getTransactions = () => (dispatch) => {

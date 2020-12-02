@@ -80,6 +80,12 @@
   font-weight: 700;
 }
 
+.text {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
 @media screen and (min-width: 768px) {
   .table {
     width: 688px;
@@ -155,3 +161,4 @@
     font-size: 18px;
   }
 }
+

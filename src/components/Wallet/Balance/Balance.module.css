@@ -3,18 +3,20 @@
     height: 80px;
     width: 280px;
     border-radius: 30px;
-    padding: 10px 0px 10px 30px;
+    padding: 8px 0px 10px 30px;
+    position: relative;
     background: #ffffff;
   }
   .text {
     font-family: Circe;
     height: 12.799999237060547px;
-    width: 81px;
     font-size: 12px;
     font-weight: 700;
     line-height: 18px;
     text-align: left;
     color: #a6a6a6;
+    position: absolute;
+    left: 30px;
   }
   .currentbalance {
     font-family: Poppins;
@@ -24,6 +26,9 @@
     line-height: 45px;
     letter-spacing: 0em;
     text-align: left;
+    position: absolute;
+    bottom: 7px;
+    left: 30px;
   }
 }
 @media (min-width: 768px) {
@@ -33,16 +38,19 @@
     border-radius: 30px;
     padding: 10px 0px 10px 40px;
     background: #ffffff;
+    position: relative;
   }
   .text {
     font-family: Circe;
     height: 12.799999237060547px;
-    width: 81px;
     font-size: 12px;
     font-weight: 700;
     line-height: 18px;
     text-align: left;
     color: #a6a6a6;
+    position: absolute;
+    top: 8px;
+    left: 40px;
   }
   .currentbalance {
     font-family: Poppins;
@@ -51,10 +59,14 @@
     line-height: 45px;
     display: flex;
     align-items: center;
+    position: absolute;
+    bottom: 8px;
+    left: 40px;
   }
 }
 @media (min-width: 1024px) {
   .container {
     width: 350px;
+    margin-bottom: 30px;
   }
 }

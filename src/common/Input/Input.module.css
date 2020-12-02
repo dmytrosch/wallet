@@ -10,7 +10,6 @@
   font-size: 18px;
   outline: none;
 }
-
 .inputError {
   border: 1px solid red;
   width: 410px;
@@ -47,6 +46,7 @@ input::-webkit-inner-spin-button {
 .input::placeholder {
   font-family: var(--primeFont);
   font-size: 18px;
+  color: #BDBDBD;
 }
 .email {
   position: relative;
@@ -112,15 +112,9 @@ input::-webkit-inner-spin-button {
 } ::-webkit-calendar-picker-indicator {
   filter: invert(50%) sepia() saturate(10000%) hue-rotate(265deg);
 }
-.container {
-  width: 410px;
-  margin: 0 auto 35px;
-  border-bottom: 1px solid #E0E0E0;
-}
 
-.container:nth-child(4n+2) {
-  margin: 0 auto;
-}
-.container:last-of-type {
-  margin: 0 auto 50px;
+@media screen and (max-width: 767px) {
+  .input {
+    width: 280px;
+  }
 }
