@@ -7,6 +7,8 @@ import Button from "../../common/Button";
 import { makeAlertNotification } from "../../redux/notifications/notificationOperations";
 import validator from "validator";
 import logoSvg from "../../assets/icons/WalletImg.svg";
+import {NavLink} from 'react-router-dom';
+
 
 export default function LogIn() {
   const [email, setEmail] = useState("");
@@ -55,9 +57,12 @@ export default function LogIn() {
           placeholder="Пароль"
         />
         </div>
-        <Button type="submit">вход</Button>
-        <Button type="submit">регистрация</Button>
+        <Button color="green" type="submit">вход</Button>
+        <NavLink to="/signup">
+      <Button type="submit">регистрация</Button>
+      </NavLink>
       </form>
+      
     </div>
   );
 }

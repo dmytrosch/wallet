@@ -9,6 +9,7 @@ import logoSvg from "../../assets/icons/WalletImg.svg";
 import Input from "../../common/Input/";
 import Button from "../../common/Button";
 import styles from "./styles.module.css";
+import {NavLink} from 'react-router-dom';
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -107,8 +108,10 @@ export default function SignUp() {
           placeholder="Ваше имя"
         />
         </div>
-        <Button type="submit">регистрация</Button>
+        <Button color="green" type="submit">регистрация</Button>
+        <NavLink to="/login">
         <Button type="submit">вход</Button>
+        </NavLink>
       </form>
     </div>
   );
