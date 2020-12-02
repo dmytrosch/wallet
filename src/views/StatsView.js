@@ -13,7 +13,7 @@ const StatsView = () => {
         <Balance />
       </section>
       <main>
-        <Filter allTransactions={allTransactions} />
+        <Filter />
       </main>
     </>
   );
