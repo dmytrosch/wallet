@@ -20,6 +20,18 @@
   text-align: left;
   transition: all 200ms linear;
 }
+.activeLink {
+  font-weight: 700;
+}
+.activeLink > .home {
+  background-image: url(../../assets/icons/Home_active.svg);
+}
+.activeLink > .statistics {
+  background-image: url(../../assets/icons/Statistics_active.svg);
+}
+.activeLink > .currency {
+  background-image: url(../../assets/icons/Dollar_active.svg);
+}
 
 @media (min-width: 270px) and (max-width: 767px) {
   .navcontainer {
@@ -51,12 +63,8 @@
 }
 
 @media (min-width: 768px) {
-  .navContainer {
-    /* margin-left: 40px; */
-  }
   .navList {
     display: block;
-    /* position: absolute; */
     align-items: center;
   }
   .img {
@@ -67,12 +75,6 @@
     background-repeat: no-repeat;
     background-size: contain;
   }
-  .statistics {
-    background-image: url(../../assets/icons/Statistics.svg);
-  }
-  .home {
-    background-image: url(../../assets/icons/Home.svg);
-  }
   .box {
     display: flex;
     align-items: center;
@@ -81,7 +83,6 @@
     margin-left: 23px;
     font-family: var(--titleFont);
     font-size: 18px;
-    font-weight: normal;
     line-height: 27px;
     width: 99px;
     color: #000000;
@@ -106,9 +107,14 @@
     display: block;
   }
   .navListItem {
-    display: block;
     height: 27px;
     line-height: 18px;
     margin-bottom: 10px;
+  }
+  .navListType {
+    transition: var(--trans);
+  }
+  .box:hover .navListType {
+    color: var(--blueColor);
   }
 }
