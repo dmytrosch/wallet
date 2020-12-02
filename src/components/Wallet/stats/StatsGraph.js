@@ -3,9 +3,9 @@ import { Doughnut } from "react-chartjs-2";
 import styles from "./styles/StatsGraph.module.css";
 import { useSelector } from "react-redux";
 import { getBalance } from "../../../redux/wallet/walletSelectors";
-import NumberFormat from "react-number-format";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import formatNumber from "../../../utils/formatNumber";
 
 const StatsGraph = ({ arrData }) => {
   const balance = useSelector(getBalance);
@@ -54,16 +54,7 @@ const StatsGraph = ({ arrData }) => {
         />
       )}
       {arrData.length !== 0 && (
-        <NumberFormat
-          displayType={"text"}
-          prefix={"₴ "}
-          value={`${balance}`}
-          thousandSeparator={" "}
-          decimalSeparator={"."}
-          thousandsGroupStyle="lakh"
-          children
-          renderText={(value) => <p className={styles.balance}>{value}</p>}
-        ></NumberFormat>
+        <>{formatNumber(balance, styles.balance, "₴ ")}</>
       )}
       <Doughnut
         data={diagramData}

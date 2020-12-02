@@ -6,6 +6,7 @@ import NumberFormat from "react-number-format";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import animation from "../../../styles/tableItem.animation.module.css";
+import formatNumber from "../../../utils/formatNumber";
 
 const StatsTable = ({
   totalMonthExpense,
@@ -34,79 +35,47 @@ const StatsTable = ({
           onChange={handleChangeYear}
         />
       </div>
-
-      <ul>
-        <li key={"1"} className={style.labelContainer}>
-          <p className={style.labelText}>Категория</p>
-          <p className={style.labelText}>Сумма</p>
-        </li>
-        <TransitionGroup component={null}>
+      {totalMonthExpense > 0 && (
+        <ul>
+          <li key={"1"} className={style.labelContainer}>
+            <p className={style.labelText}>Категория</p>
+            <p className={style.labelText}>Сумма</p>
+          </li>
           {arrDataForTable.map((el, indx) => (
-            <CSSTransition
-              timeout={250}
-              key={indx}
-              classNames={animation}
-              unmountOnExit
-            >
-              <li className={style.listItems}>
-                <span
-                  className={style.listColor}
-                  style={{
-                    backgroundColor: el.color,
-                  }}
-                ></span>
-                <div className={style.transInfo}>
-                  <p>{el.category}</p>
-                  <NumberFormat
-                    displayType={"text"}
-                    value={el.totalAmount}
-                    thousandSeparator={" "}
-                    decimalSeparator={"."}
-                    thousandsGroupStyle="lakh"
-                    children
-                    renderText={(value) => (
-                      <p className={style.totalAmount}>{value}</p>
-                    )}
-                  ></NumberFormat>
-                </div>
-              </li>
-            </CSSTransition>
+            <li key={indx} className={style.listItems}>
+              <span
+                className={style.listColor}
+                style={{
+                  backgroundColor: el.color,
+                }}
+              ></span>
+              <div className={style.transInfo}>
+                <p>{el.category}</p>
+                <>{formatNumber(el.totalAmount, style.totalAmount)}</>
+              </div>
+            </li>
           ))}
-        </TransitionGroup>
-      </ul>
+        </ul>
+      )}
+      {totalMonthExpense === 0 && (
+        <p className={style.titletrans}>
+          За выбраный период времени нет данных о транзакциях
+        </p>
+      )}
 
-      <div className={style.amountContainer}>
-        <div className={style.itemsAmount}>
-          <p className={style.amounthCategory}>Расходы:</p>
-          <NumberFormat
-            displayType={"text"}
-            prefix={"₴ "}
-            value={totalMonthExpense}
-            thousandSeparator={" "}
-            decimalSeparator={"."}
-            thousandsGroupStyle="lakh"
-            children
-            renderText={(value) => (
-              <p className={style.expensAmount}>{value}</p>
-            )}
-          ></NumberFormat>
+      {totalMonthExpense > 0 && (
+        <div className={style.amountContainer}>
+          <div className={style.itemsAmount}>
+            <p className={style.amounthCategory}>Расходы:</p>
+
+            <>{formatNumber(totalMonthExpense, style.expensAmount, "₴ ")}</>
+          </div>
+          <div className={style.itemsAmount}>
+            <p className={style.amounthCategory}>Доходы:</p>
+            <>{formatNumber(totalMonthIncome, style.incomeAmount, "₴ ")}</>
+          </div>
         </div>
-        <div className={style.itemsAmount}>
-          <p className={style.amounthCategory}>Доходы:</p>
-          <NumberFormat
-            displayType={"text"}
-            prefix={"₴ "}
-            value={totalMonthIncome}
-            thousandSeparator={" "}
-            decimalSeparator={"."}
-            thousandsGroupStyle="lakh"
-            children
-            renderText={(value) => (
-              <p className={style.incomeAmount}>{value}</p>
-            )}
-          ></NumberFormat>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

@@ -149,10 +149,10 @@ class Filter extends Component {
   }
 }
 
-// const mapStateToProps = (state) => ({
-//   allTransactions: transactions(state),
-// });
+const mapStateToProps = (state) => ({
+  allTransactions: transactions(state),
+});
 
-// export default connect(mapStateToProps)(Filter);
+export default connect(mapStateToProps)(Filter);
 
-export default Filter;
+// export default Filter;
