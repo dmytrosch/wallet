@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Button from "../../common/Button";
 import Layout from "../Layout";
@@ -21,7 +21,8 @@ const MainView = (props) => {
       ? props.history.push("/new-transaction")
       : setShowModal((prevState) => !prevState);
   };
-  document.title = "Главная || Wallet";
+  useEffect(() => (document.title = "Главная || Wallet"), []);
+
   return (
     <>
       <Header />

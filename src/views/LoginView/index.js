@@ -4,7 +4,7 @@ import Login from "../../components/authComponents/LogIn";
 import styles from "./LoginView.module.css";
 
 const LoginView = () => {
-  document.title = "Вход || Wallet";
+  React.useEffect(() => (document.title = "Вход || Wallet"), []);
   return (
     <Layout>
       <div className={styles.container}>

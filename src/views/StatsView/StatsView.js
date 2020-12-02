@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Header from "../../components/Header";
 import Navigation from "../../components/Navigation";
@@ -9,8 +9,9 @@ import CurrencyRates from "../../components/Wallet/CurrencyRates/CurrencyRates";
 import { isMobile } from "../../redux/clientWidth/clientWidthSelectors";
 
 const StatsView = () => {
+  useEffect(() => (document.title = "Ститистика || Wallet"), []);
   const _isMobile = useSelector(isMobile);
-  document.title = "Ститистика || Wallet";
+
   return (
     <>
       <Header />

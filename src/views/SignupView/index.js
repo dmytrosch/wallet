@@ -6,7 +6,7 @@ import Signup from "../../components/authComponents/SignUp";
 import styles from "./SignupView.module.css";
 
 const SignupView = () => {
-  document.title = "Регистрация || Wallet";
+  React.useEffect(() => (document.title = "Регистрация || Wallet"), []);
   return (
     <Layout>
       <div className={styles.container}>
