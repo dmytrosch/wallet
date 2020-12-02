@@ -10,11 +10,10 @@ import {
 } from "./walletActions";
 
 import { getCurrentUserSuccess } from "../auth/authActions";
-import { logoutSuccess } from "../auth/authActions";
+import { logoutSuccess, logInSuccess } from "../auth/authActions";
 
 const addTransaction = (state, action) => {
   return [action.payload, ...state];
-  // return action.payload; // Возможно это правильный вариант, если в транзакциях будут дубли
 };
 
 const transactions = createReducer([], {
@@ -30,6 +29,8 @@ const balance = createReducer(0, {
     Number(payload.balance).toFixed(2),
   [addTransactionSuccess]: (_, { payload }) =>
     Number(payload.balanceAfter).toFixed(2),
+  [logInSuccess]: (_, { payload }) =>
+    Number(payload.user.balance).toFixed(2),
 });
 
 const currencyRates = createReducer([], {
