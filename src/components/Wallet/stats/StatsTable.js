@@ -18,6 +18,7 @@ const StatsTable = ({
   handleChangeYear,
   arrDataForTable,
 }) => {
+  console.log(arrDataForTable);
   return (
     <div>
       <div className={style.selectContainer}>
@@ -56,7 +57,7 @@ const StatsTable = ({
                   }}
                 ></span>
                 <div className={style.transInfo}>
-                  <p>{el.comment}</p>
+                  <p>{el.category}</p>
                   {formattingNumber(el.totalAmount, style.totalAmount)}
                 </div>
               </li>

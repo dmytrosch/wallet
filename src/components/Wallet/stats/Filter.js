@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { transactions } from "../../../redux/wallet/walletSelectors";
+import {
+  transactions,
+  getCategories,
+} from "../../../redux/wallet/walletSelectors";
 import StatsGraph from "./StatsGraph";
 import moment from "moment";
 import "moment/locale/ru";
@@ -23,7 +26,6 @@ class Filter extends Component {
   componentDidMount() {
     const { allTransactions } = this.props;
     this.allDataOnMount(allTransactions);
-    console.log(this.props.allTransactions);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -88,7 +90,9 @@ class Filter extends Component {
         return [...acc, el];
       }, [])
       .map((el) => ({
-        category: el.category,
+        category: this.props.Categories.filter((e) => e.id === el.category)
+          .map((el) => el.name)
+          .join(),
         totalAmount: el.amount,
         comment: el.comment,
       }));
@@ -152,8 +156,7 @@ class Filter extends Component {
 
 const mapStateToProps = (state) => ({
   allTransactions: transactions(state),
+  Categories: getCategories(state),
 });
 
 export default connect(mapStateToProps)(Filter);
-
-// export default Filter;
