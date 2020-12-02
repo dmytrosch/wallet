@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-
+import { path } from "ramda";
 import Input from "../../../common/Input";
 import Button from "../../../common/Button";
 import Checkbox from "../../../common/Checkbox";
@@ -91,13 +91,12 @@ function NewTransaction({ onClose }) {
     }
   }
 
-  const balanceAfterLastTransaction = useSelector(getBalance)
-    
+  const balanceAfterLastTransaction = useSelector(getBalance);
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (categoryName === "") {
+    if (!categoryName) {
       dispatch(makeAlertNotification("Выберите категорию"));
       return;
     }
@@ -193,15 +192,16 @@ function NewTransaction({ onClose }) {
           search
           selection
           options={cost ? categoriesCost : categoriesIncome}
-          onChange={(e) => {
-            if (
-              e.target.className === "search" ||
-              e.target.className === "text"
-            ) {
-              return;
-            }
-            console.dir(e.target.firstElementChild.textContent);
-            setCategory(e.target.firstElementChild.textContent);
+          onChange={(e, data) => {
+            console.log(data.value);
+            // if (
+            //   e.target.className === "search" ||
+            //   !e.target.firstElement.textContent
+            // ) {
+            //   console.log("returned");
+            //   return;
+            // }
+            setCategory(data.value);
           }}
         />
 
