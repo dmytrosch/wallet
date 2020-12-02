@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Button from "../../common/Button";
 import Layout from "../Layout";
 import Navigation from "../../components/Navigation";
@@ -10,11 +11,11 @@ import Header from "../../components/Header";
 import ModalPortal from "../../components/Wallet/creatingTransaction/ModalPortal";
 import Modal from "../../components/Wallet/creatingTransaction/Modal";
 import NewTransaction from "../../components/Wallet/creatingTransaction/NewTransaction";
-
+import { isMobile } from "../../redux/clientWidth/clientWidthSelectors";
 
 const MainView = () => {
   const [showModal, setShowModal] = useState(false);
-
+  const _isMobile = useSelector(isMobile);
   const toggleModal = () => {
     setShowModal((prevState) => !prevState);
   };
@@ -29,7 +30,7 @@ const MainView = () => {
               <Balance />
             </div>
             <div className={styles.currency}>
-              <CurrencyRates />
+              {!_isMobile && <CurrencyRates />}
             </div>
           </div>
           <div className={styles.transactions}>
