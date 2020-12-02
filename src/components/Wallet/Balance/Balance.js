@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./Balance.module.css";
 
-import formatNumber from "../../../utils/formatNumber";
+import formattingNumber from "../../../utils/formattingNumber";
 import { useSelector } from "react-redux";
 import { getBalance } from "../../../redux/wallet/walletSelectors";
 import { isLoading } from "../../../redux/loading/loadingSelector";
@@ -13,7 +13,7 @@ export default function Balance() {
   return (
     <div className={container}>
       <p className={text}>ВАШ БАЛАНС</p>
-      <>{!loading && formatNumber(balance, currentbalance, "₴ ")}</>
+      <>{!loading && formattingNumber(balance, currentbalance, "₴ ")}</>
     </div>
   );
 }

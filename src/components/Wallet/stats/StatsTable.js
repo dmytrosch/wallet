@@ -5,7 +5,7 @@ import { customStyles } from "./assetsForStats";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import animation from "../../../styles/tableItem.animation.module.css";
-import formatNumber from "../../../utils/formatNumber";
+import formattingNumber from "../../../utils/formattingNumber";
 
 const StatsTable = ({
   totalMonthExpense,
@@ -57,7 +57,7 @@ const StatsTable = ({
                 ></span>
                 <div className={style.transInfo}>
                   <p>{el.comment}</p>
-                  {formatNumber(el.totalAmount, style.totalAmount)}
+                  {formattingNumber(el.totalAmount, style.totalAmount)}
                 </div>
               </li>
             </CSSTransition>
@@ -68,11 +68,11 @@ const StatsTable = ({
       <div className={style.amountContainer}>
         <div className={style.itemsAmount}>
           <p className={style.amounthCategory}>Расходы:</p>
-          {formatNumber(totalMonthExpense, style.expensAmount, "₴ ")}
+          {formattingNumber(totalMonthExpense, style.expensAmount, "₴ ")}
         </div>
         <div className={style.itemsAmount}>
           <p className={style.amounthCategory}>Доходы:</p>
-          {formatNumber(totalMonthIncome, style.incomeAmount, "₴ ")}
+          {formattingNumber(totalMonthIncome, style.incomeAmount, "₴ ")}
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { getBalance } from "../../../redux/wallet/walletSelectors";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import formatNumber from "../../../utils/formatNumber";
+import formattingNumber from "../../../utils/formattingNumber";
 
 const StatsGraph = ({ arrData }) => {
   const balance = useSelector(getBalance);
@@ -54,7 +54,7 @@ const StatsGraph = ({ arrData }) => {
         />
       )}
       {arrData.length !== 0 && (
-        <>{formatNumber(balance, styles.balance, "₴ ")}</>
+        <>{formattingNumber(balance, styles.balance, "₴ ")}</>
       )}
       <Doughnut
         data={diagramData}

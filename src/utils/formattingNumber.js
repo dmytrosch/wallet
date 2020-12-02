@@ -2,7 +2,7 @@ import NumberFormat from "react-number-format";
 
 import React from "react";
 
-export default function formatNumber(number, className, prefix) {
+export default function formattingNumber(number, className, prefix) {
   return (
     <NumberFormat
       displayType={"text"}
