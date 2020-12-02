@@ -7,7 +7,7 @@ export default function formatNumber(number, className, prefix) {
     <NumberFormat
       displayType={"text"}
       prefix={prefix}
-      value={`${number}`}
+      value={`${Number(number).toFixed(2)}`}
       thousandSeparator={" "}
       decimalSeparator={"."}
       thousandsGroupStyle="lakh"

@@ -2,7 +2,6 @@ import React from "react";
 import Select from "react-select";
 import style from "./styles/StatsTable.module.css";
 import { customStyles } from "./assetsForStats";
-import NumberFormat from "react-number-format";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import animation from "../../../styles/tableItem.animation.module.css";
@@ -35,47 +34,47 @@ const StatsTable = ({
           onChange={handleChangeYear}
         />
       </div>
-      {totalMonthExpense > 0 && (
-        <ul>
-          <li key={"1"} className={style.labelContainer}>
-            <p className={style.labelText}>Категория</p>
-            <p className={style.labelText}>Сумма</p>
-          </li>
+
+      <ul>
+        <li key={"1"} className={style.labelContainer}>
+          <p className={style.labelText}>Категория</p>
+          <p className={style.labelText}>Сумма</p>
+        </li>
+        <TransitionGroup component={null}>
           {arrDataForTable.map((el, indx) => (
-            <li key={indx} className={style.listItems}>
-              <span
-                className={style.listColor}
-                style={{
-                  backgroundColor: el.color,
-                }}
-              ></span>
-              <div className={style.transInfo}>
-                <p>{el.category}</p>
-                <>{formatNumber(el.totalAmount, style.totalAmount)}</>
-              </div>
-            </li>
+            <CSSTransition
+              timeout={250}
+              key={indx}
+              classNames={animation}
+              unmountOnExit
+            >
+              <li className={style.listItems}>
+                <span
+                  className={style.listColor}
+                  style={{
+                    backgroundColor: el.color,
+                  }}
+                ></span>
+                <div className={style.transInfo}>
+                  <p>{el.comment}</p>
+                  {formatNumber(el.totalAmount, style.totalAmount)}
+                </div>
+              </li>
+            </CSSTransition>
           ))}
-        </ul>
-      )}
-      {totalMonthExpense === 0 && (
-        <p className={style.titletrans}>
-          За выбраный период времени нет данных о транзакциях
-        </p>
-      )}
+        </TransitionGroup>
+      </ul>
 
-      {totalMonthExpense > 0 && (
-        <div className={style.amountContainer}>
-          <div className={style.itemsAmount}>
-            <p className={style.amounthCategory}>Расходы:</p>
-
-            <>{formatNumber(totalMonthExpense, style.expensAmount, "₴ ")}</>
-          </div>
-          <div className={style.itemsAmount}>
-            <p className={style.amounthCategory}>Доходы:</p>
-            <>{formatNumber(totalMonthIncome, style.incomeAmount, "₴ ")}</>
-          </div>
+      <div className={style.amountContainer}>
+        <div className={style.itemsAmount}>
+          <p className={style.amounthCategory}>Расходы:</p>
+          {formatNumber(totalMonthExpense, style.expensAmount, "₴ ")}
         </div>
-      )}
+        <div className={style.itemsAmount}>
+          <p className={style.amounthCategory}>Доходы:</p>
+          {formatNumber(totalMonthIncome, style.incomeAmount, "₴ ")}
+        </div>
+      </div>
     </div>
   );
 };
