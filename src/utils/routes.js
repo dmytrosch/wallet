@@ -58,4 +58,17 @@ export default [
     restricted: true,
     onlyMobile: false,
   },
+  {
+    path: "/new-transaction",
+    label: "New transaction",
+    exact: true,
+    component: lazy(() =>
+      import(
+        "../views/NewTranactionView/" /* webpackChunkName: "new_transaction" */
+      )
+    ),
+    private: true,
+    restricted: false,
+    onlyMobile: true,
+  },
 ];

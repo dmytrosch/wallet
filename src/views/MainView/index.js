@@ -13,11 +13,13 @@ import Modal from "../../components/Wallet/creatingTransaction/Modal";
 import NewTransaction from "../../components/Wallet/creatingTransaction/NewTransaction";
 import { isMobile } from "../../redux/clientWidth/clientWidthSelectors";
 
-const MainView = () => {
+const MainView = (props) => {
   const [showModal, setShowModal] = useState(false);
   const _isMobile = useSelector(isMobile);
   const toggleModal = () => {
-    setShowModal((prevState) => !prevState);
+    _isMobile
+      ? props.history.push("/new-transaction")
+      : setShowModal((prevState) => !prevState);
   };
   return (
     <>
