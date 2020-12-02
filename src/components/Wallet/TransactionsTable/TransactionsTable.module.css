@@ -126,6 +126,8 @@
     border-bottom: none;
     padding: 0;
     display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .itemData {
     width: 90%;
@@ -143,13 +145,13 @@
     width: 20%;
   }
   .comment {
-    width: 25%;
+    width: 22%;
   }
   .amount {
     width: 13%;
   }
   .balanceAfter {
-    width: 10%;
+    width: 13%;
   }
 }
 
@@ -161,4 +163,3 @@
     font-size: 18px;
   }
 }
-
