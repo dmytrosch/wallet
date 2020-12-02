@@ -27,6 +27,7 @@ const balance = createReducer(0, {
   [getCurrentUserSuccess]: (_, { payload }) => payload.balance,
   [addTransactionSuccess]: (_, { payload }) => payload.balanceAfter,
   [logInSuccess]: (_, { payload }) => payload.user.balance,
+  [logoutSuccess]: () => 0,
 });
 
 const currencyRates = createReducer([], {
