@@ -73,7 +73,7 @@ export default function TransactionsTable() {
               <div className={classNames(styles.item, styles.balanceAfter)}>
                 <span className={styles.itemTitle}>Баланс</span>
                 <span className={styles.itemData}>
-                  {formatNumber(item.balanceAfter)}
+                  {formatNumber(Number(item.balanceAfter).toFixed(2))}
                 </span>
               </div>
             </li>
