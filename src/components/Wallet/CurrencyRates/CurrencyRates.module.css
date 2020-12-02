@@ -3,7 +3,6 @@
 @media screen and (max-width: 767px) {
   .container {
     display: block;
-    padding: 30px 0px 0px 0px;
   }
   .header {
     width: 280px;
@@ -15,7 +14,7 @@
     margin: 0 auto;
   }
   .header__item {
-    font-family: Circe;
+    font-family: var(--primeFont);
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -34,7 +33,6 @@
     justify-content: space-around;
     border-radius: 0px 0px 30px 30px;
     margin: 0 auto;
-    
   }
   .graphSVG {
     width: 280px;
@@ -55,7 +53,7 @@
     z-index: 100;
   }
   .body__item {
-    font-family: Circe;
+    font-family: var(--primeFont);
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -112,7 +110,7 @@
     z-index: 100;
   }
   .body__item {
-    font-family: Circe;
+    font-family: var(--primeFont);
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
