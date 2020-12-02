@@ -22,11 +22,17 @@ export const transactions = (state) => state.wallet.transactions;
 export const getAllTransactions = createSelector(
   [transactions, getCategories],
   (transactions, categories) =>
-    transactions.map((item) => {
-      const category = categories.find((_) => _.id === item.categoryId);
-      return {
-        ...item,
-        category: category ? category.name : "",
-      };
-    })
+    transactions
+      .map((item) => {
+        const category = categories.find((_) => _.id === item.categoryId);
+        return {
+          ...item,
+          category: category ? category.name : "",
+        };
+      })
+      .sort((a, b) => {
+        const A = new Date(a.transactionDate);
+        const B = new Date(b.transactionDate);
+        return A > B ? -1 : +1;
+      })
 );
