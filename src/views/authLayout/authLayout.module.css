@@ -1,0 +1,101 @@
+.container {
+  min-height: 100vh;
+  position: relative;
+  padding-top: 60px;
+}
+
+.background {
+  overflow: hidden;
+  background-color: #e7eaf2;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  filter: blur(50px);
+}
+
+.sideBar {
+  padding-top: 10px;
+}
+
+.sideBarDown {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding-top: 80px;
+  }
+  .sideBar {
+    width: 688px;
+    margin: 0 auto;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    margin-bottom: 40px;
+  }
+  .sideBarDown {
+    display: block;
+  }
+  .mainView {
+    display: flex;
+    justify-content: center;
+  }
+  .ellipse {
+    width: 618px;
+    height: 547px;
+    position: absolute;
+
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .ellipseViolet {
+    composes: ellipse;
+    bottom: -10%;
+    left: -10%;
+    background-image: url("../../assets/icons/ellipse-violet.svg");
+  }
+
+  .ellipseOrange {
+    composes: ellipse;
+    top: -10%;
+    right: -30%;
+    background-image: url("../../assets/icons/ellipse-orange.svg");
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+  .sideBar {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 0;
+    padding: 40px 30px 0 30px;
+  }
+
+  .mainView {
+    width: 63.67%;
+    padding: 46px 30px 0 30px;
+    border-left: 1px solid #dcdcdf;
+  }
+
+  .ellipseViolet {
+    bottom: -20%;
+    left: -10%;
+  }
+
+  .ellipseOrange {
+    top: -10%;
+    right: -10%;
+  }
+}

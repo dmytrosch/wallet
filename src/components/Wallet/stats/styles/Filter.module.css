@@ -3,16 +3,11 @@
   height: 320px;
 }
 .container {
-  margin-left: 10px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   min-height: 600px;
   width: 815px;
-  margin-top: 30px;
-  border-left: 1px solid var(--borderForStats);
-  box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
-    1px 0px 0px rgba(255, 255, 255, 0.6);
 }
 .label {
   font-family: var(--titleFont);
