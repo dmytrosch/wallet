@@ -194,15 +194,13 @@ function NewTransaction({ onClose }) {
           selection
           options={cost ? categoriesCost : categoriesIncome}
           onChange={(e) => {
-            console.dir(e.target);
-
             if (
               e.target.className === "search" ||
               e.target.className === "text"
             ) {
               return;
             }
-
+            console.dir(e.target.firstElementChild.textContent);
             setCategory(e.target.firstElementChild.textContent);
           }}
         />
