@@ -39,8 +39,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <CurrencyMobileView />
-        {/* <Suspense fallback={<Loader />}>
+        <Suspense fallback={<Loader />}>
           <Switch>
             {routes
               .filter((route) => route.onlyMobile === false)
@@ -58,7 +57,7 @@ function App() {
 
             <Redirect to="/" />
           </Switch>
-        </Suspense> */}
+        </Suspense>
       </BrowserRouter>
       <Notification />
       {loading && <Loader />}
