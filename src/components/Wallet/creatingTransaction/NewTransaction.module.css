@@ -2,7 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 480px;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 20px;
+  max-width: 767px;
+
 }
 
 .form {
@@ -13,7 +17,7 @@
 
 .title {
   font-family: var(--titleFont);
-  font-size: 30px;
+  font-size: 24px;
   line-height: 45px;
   font-style: normal;
   font-weight: normal;
@@ -45,15 +49,26 @@
 
 .wrapper {
   display: flex;
-  justify-content: space-between;
-  width: 410px;
-  margin-bottom: 40px;
-  /* overflow:hidden; */
+  flex-direction: column;
+  margin-top: 40px;
+  width: 100%;;
 }
 
 .longInput {
-  width: 410px;
+  /* width: 410px;
+  margin-bottom: 40px; */
+  width: 300px;
+  /* height: 74px; */
   margin-bottom: 40px;
+}
+
+.shortInput {
+  width: 300px;
+  margin-bottom: 40px;
+}
+
+.labelNumber {
+  width: 100%;
 }
 
 .categoryOption {
@@ -76,3 +91,35 @@
 .datePickerContainer {
   border: none;
 }
+
+
+@media (min-width: 768px) {
+  .container {
+    width: 540px;
+  }
+
+  .wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .shortInput {
+    width: 190px;
+  }
+
+  .labelNumber {
+    width: 190px;
+  }
+
+  .longInput {
+    /* width: 410px;
+    margin-bottom: 40px; */
+    width: 410px;
+    height: 40px;
+    margin-bottom: 40px;
+  }
+
+}
+
+
+

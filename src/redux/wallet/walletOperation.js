@@ -34,14 +34,40 @@ const getTransactionsErrorHandler = (errCode) => {
   return message;
 };
 
+
+const addTransactionErrorHandler = (errCode) => {
+  let message = '';
+
+  switch(errCode) {
+    case 400:
+      message = "Ошибка при валидации данных"
+      break;
+    case 401:
+      message = "Ошибка авторизации. Попробуйте войти заново"
+      break;
+    case 404:
+      message = "Ошибка категории. Выберите категорию из списка"
+      break;
+    case 409:
+      message = "Ошибка. Тип транзакции и категория не соответствуют друг другу"
+      break;  
+    default:
+      message = "Что-то пошло не так...";
+  }
+  return message;
+}
+
+
 export const addTransaction = (transaction) => (dispatch) => {
   dispatch(addTransactionRequest());
 
   addTransactionApi(transaction)
     .then((resp) => dispatch(addTransactionSuccess(resp.data)))
-    .catch(() => {
-      dispatch(addTransactionError());
-      dispatch(makeAlertNotification("Ошибка добавления"));
+    .catch((error) => {
+      const message = addTransactionErrorHandler(pathOr("", ["response", "status"], error));
+      dispatch(makeAlertNotification(message));
+      dispatch(addTransactionError(error));
+
     });
 };
 
@@ -57,7 +83,7 @@ export const getTransactions = () => (dispatch) => {
   dispatch(requestAllTransactions());
   loadTransactions()
     .then((response) => {
-      dispatch(successAllTransactions(response.data));
+      dispatch(successAllTransactions(response.data.reverse()));
     })
     .catch((error) => {
       const message = getTransactionsErrorHandler(pathOr("", ["response", "status"], error));
@@ -70,5 +96,5 @@ export const getCategories = () => (dispatch) => {
   dispatch(requestCategories());
   loadCategories()
     .then((response) => dispatch(successCategories(response.data)))
-    .catch(() => dispatch(errorCategories()));
+    .catch((error) => dispatch(errorCategories(error)));
 };

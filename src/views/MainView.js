@@ -11,6 +11,7 @@ import ModalPortal from "../components/Wallet/creatingTransaction/ModalPortal";
 import Modal from "../components/Wallet/creatingTransaction/Modal";
 import NewTransaction from "../components/Wallet/creatingTransaction/NewTransaction";
 
+
 const MainView = () => {
   const [showModal, setShowModal] = useState(false);
 
@@ -48,6 +49,14 @@ const MainView = () => {
           )}
         </ModalPortal>
       </Layout>
+
+      <ModalPortal>
+        {showModal && (
+          <Modal onClose={toggleModal}>
+            <NewTransaction onClose={toggleModal} />
+          </Modal>
+        )}
+      </ModalPortal>
     </>
   );
 };
