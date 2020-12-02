@@ -60,9 +60,7 @@ function App() {
       <Notification />
       {loading && <Loader />}
 
-      {isUserAuthentificated && <Modal>
-        <NewTransaction />
-      </Modal>}
+
 {/* 
       <NewTransaction />
          */}

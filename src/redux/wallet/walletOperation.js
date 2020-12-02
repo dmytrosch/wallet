@@ -83,7 +83,7 @@ export const getTransactions = () => (dispatch) => {
   dispatch(requestAllTransactions());
   loadTransactions()
     .then((response) => {
-      dispatch(successAllTransactions(response.data));
+      dispatch(successAllTransactions(response.data.reverse()));
     })
     .catch((error) => {
       const message = getTransactionsErrorHandler(pathOr("", ["response", "status"], error));

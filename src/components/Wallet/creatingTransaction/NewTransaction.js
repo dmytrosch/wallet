@@ -12,25 +12,19 @@ import { addTransaction } from "../../../redux/wallet/walletOperation";
 
 import { Dropdown } from "semantic-ui-react";
 
-
 import DatePicker from "react-datepicker";
 
-
-import { makeAlertNotification } from '../../../redux/notifications/notificationOperations'
-import { getCategories,  getAllTransactions} from '../../../redux/wallet/walletSelectors'
-
+import { makeAlertNotification } from "../../../redux/notifications/notificationOperations";
+import {
+  getCategories,
+  getAllTransactions,
+} from "../../../redux/wallet/walletSelectors";
 
 import "semantic-ui-css/semantic.min.css";
 import "react-datepicker/dist/react-datepicker.css";
 
-
-
 function NewTransaction({ onClose }) {
-
-  const categiries = useSelector(getCategories)
-
-  console.log(categiries)
-
+  const categiries = useSelector(getCategories);
 
   const categoriesIncome = categiries
     .filter((category) => category.type === "INCOME")
@@ -94,29 +88,36 @@ function NewTransaction({ onClose }) {
     }
   }
 
-  
-  console.log(categoryName)
+  const allTransactions = useSelector(getAllTransactions);
 
-  const allTransactions = useSelector(getAllTransactions)
-
-  console.log(allTransactions);
-
-
-
-
+  const balanceAfterLastTransaction =
+    allTransactions.length > 0 ? allTransactions[0].balanceAfter : 0;
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    if(categoryName === "") {
-      dispatch(makeAlertNotification("Выберите категорию"))
+    if (categoryName === "") {
+      dispatch(makeAlertNotification("Выберите категорию"));
       return;
     }
 
-    if(amount <= 0) {
-      dispatch(makeAlertNotification("Значение суммы операции должно быть больше 0"))
+    if (amount <= 0) {
+      dispatch(
+        makeAlertNotification("Значение суммы операции должно быть больше 0")
+      );
       return;
     }
+
+    if (cost && amount > balanceAfterLastTransaction) {
+      dispatch(
+        makeAlertNotification("Значение операции больше чем доступный баланс")
+      );
+      return;
+    }
+
+    // if(!categoriesIncome || !categoriesCost) {
+    //   dispatch(makeAlertNotification("Выберите категорию"));
+    // }
 
     const objToPost = {
       transactionDate: pickerDate.toISOString().slice(0, 10).replace(/-/g, "-"),
@@ -131,10 +132,6 @@ function NewTransaction({ onClose }) {
       amount: !cost ? amount : -amount,
     };
 
-
-
-
-   
     // console.log(objToPost);
 
     dispatch(addTransaction(objToPost));
@@ -167,7 +164,7 @@ function NewTransaction({ onClose }) {
               textIncomeColorSelect()
             )}
           >
-            Income
+            Доход
           </span>
 
           <Checkbox
@@ -184,7 +181,7 @@ function NewTransaction({ onClose }) {
               textCostColorSelect()
             )}
           >
-            Cost
+            Расход
           </span>
         </div>
 
@@ -194,13 +191,15 @@ function NewTransaction({ onClose }) {
           selection
           options={cost ? categoriesCost : categoriesIncome}
           onChange={(e) => {
+            console.dir(e.target);
 
-            console.dir(e.target)
-
-            if (e.target.className === "search" || e.target.className === "text") {
+            if (
+              e.target.className === "search" ||
+              e.target.className === "text"
+            ) {
               return;
             }
-            
+
             setCategory(e.target.firstElementChild.textContent);
           }}
         />
