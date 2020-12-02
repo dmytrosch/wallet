@@ -34,8 +34,9 @@
 }
 
 @media (min-width: 270px) and (max-width: 767px) {
-  .navcontainer {
+  .navContainer {
     margin: 0 auto;
+    margin-bottom: 33px;
   }
 
   .navList {
@@ -47,7 +48,6 @@
     max-width: 192px;
     max-height: 44px;
     width: 100%;
-    margin-bottom: 33px;
   }
   .navListItem {
     justify-content: space-between;
