@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import Button from "../common/Button";
-import Layout from "../views/Layout";
-import Navigation from "../components/Navigation";
-import Balance from "../components/Wallet/Balance/Balance";
-import CurrencyRates from "../components/Wallet/CurrencyRates/CurrencyRates";
-import TransactionsTable from "../components/Wallet/TransactionsTable";
+import Button from "../../common/Button";
+import Layout from "../Layout";
+import Navigation from "../../components/Navigation";
+import Balance from "../../components/Wallet/Balance/Balance";
+import CurrencyRates from "../../components/Wallet/CurrencyRates/CurrencyRates";
+import TransactionsTable from "../../components/Wallet/TransactionsTable";
 import styles from "./MainView.module.css";
-import Header from "../components/Header";
-import ModalPortal from "../components/Wallet/creatingTransaction/ModalPortal";
-import Modal from "../components/Wallet/creatingTransaction/Modal";
-import NewTransaction from "../components/Wallet/creatingTransaction/NewTransaction";
+import Header from "../../components/Header";
+import ModalPortal from "../../components/Wallet/creatingTransaction/ModalPortal";
+import Modal from "../../components/Wallet/creatingTransaction/Modal";
+import NewTransaction from "../../components/Wallet/creatingTransaction/NewTransaction";
 
 
 const MainView = () => {

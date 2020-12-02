@@ -17,7 +17,7 @@ export default [
     label: "Statistics",
     exact: true,
     component: lazy(() =>
-      import("../views/StatsView" /* webpackChunkName: "stats" */)
+      import("../views/StatsView/StatsView" /* webpackChunkName: "stats" */)
     ),
     private: true,
     restricted: false,

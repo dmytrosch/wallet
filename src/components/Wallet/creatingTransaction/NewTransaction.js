@@ -14,7 +14,10 @@ import { Dropdown } from "semantic-ui-react";
 
 import DatePicker from "react-datepicker";
 
-import { makeAlertNotification } from "../../../redux/notifications/notificationOperations";
+import {
+  makeAlertNotification,
+  makeSuccessNotification,
+} from "../../../redux/notifications/notificationOperations";
 import {
   getCategories,
   getAllTransactions,
@@ -135,6 +138,8 @@ function NewTransaction({ onClose }) {
     // console.log(objToPost);
 
     dispatch(addTransaction(objToPost));
+    onClose();
+    dispatch(makeSuccessNotification("Транзакция успешно добавлена!"));
 
     // console.log("Submitted", objToPost);
   }
