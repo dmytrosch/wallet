@@ -20,7 +20,7 @@ import {
 } from "../../../redux/notifications/notificationOperations";
 import {
   getCategories,
-  getAllTransactions,
+  getBalance,
 } from "../../../redux/wallet/walletSelectors";
 
 import "semantic-ui-css/semantic.min.css";
@@ -91,10 +91,8 @@ function NewTransaction({ onClose }) {
     }
   }
 
-  const allTransactions = useSelector(getAllTransactions);
-
-  const balanceAfterLastTransaction =
-    allTransactions.length > 0 ? allTransactions[0].balanceAfter : 0;
+  const balanceAfterLastTransaction = useSelector(getBalance)
+    
 
   function handleSubmit(e) {
     e.preventDefault();
