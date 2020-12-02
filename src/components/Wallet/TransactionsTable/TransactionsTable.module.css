@@ -1,7 +1,7 @@
 .table {
   width: 280px;
   margin: 0 auto;
-
+  text-align: center;
   font-family: var(--primeFont);
   font-size: 16px;
   line-height: 1.474;
@@ -67,7 +67,6 @@
 .itemData {
   max-width: 45%;
   padding-right: 20px;
-  text-align: right;
 }
 
 .colorGreen {
@@ -132,7 +131,6 @@
   .itemData {
     width: 90%;
     padding-right: 0;
-    text-align: left;
   }
 
   .date {
