@@ -12,7 +12,7 @@ export default function Balance() {
   return (
     <div className={container}>
       <p className={text}>ВАШ БАЛАНС</p>
-      <>{formatNumber(balance, currentbalance, "₴ ")}</>
+      <>{formatNumber(123123.45, currentbalance, "₴ ")}</>
     </div>
   );
 }

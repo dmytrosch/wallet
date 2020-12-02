@@ -1,4 +1,4 @@
-g@media (max-width: 767px) {
+@media (max-width: 767px) {
   .container {
     height: 80px;
     width: 280px;
@@ -8,7 +8,7 @@ g@media (max-width: 767px) {
     background: #ffffff;
   }
   .text {
-    font-family: Circe;
+    font-family: var(--titleFont);
     height: 12.799999237060547px;
     width: 81px;
     font-size: 12px;
@@ -20,7 +20,7 @@ g@media (max-width: 767px) {
     left: 30px;
   }
   .currentbalance {
-    font-family: Poppins;
+    font-family: var(--titleFont);
     font-size: 30px;
     font-style: normal;
     font-weight: 700;
@@ -42,7 +42,7 @@ g@media (max-width: 767px) {
     position: relative;
   }
   .text {
-    font-family: Circe;
+    font-family: var(--primeFont);
     height: 12.799999237060547px;
     width: 81px;
     font-size: 12px;
@@ -55,7 +55,7 @@ g@media (max-width: 767px) {
     left: 40px;
   }
   .currentbalance {
-    font-family: Poppins;
+    font-family: var(--titleFont);
     font-weight: 700;
     font-size: 30px;
     line-height: 45px;

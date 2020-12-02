@@ -21,6 +21,8 @@ import Modal from "./Wallet/creatingTransaction/Modal";
 import NewTransaction from "./Wallet/creatingTransaction/NewTransaction";
 import TransactionsTable from "../components/Wallet/TransactionsTable";
 
+import CurrencyMobileView from "../views/CurrencyMobileView/CurrencyMobileView";
+
 function App() {
   const dispatch = useDispatch();
   const isUserAuthentificated = useSelector((state) =>
@@ -37,7 +39,8 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <Suspense fallback={<Loader />}>
+        <CurrencyMobileView />
+        {/* <Suspense fallback={<Loader />}>
           <Switch>
             {routes
               .filter((route) => route.onlyMobile === false)
@@ -55,7 +58,7 @@ function App() {
 
             <Redirect to="/" />
           </Switch>
-        </Suspense>
+        </Suspense> */}
       </BrowserRouter>
       <Notification />
       {loading && <Loader />}
