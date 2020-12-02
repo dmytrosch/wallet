@@ -3,13 +3,9 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import styles from "./Input.module.css";
 
-const Input = ({ type, error, inputClassNames, labelClassNames, ...props }) => {
+const Input = ({ type, error, inputClassNames, ...props }) => {
   return (
-<<<<<<< HEAD
-    <label className={classNames(styles[type], ...[labelClassNames])}>
-=======
-    <label className={classNames(styles[type], styles[name])}>
->>>>>>> 5b2b78ff5890409dcab166cbd3cc09e958c67787
+    <label className={classNames(styles[type], styles[props.name])}>
       <input
         type={type}
         className={classNames(
@@ -21,10 +17,6 @@ const Input = ({ type, error, inputClassNames, labelClassNames, ...props }) => {
         {...props}
       />
     </label>
-<<<<<<< HEAD
-
-=======
->>>>>>> 5b2b78ff5890409dcab166cbd3cc09e958c67787
   );
 };
 

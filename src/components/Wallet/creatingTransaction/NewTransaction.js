@@ -212,8 +212,9 @@ function NewTransaction({ onClose }) {
             placeholder="0,00"
             name="amount"
             inputClassNames={styles.shortInput}
-            labelClassNames={styles.labelNumber}
+            // labelClassNames={styles.labelNumber}
             onChange={handleInputChange}
+            // onChange={e=>console.dir(e.target)}
           />
 
           <div className={classNames(styles.datePickerContainer)}>

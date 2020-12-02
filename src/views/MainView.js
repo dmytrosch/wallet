@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, {useState} from "react";
-=======
 import React, { useState } from "react";
->>>>>>> 5b2b78ff5890409dcab166cbd3cc09e958c67787
 import Button from "../common/Button";
 import Layout from "../views/Layout";
 import Navigation from "../components/Navigation";
@@ -15,10 +11,6 @@ import ModalPortal from "../components/Wallet/creatingTransaction/ModalPortal";
 import Modal from "../components/Wallet/creatingTransaction/Modal";
 import NewTransaction from "../components/Wallet/creatingTransaction/NewTransaction";
 
-
-import ModalPortal from "../components/Wallet/creatingTransaction/ModalPortal";
-import Modal from "../components/Wallet/creatingTransaction/Modal";
-import NewTransaction from "../components/Wallet/creatingTransaction/NewTransaction";
 
 const MainView = () => {
   const [showModal, setShowModal] = useState(false);
