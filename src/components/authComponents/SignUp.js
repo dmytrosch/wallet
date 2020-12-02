@@ -9,6 +9,7 @@ import logoSvg from "../../assets/icons/WalletImg.svg";
 import Input from "../../common/Input/";
 import Button from "../../common/Button";
 import styles from "./styles.module.css";
+import { NavLink } from "react-router-dom";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -60,22 +61,22 @@ export default function SignUp() {
       </div>
       <form className={styles.form} onSubmit={handlerSubmit}>
         <div className={styles.inputWrapper}>
-        <Input
-          type="email"
-          value={email}
-          onChange={updateEmail}
-          error={email.length > 0 && !validator.isEmail(email)}
-          placeholder="E-mail"
-        />
+          <Input
+            type="email"
+            value={email}
+            onChange={updateEmail}
+            error={email.length > 0 && !validator.isEmail(email)}
+            placeholder="E-mail"
+          />
         </div>
         <div className={styles.inputWrapper}>
-        <Input
-          type="password"
-          value={password}
-          onChange={updatePassword}
-          error={password.length > 0 && password.length < 8}
-          placeholder="Пароль"
-        />
+          <Input
+            type="password"
+            value={password}
+            onChange={updatePassword}
+            error={password.length > 0 && password.length < 8}
+            placeholder="Пароль"
+          />
           <PasswordStrengthBar
             password={password}
             minLength={8}
@@ -90,25 +91,29 @@ export default function SignUp() {
           />
         </div>
         <div className={styles.inputWrapper}>
-        <Input
-          type="password"
-          value={confirmedPassword}
-          onChange={updateConfirmedPassword}
-          error={confirmedPassword !== password}
-          placeholder="Подтвердите пароль"
-        />
+          <Input
+            type="password"
+            value={confirmedPassword}
+            onChange={updateConfirmedPassword}
+            error={confirmedPassword !== password}
+            placeholder="Подтвердите пароль"
+          />
         </div>
         <div className={styles.inputWrapper}>
-        <Input
-          type="text"
-          name="name"
-          value={name}
-          onChange={updateName}
-          placeholder="Ваше имя"
-        />
+          <Input
+            type="text"
+            name="name"
+            value={name}
+            onChange={updateName}
+            placeholder="Ваше имя"
+          />
         </div>
-        <Button type="submit">регистрация</Button>
-        <Button type="submit">вход</Button>
+        <Button color="green" type="submit">
+          регистрация
+        </Button>
+        <NavLink to="/login">
+          <Button type="submit">вход</Button>
+        </NavLink>
       </form>
     </div>
   );

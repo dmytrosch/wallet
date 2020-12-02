@@ -14,14 +14,6 @@ import { Switch, Redirect, BrowserRouter } from "react-router-dom";
 import routes from "../utils/routes";
 import PrivateRoute from "../components/Routes/PrivateRoute";
 import PublicRoute from "../components/Routes/PublicRoute";
-import Balance from "../components/Wallet/Balance/Balance";
-import ModalPortal from "./Wallet/creatingTransaction/ModalPortal";
-import Modal from "./Wallet/creatingTransaction/Modal";
-
-import NewTransaction from "./Wallet/creatingTransaction/NewTransaction";
-import TransactionsTable from "../components/Wallet/TransactionsTable";
-import Login from "./authComponents/LogIn";
-import Signup from "./authComponents/SignUp";
 
 function App() {
   const dispatch = useDispatch();
@@ -61,10 +53,6 @@ function App() {
       </BrowserRouter>
       <Notification />
       {loading && <Loader />}
-
-      {/* <Modal>
-        <NewTransaction />
-      </Modal> */}
     </div>
   );
 }
