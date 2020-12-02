@@ -25,6 +25,10 @@
     margin-bottom: 40px;
     align-items: flex-end;
   }
+  .btnContainer {
+    bottom: 40px;
+    right: 40px;
+  }
 }
 @media screen and (min-width: 1024px) {
   .container {
@@ -47,11 +51,15 @@
     border-right: 2px solid #e7e5f2;
     align-items: center;
   }
+  .btnContainer {
+    bottom: 40px;
+    right: 85px;
+  }
 }
 .btnContainer {
   position: fixed;
+  right: 20px;
   bottom: 30px;
-  right: 120px;
 }
 
 .btnLogo {
