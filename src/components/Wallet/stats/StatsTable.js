@@ -2,7 +2,8 @@ import React from "react";
 import Select from "react-select";
 import style from "./styles/StatsTable.module.css";
 import { customStyles } from "./assetsForStats";
-import NumberFormat from "react-number-format";
+import formatNumber from "../../../utils/formatNumber";
+import { styles } from "@material-ui/pickers/views/Calendar/Calendar";
 
 const StatsTable = ({
   totalMonthExpense,
@@ -31,70 +32,47 @@ const StatsTable = ({
           onChange={handleChangeYear}
         />
       </div>
-
-      <ul>
-        <li key={"1"} className={style.labelContainer}>
-          <p className={style.labelText}>Категория</p>
-          <p className={style.labelText}>Сумма</p>
-        </li>
-        {arrDataForTable.map((el, indx) => (
-          <li key={indx} className={style.listItems}>
-            <span
-              className={style.listColor}
-              style={{
-                backgroundColor: el.color,
-              }}
-            ></span>
-            <div className={style.transInfo}>
-              <p>{el.category}</p>
-              <NumberFormat
-                displayType={"text"}
-                value={el.totalAmount}
-                thousandSeparator={" "}
-                decimalSeparator={"."}
-                thousandsGroupStyle="lakh"
-                children
-                renderText={(value) => (
-                  <p className={style.totalAmount}>{value}</p>
-                )}
-              ></NumberFormat>
-            </div>
+      {totalMonthExpense > 0 && (
+        <ul>
+          <li key={"1"} className={style.labelContainer}>
+            <p className={style.labelText}>Категория</p>
+            <p className={style.labelText}>Сумма</p>
           </li>
-        ))}
-      </ul>
+          {arrDataForTable.map((el, indx) => (
+            <li key={indx} className={style.listItems}>
+              <span
+                className={style.listColor}
+                style={{
+                  backgroundColor: el.color,
+                }}
+              ></span>
+              <div className={style.transInfo}>
+                <p>{el.category}</p>
+                <>{formatNumber(el.totalAmount, style.totalAmount)}</>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+      {totalMonthExpense === 0 && (
+        <p className={style.titletrans}>
+          За выбраный период времени нет данных о транзакциях
+        </p>
+      )}
 
-      <div className={style.amountContainer}>
-        <div className={style.itemsAmount}>
-          <p className={style.amounthCategory}>Расходы:</p>
-          <NumberFormat
-            displayType={"text"}
-            prefix={"₴ "}
-            value={totalMonthExpense}
-            thousandSeparator={" "}
-            decimalSeparator={"."}
-            thousandsGroupStyle="lakh"
-            children
-            renderText={(value) => (
-              <p className={style.expensAmount}>{value}</p>
-            )}
-          ></NumberFormat>
+      {totalMonthExpense > 0 && (
+        <div className={style.amountContainer}>
+          <div className={style.itemsAmount}>
+            <p className={style.amounthCategory}>Расходы:</p>
+
+            <>{formatNumber(totalMonthExpense, style.expensAmount, "₴ ")}</>
+          </div>
+          <div className={style.itemsAmount}>
+            <p className={style.amounthCategory}>Доходы:</p>
+            <>{formatNumber(totalMonthIncome, style.incomeAmount, "₴ ")}</>
+          </div>
         </div>
-        <div className={style.itemsAmount}>
-          <p className={style.amounthCategory}>Доходы:</p>
-          <NumberFormat
-            displayType={"text"}
-            prefix={"₴ "}
-            value={totalMonthIncome}
-            thousandSeparator={" "}
-            decimalSeparator={"."}
-            thousandsGroupStyle="lakh"
-            children
-            renderText={(value) => (
-              <p className={style.incomeAmount}>{value}</p>
-            )}
-          ></NumberFormat>
-        </div>
-      </div>
+      )}
     </div>
   );
 };
