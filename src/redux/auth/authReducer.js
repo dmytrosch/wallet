@@ -6,6 +6,7 @@ import {
   logoutSuccess,
   getCurrentUserSuccess,
   removeUnauthorizedUser,
+  logoutError,
 } from "./authActions";
 
 const user = createReducer(
@@ -15,6 +16,7 @@ const user = createReducer(
     [logInSuccess]: (_, { payload }) => payload.user,
     [getCurrentUserSuccess]: (_, { payload }) => payload,
     [logoutSuccess]: () => ({}),
+    [logoutError]: () => ({}),
     [removeUnauthorizedUser]: () => ({}),
   }
 );
@@ -22,6 +24,7 @@ const token = createReducer(null, {
   [signUpSuccess]: (_, { payload }) => payload.token,
   [logInSuccess]: (_, { payload }) => payload.token,
   [logoutSuccess]: () => null,
+  [logoutError]: () => null,
   [removeUnauthorizedUser]: null,
 });
 

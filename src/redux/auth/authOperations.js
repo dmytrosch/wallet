@@ -39,11 +39,9 @@ export const logout = () => (dispatch) => {
   dispatch(logoutRequest());
 
   logoutApi()
-    .then(() => {
-      token.unset();
-      dispatch(logoutSuccess());
-    })
-    .catch(() => dispatch(logoutError()));
+    .then(() => dispatch(logoutSuccess()))
+    .catch(() => dispatch(logoutError()))
+    .finally(() => token.unset());
 };
 
 export const signUp = (credentials) => (dispatch) => {
