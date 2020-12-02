@@ -6,6 +6,7 @@
     padding: 8px 0px 10px 30px;
     position: relative;
     background: #ffffff;
+    margin-bottom: 30px;
   }
   .text {
     font-family: var(--titleFont);
