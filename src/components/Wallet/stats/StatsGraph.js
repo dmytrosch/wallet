@@ -23,6 +23,9 @@ const StatsGraph = ({ arrData }) => {
       legend: {
         display: false,
       },
+      tooltips: {
+        enabled: false,
+      },
     },
   };
   const diagramData = () => {

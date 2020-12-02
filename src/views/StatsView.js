@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Navigation from "../components/Navigation";
 import Balance from "../components/Wallet/Balance/Balance";
 import Filter from "../components/Wallet/stats/Filter";
-// import allTransactions from "../components/Wallet/stats/assetsForStats";
+import { connect } from "react-redux";
 const StatsView = () => {
   return (
     <>

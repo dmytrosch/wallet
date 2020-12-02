@@ -18,7 +18,6 @@ const StatsTable = ({
   handleChangeYear,
   arrDataForTable,
 }) => {
-  console.log(arrDataForTable);
   return (
     <div>
       <div className={style.selectContainer}>
@@ -37,10 +36,13 @@ const StatsTable = ({
       </div>
 
       <ul>
-        <li key={"1"} className={style.labelContainer}>
-          <p className={style.labelText}>Категория</p>
-          <p className={style.labelText}>Сумма</p>
-        </li>
+        {arrDataForTable.length > 0 && (
+          <li key={"1"} className={style.labelContainer}>
+            <p className={style.labelText}>Категория</p>
+            <p className={style.labelText}>Сумма</p>
+          </li>
+        )}
+
         <TransitionGroup component={null}>
           {arrDataForTable.map((el, indx) => (
             <CSSTransition
@@ -66,16 +68,18 @@ const StatsTable = ({
         </TransitionGroup>
       </ul>
 
-      <div className={style.amountContainer}>
-        <div className={style.itemsAmount}>
-          <p className={style.amounthCategory}>Расходы:</p>
-          {formattingNumber(totalMonthExpense, style.expensAmount, "₴ ")}
+      {arrDataForTable.length > 0 && (
+        <div className={style.amountContainer}>
+          <div className={style.itemsAmount}>
+            <p className={style.amounthCategory}>Расходы:</p>
+            {formattingNumber(totalMonthExpense, style.expensAmount, "₴ ")}
+          </div>
+          <div className={style.itemsAmount}>
+            <p className={style.amounthCategory}>Доходы:</p>
+            {formattingNumber(totalMonthIncome, style.incomeAmount, "₴ ")}
+          </div>
         </div>
-        <div className={style.itemsAmount}>
-          <p className={style.amounthCategory}>Доходы:</p>
-          {formattingNumber(totalMonthIncome, style.incomeAmount, "₴ ")}
-        </div>
-      </div>
+      )}
     </div>
   );
 };

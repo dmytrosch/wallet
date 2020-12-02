@@ -27,6 +27,17 @@
   padding-left: 30px;
 }
 
+.notFoundData {
+  font-family: var(--titleFont);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 45px;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+  padding: 5px;
+  margin: 0 auto;
+}
+
 @media (max-width: 767px) {
   .container {
     width: 280px;
@@ -41,5 +52,16 @@
     width: 280px;
     padding: 0;
     margin: 80px 0 0 0;
+  }
+  .notFoundData {
+    font-family: var(--titleFont);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 45px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    padding: 5px;
+    text-align: center;
+    margin-top: 150px;
   }
 }
