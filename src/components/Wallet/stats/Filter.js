@@ -23,6 +23,7 @@ class Filter extends Component {
   componentDidMount() {
     const { allTransactions } = this.props;
     this.allDataOnMount(allTransactions);
+    console.log(this.props.allTransactions);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -67,7 +68,7 @@ class Filter extends Component {
 
   filterDataFromTable = (filteredData) =>
     filteredData
-      .filter((el) => el.type === "EXPENCE")
+      .filter((el) => el.type === "EXPENSE")
       .map((el) => ({
         category: el.categoryId,
         amount: el.amount,
@@ -120,7 +121,7 @@ class Filter extends Component {
       0
     );
     const totalMonthExpense = filteredData.reduce(
-      (acc, el) => (el.type === "EXPENCE" ? acc + el.amount : acc),
+      (acc, el) => (el.type === "EXPENSE" ? acc + el.amount : acc),
       0
     );
     const arrData = this.addColor(this.filterDataFromTable(filteredData));
