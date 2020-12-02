@@ -10,6 +10,7 @@ import { isMobile } from "../../redux/clientWidth/clientWidthSelectors";
 
 const StatsView = () => {
   const _isMobile = useSelector(isMobile);
+  document.title = "Ститистика || Wallet";
   return (
     <>
       <Header />

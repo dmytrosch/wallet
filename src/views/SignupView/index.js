@@ -5,18 +5,21 @@ import Signup from "../../components/authComponents/SignUp";
 
 import styles from "./SignupView.module.css";
 
-const SignupView = () => (
-  <Layout>
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <div className={styles.img} />
-        <p className={styles.title}>Finance App</p>
+const SignupView = () => {
+  document.title = "Регистрация || Wallet";
+  return (
+    <Layout>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <div className={styles.img} />
+          <p className={styles.title}>Finance App</p>
+        </div>
+        <div className={styles.formContainer}>
+          <Signup />
+        </div>
       </div>
-      <div className={styles.formContainer}>
-        <Signup />
-      </div>
-    </div>
-  </Layout>
-);
+    </Layout>
+  );
+};
 
 export default SignupView;

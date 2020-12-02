@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { path } from "ramda";
 import Input from "../../../common/Input";
 import Button from "../../../common/Button";
 import Checkbox from "../../../common/Checkbox";

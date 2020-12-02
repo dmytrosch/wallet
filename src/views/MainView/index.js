@@ -21,6 +21,7 @@ const MainView = (props) => {
       ? props.history.push("/new-transaction")
       : setShowModal((prevState) => !prevState);
   };
+  document.title = "Главная || Wallet";
   return (
     <>
       <Header />
