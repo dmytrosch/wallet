@@ -51,97 +51,19 @@ export const customStyles = {
   }),
 };
 
-const transactions = [
-  {
-    transactionDate: "2020-10-26",
-    type: "INCOME",
-    categoryId: "Дом",
-    comment: "pay",
-    amount: 50,
-  },
-  {
-    transactionDate: "2020-10-26",
-    type: "EXPENCE",
-    categoryId: "Жена",
-    comment: "pay",
-    amount: 50,
-  },
-  {
-    transactionDate: "2020-10-26",
-    type: "INCOME",
-    categoryId: "Машина",
-    comment: "pay",
-    amount: 10,
-  },
-  {
-    transactionDate: "2020-10-25",
-    type: "INCOME",
-    categoryId: "Робота",
-    comment: "pay",
-    amount: 50,
-  },
-  {
-    transactionDate: "2020-09-25",
-    type: "INCOME",
-    categoryId: "Машина",
-    comment: "pay",
-    amount: 50,
-  },
-  {
-    transactionDate: "2020-09-25",
-    type: "INCOME",
-    categoryId: "Отдых",
-    comment: "pay",
-    amount: 50,
-  },
-  {
-    transactionDate: "2020-09-25",
-    type: "EXPENCE",
-    categoryId: "Отдых",
-    comment: "pay",
-    amount: 100,
-  },
-  {
-    transactionDate: "2020-09-25",
-    type: "EXPENCE",
-    categoryId: "Дом",
-    comment: "pay",
-    amount: 10,
-  },
-  {
-    transactionDate: "2020-09-25",
-    type: "EXPENCE",
-    categoryId: "Робота",
-    comment: "pay",
-    amount: 10,
-  },
-  {
-    transactionDate: "2020-09-25",
-    type: "EXPENCE",
-    categoryId: "Интернет",
-    comment: "pay",
-    amount: 10,
-  },
-  {
-    transactionDate: "2020-09-25",
-    type: "EXPENCE",
-    categoryId: "Покупки",
-    comment: "pay",
-    amount: 10,
-  },
-];
+const transactions = [];
 export default transactions;
 
 export const colors = [
-  "#ecb22a",
-  "#e28b20",
-  "#d25925",
   "#67b7d0",
   "#5593d7",
+  "#e28b20",
   "#3e6ba8",
   "#9cc254",
   "#73ad57",
   "#507c3a",
+  "#ecb22a",
+  "#d25925",
 ];
 
 export const optionsMonth = [

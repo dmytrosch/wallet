@@ -36,6 +36,7 @@ class Filter extends Component {
       selectedYear,
     } = this.state;
     const { allTransactions } = this.props;
+
     if (
       prevProps.allTransactions !== allTransactions ||
       prevState.currentMonth !== currentMonth ||
@@ -111,7 +112,11 @@ class Filter extends Component {
     this.setState({ selectedYear: selectedOption });
   };
 
-  addColor = (arr) => arr.map((el, ind) => ({ ...el, color: colors[ind] }));
+  addColor = (arr) =>
+    arr.map((el, ind) => ({
+      ...el,
+      color: colors[Math.floor(Math.random() * (10 - 1 + 1)) + 1],
+    }));
   render() {
     const {
       months,
@@ -134,7 +139,10 @@ class Filter extends Component {
       <div className={styles.container}>
         <div className={styles.diagramContainer}>
           <p className={styles.label}>Cтатистика</p>
-          <StatsGraph arrData={arrData} />
+          {arrData.length === 0 && (
+            <p className={styles.notFoundData}>Нет даних за выбраный период!</p>
+          )}
+          {arrData.length > 0 && <StatsGraph arrData={arrData} />}
         </div>
         <div className={styles.tableContainer}>
           <StatsTable

@@ -5,6 +5,7 @@ import styles from "./LoginView.module.css";
 
 const LoginView = () => {
   React.useEffect(() => (document.title = "Вход || Wallet"), []);
+  console.log('update');
   return (
     <Layout>
       <div className={styles.container}>
