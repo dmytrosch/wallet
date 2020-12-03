@@ -13,7 +13,7 @@
   border-radius: 30px;
   background-color: var(--whiteColor);
   align-items: center;
-  padding: 0 35px;
+  padding: 0 40px 0 25px;
 }
 
 .labelText {

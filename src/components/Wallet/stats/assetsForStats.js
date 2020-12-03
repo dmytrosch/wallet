@@ -55,17 +55,17 @@ const transactions = [];
 export default transactions;
 
 export const colors = [
-  "#67b7d0",
-  "#ecb22a",
-  "#73ad57",
-  "#e28b20",
-  "#3e6ba8",
-  "#9cc254",
-  "#FF1493",
-  "#B0E0E6",
-  "#507c3a",
-  "#5593d7",
-  "#d25925",
+  "#d50000",
+  "#f50057",
+  "#aa00ff",
+  "#673ab7",
+  "#3d5afe",
+  "#42a5f5",
+  "#00bcd4",
+  "#1de9b6",
+  "#4caf50",
+  "#76ff03",
+  "#f9a825",
 ];
 
 export const optionsMonth = [

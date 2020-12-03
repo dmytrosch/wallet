@@ -112,11 +112,26 @@ class Filter extends Component {
     this.setState({ selectedYear: selectedOption });
   };
 
-  addColor = (arr) =>
-    arr.map((el, ind) => ({
+  addColor = (arr) => {
+    const arrayLength = arr.length;
+    let colorArray = [];
+
+    for(let i = 0; i <= arrayLength; i++){
+      let selectedColor = colors[Math.floor(Math.random() * colors.length)];
+      if(colorArray.includes(selectedColor)){
+        i = i-1;
+      } else{
+        colorArray.push(selectedColor);
+      }
+    }
+
+    const itemsArray = arr.map((el, ind) => ({
       ...el,
-      color: colors[Math.floor(Math.random() * (10 - 1 + 1)) + 1],
+      color: colorArray[ind],
     }));
+
+    return itemsArray;
+  };
   render() {
     const {
       months,
