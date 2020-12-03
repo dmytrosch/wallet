@@ -29,13 +29,6 @@ const MainView = (props) => {
           </Button>
         </div>
 
-        <ModalPortal>
-          {showModal && (
-            <Modal onClose={toggleModal}>
-              <NewTransaction onClose={toggleModal} />
-            </Modal>
-          )}
-        </ModalPortal>
       </Layout>
 
       <ModalPortal>

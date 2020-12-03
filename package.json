@@ -45,7 +45,8 @@
     "eject": "react-scripts eject",
     "_postinstall": "husky install",
     "prepublish": "pinst --disable",
-    "postpublish": "pinst --enable"
+    "postpublish": "pinst --enable",
+    "deploy": "netlify deploy -p"
   },
   "eslintConfig": {
     "extends": [
