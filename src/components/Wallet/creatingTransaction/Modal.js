@@ -4,10 +4,9 @@ import iconClose from '../../../assets/icons/close.svg';
 
 export default function Modal({ children, onClose }) {
   const handleKeyboardCloseWindow = e => {
-    if(e.code !== 'Escape'){
-      return
+    if(e.code === 'Escape'){
+      onClose();
     }
-    onClose();
   }
 
   useEffect(() => {
