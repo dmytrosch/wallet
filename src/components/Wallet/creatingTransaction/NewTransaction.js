@@ -50,15 +50,10 @@ function NewTransaction({ onClose }) {
     });
 
   const currentDate = new Date();
-  // const currentDateText = currentDate
-  //   .toISOString()
-  //   .slice(0, 10)
-  //   .replace(/-/g, "-");
 
   const [cost, setCost] = useState(false);
   const [categoryName, setCategory] = useState("");
   const [amount, setAmount] = useState(0);
-  // const [transactionDate, setTransactionDate] = useState(currentDateText);
   const [comment, setComment] = useState("");
 
   const [pickerDate, setPickerDate] = useState(new Date());
@@ -70,18 +65,9 @@ function NewTransaction({ onClose }) {
       case "cost":
         setCost(e.target.checked);
         break;
-      // case "categories":
-      //   setCategory(e.target.firstElementChild.textContent);
-      //   break;
-
       case "amount":
         setAmount(e.target.value);
         break;
-
-      // case "transactionDate":
-      //   setTransactionDate(e.target.value);
-      //   break;
-
       case "comment":
         setComment(e.target.value);
         break;
@@ -113,11 +99,6 @@ function NewTransaction({ onClose }) {
       );
       return;
     }
-
-    // if(!categoriesIncome || !categoriesCost) {
-    //   dispatch(makeAlertNotification("Выберите категорию"));
-    // }
-
     const objToPost = {
       transactionDate: pickerDate.toISOString().slice(0, 10).replace(/-/g, "-"),
       type: !cost ? "INCOME" : "EXPENSE",
@@ -125,19 +106,14 @@ function NewTransaction({ onClose }) {
         ? categoriesIncome.find((category) => category.text === categoryName)
             .key
         : categoriesCost.find((category) => category.text === categoryName).key,
-      // categoryId: categoryName,
 
       comment,
       amount: !cost ? amount : -amount,
     };
 
-    // console.log(objToPost);
-
     dispatch(addTransaction(objToPost));
     onClose();
     dispatch(makeSuccessNotification("Транзакция успешно добавлена!"));
-
-    // console.log("Submitted", objToPost);
   }
 
   function textIncomeColorSelect() {
@@ -192,14 +168,6 @@ function NewTransaction({ onClose }) {
           selection
           options={cost ? categoriesCost : categoriesIncome}
           onChange={(e, data) => {
-            console.log(data.value);
-            // if (
-            //   e.target.className === "search" ||
-            //   !e.target.firstElement.textContent
-            // ) {
-            //   console.log("returned");
-            //   return;
-            // }
             setCategory(data.value);
           }}
         />
@@ -212,9 +180,7 @@ function NewTransaction({ onClose }) {
             placeholder="0,00"
             name="amount"
             inputClassNames={styles.shortInput}
-            // labelClassNames={styles.labelNumber}
             onChange={handleInputChange}
-            // onChange={e=>console.dir(e.target)}
           />
 
           <div className={classNames(styles.datePickerContainer)}>
@@ -222,11 +188,9 @@ function NewTransaction({ onClose }) {
               selected={pickerDate}
               dateFormat="yyyy/MM/dd"
               maxDate={currentDate}
-              // onChange={(date) => setPickerDate(date)}
               onChange={(date) =>
                 setPickerDate(new Date(date - date.getTimezoneOffset() * 60000))
               }
-              // customInput={<Input type="date"/>}
             />
           </div>
         </div>
