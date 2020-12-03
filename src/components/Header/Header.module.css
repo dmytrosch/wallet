@@ -1,9 +1,13 @@
 .headerContainer {
-  padding-top: 20px;
-
   background-color: #ffffff;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 .headerUserName {
   padding-right: 10px;
@@ -46,9 +50,6 @@
   .headerContainer {
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 20px;
-    padding-bottom: 15px;
-    min-width: 320px;
     height: 60px;
   }
   .logo {
@@ -66,10 +67,9 @@
 }
 @media (min-width: 768px) {
   .headerContainer {
+    height: 80px;
     padding-left: 40px;
     padding-right: 40px;
-    padding-top: 20px;
-    padding-bottom: 20px;
   }
   .logo {
     display: block;
