@@ -46,6 +46,7 @@
     "_postinstall": "husky install",
     "prepublish": "pinst --disable",
     "postpublish": "pinst --enable",
+    "predeploy": "npm run build",
     "deploy": "netlify deploy -p"
   },
   "eslintConfig": {
