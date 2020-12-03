@@ -56,13 +56,15 @@ export default transactions;
 
 export const colors = [
   "#67b7d0",
-  "#5593d7",
+  "#ecb22a",
+  "#73ad57",
   "#e28b20",
   "#3e6ba8",
   "#9cc254",
-  "#73ad57",
+  "#FF1493",
+  "#B0E0E6",
   "#507c3a",
-  "#ecb22a",
+  "#5593d7",
   "#d25925",
 ];
 

@@ -24,7 +24,7 @@ const StatsGraph = ({ arrData }) => {
         display: false,
       },
       tooltips: {
-        enabled: false,
+        enabled: true,
       },
     },
   };
@@ -34,7 +34,7 @@ const StatsGraph = ({ arrData }) => {
       datasets: [
         {
           label: "wallet",
-          fill: false,
+          fill: true,
           lineTension: 0.1,
           borderWidth: 0,
           data: arrData.map(({ totalAmount }) => totalAmount),
@@ -50,7 +50,7 @@ const StatsGraph = ({ arrData }) => {
       {arrData.length === 0 && (
         <Loader
           type="ThreeDots"
-          color="#00BFFF"
+          color="#4A56E2"
           height={200}
           width={200}
           timeout={30000}
