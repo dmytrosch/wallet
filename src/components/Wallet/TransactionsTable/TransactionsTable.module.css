@@ -155,7 +155,7 @@
 
 @media screen and (min-width: 1024px) {
   .table {
-    width: 700px;
+    width: 100%;
   }
   .header {
     font-size: 18px;
