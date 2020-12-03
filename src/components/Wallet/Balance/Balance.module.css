@@ -41,6 +41,7 @@
     padding: 10px 0px 10px 40px;
     background: #ffffff;
     position: relative;
+    margin-right: 20px;
   }
   .text {
     font-family: var(--primeFont);
@@ -68,6 +69,7 @@
 }
 @media (min-width: 1024px) {
   .container {
+    margin-right: 0px;
     width: 350px;
     margin-bottom: 30px;
   }

@@ -5,7 +5,7 @@ import { getCurrency } from "../../../redux/wallet/walletOperation";
 import { getCurrencyRateFiltered } from "../../../redux/wallet/walletSelectors";
 import CurrencyGraphSVG from "./CurrencyGraphSVG";
 import css from "./CurrencyRates.module.css";
-import formattingNumber from '../../../utils/formattingNumber';
+import formattingNumber from "../../../utils/formattingNumber";
 
 export default function CurrencyRates() {
   const {
@@ -35,6 +35,9 @@ export default function CurrencyRates() {
         </ul>
 
         <div className={container_body}>
+          <div className={graphSVG}>
+            <CurrencyGraphSVG />
+          </div>
           {currencyRate.map((item) => (
             <ul key={item.ccy} className={body}>
               <li className={body__item}>{item.ccy}</li>
@@ -42,9 +45,6 @@ export default function CurrencyRates() {
               <li className={body__item}>{formattingNumber(item.sale)}</li>
             </ul>
           ))}
-          <div className={graphSVG}>
-            <CurrencyGraphSVG />
-          </div>
         </div>
       </div>
     </>
