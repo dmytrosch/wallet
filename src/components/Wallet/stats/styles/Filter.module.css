@@ -14,7 +14,7 @@
   font-weight: 400;
   font-size: 30px;
   line-height: 45px;
-  letter-spacing: 4px;
+  letter-spacing: 2px;
   margin-bottom: 20px;
 }
 .tableContainer {
@@ -23,11 +23,10 @@
 }
 
 .notFoundData {
-  font-family: var(--titleFont);
-  font-weight: 400;
-  font-size: 16px;
+  font-family: var(--primeFont);
+  font-weight: 600;
+  font-size: 20px;
   line-height: 45px;
-  letter-spacing: 4px;
   margin-bottom: 20px;
   padding: 5px;
   margin: 0 auto;
@@ -49,9 +48,9 @@
     margin: 80px 0 0 0;
   }
   .notFoundData {
-    font-family: var(--titleFont);
-    font-weight: 400;
-    font-size: 14px;
+    font-family: var(--primeFont);
+    font-weight: 600;
+    font-size: 24px;
     line-height: 45px;
     letter-spacing: 4px;
     margin-bottom: 20px;

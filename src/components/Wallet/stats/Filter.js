@@ -155,7 +155,7 @@ class Filter extends Component {
         <div className={styles.diagramContainer}>
           <p className={styles.label}>Cтатистика</p>
           {arrData.length === 0 && (
-            <p className={styles.notFoundData}>Нет даних за выбраный период!</p>
+            <p className={styles.notFoundData}>Нет данных за выбраный период!</p>
           )}
           {arrData.length > 0 && <StatsGraph arrData={arrData} />}
         </div>
