@@ -17,7 +17,9 @@ const MainView = (props) => {
       ? props.history.push("/new-transaction")
       : setShowModal((prevState) => !prevState);
   };
-  useEffect(() => (document.title = "Главная || Wallet"), []);
+  useEffect(() => {
+    document.title = "Главная || Wallet";
+  }, []);
 
   return (
     <>
@@ -28,7 +30,6 @@ const MainView = (props) => {
             <span className={styles.btnLogo}>+</span>
           </Button>
         </div>
-
       </Layout>
 
       <ModalPortal>
