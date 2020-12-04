@@ -67,7 +67,6 @@ export const addTransaction = (transaction) => (dispatch) => {
       const message = addTransactionErrorHandler(pathOr("", ["response", "status"], error));
       dispatch(makeAlertNotification(message));
       dispatch(addTransactionError(error));
-
     });
 };
 

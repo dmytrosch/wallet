@@ -8,41 +8,31 @@ import css from "./CurrencyRates.module.css";
 import formattingNumber from "../../../utils/formattingNumber";
 
 export default function CurrencyRates() {
-  const {
-    container,
-    header,
-    header__item,
-    container_body,
-    body,
-    body__item,
-    graphSVG,
-  } = css;
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCurrency());
   }, [dispatch]);
 
-  const currencyRate = useSelector((state) => getCurrencyRateFiltered(state));
+  const currencyRate = useSelector(getCurrencyRateFiltered);
 
   return (
     <>
-      <div className={container}>
-        <ul className={header}>
-          <li className={header__item}>Валюта</li>
-          <li className={header__item}>Покупка</li>
-          <li className={header__item}>Продажа</li>
+      <div className={css.container}>
+        <ul className={css.header}>
+          <li className={css.header__item}>Валюта</li>
+          <li className={css.header__item}>Покупка</li>
+          <li className={css.header__item}>Продажа</li>
         </ul>
 
-        <div className={container_body}>
-          <div className={graphSVG}>
+        <div className={css.container_body}>
+          <div className={css.graphSVG}>
             <CurrencyGraphSVG />
           </div>
           {currencyRate.map((item) => (
-            <ul key={item.ccy} className={body}>
-              <li className={body__item}>{item.ccy}</li>
-              <li className={body__item}>{formattingNumber(item.buy)}</li>
-              <li className={body__item}>{formattingNumber(item.sale)}</li>
+            <ul key={item.ccy} className={css.body}>
+              <li className={css.body__item}>{item.ccy}</li>
+              <li className={css.body__item}>{formattingNumber(item.buy)}</li>
+              <li className={css.body__item}>{formattingNumber(item.sale)}</li>
             </ul>
           ))}
         </div>
