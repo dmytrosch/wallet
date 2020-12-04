@@ -13,7 +13,7 @@ export default function Balance() {
   return (
     <div className={container}>
       <p className={text}>ВАШ БАЛАНС</p>
-      <>{!loading && formattingNumber(balance, currentbalance, "₴ ")}</>
+      {!loading && formattingNumber(balance, currentbalance, "₴ ")}
     </div>
   );
 }
