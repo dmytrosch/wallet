@@ -77,14 +77,15 @@
   .sideBar {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
-    margin-bottom: 0;
-    padding: 40px 30px 0 30px;
+    margin: 0;
+    padding-top: 40px;
+    width: 36%;
   }
 
   .mainView {
-    width: 63.67%;
+    width: 64%;
     padding: 46px 30px 0 30px;
     border-left: 1px solid #dcdcdf;
   }

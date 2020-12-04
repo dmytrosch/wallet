@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import classNames from "classnames";
+import classnames from "classnames";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import formattingNumber from "../../../utils/formattingNumber";
 import formattingDate from "../../../utils/formattingDate";
@@ -17,17 +17,17 @@ export default function TransactionsTable() {
   const loading = useSelector(isLoading);
   return (
     <ul className={styles.table}>
-      <li className={classNames(styles.row, styles.header)}>
-        <div className={classNames(styles.item, styles.date)}>Дата</div>
-        <div className={classNames(styles.item, styles.type)}>Тип</div>
-        <div className={classNames(styles.item, styles.category)}>
+      <li className={classnames(styles.row, styles.header)}>
+        <div className={classnames(styles.item, styles.date)}>Дата</div>
+        <div className={classnames(styles.item, styles.type)}>Тип</div>
+        <div className={classnames(styles.item, styles.category)}>
           Категория
         </div>
-        <div className={classNames(styles.item, styles.comment)}>
+        <div className={classnames(styles.item, styles.comment)}>
           Комментарий
         </div>
-        <div className={classNames(styles.item, styles.amount)}>Сумма</div>
-        <div className={classNames(styles.item, styles.balanceAfter)}>
+        <div className={classnames(styles.item, styles.amount)}>Сумма</div>
+        <div className={classnames(styles.item, styles.balanceAfter)}>
           Баланс
         </div>
       </li>
@@ -42,30 +42,30 @@ export default function TransactionsTable() {
             <li
               className={item.type === INCOME ? styles.rowGreen : styles.rowRed}
             >
-              <div className={classNames(styles.item, styles.date)}>
+              <div className={classnames(styles.item, styles.date)}>
                 <span className={styles.itemTitle}>Дата</span>
                 <span className={styles.itemData}>
                   {formattingDate(item.transactionDate)}
                 </span>
               </div>
-              <div className={classNames(styles.item, styles.type)}>
+              <div className={classnames(styles.item, styles.type)}>
                 <span className={styles.itemTitle}>Тип</span>
                 <span className={styles.itemData}>
                   {item.type === INCOME ? "+" : "-"}
                 </span>
               </div>
-              <div className={classNames(styles.item, styles.category)}>
+              <div className={classnames(styles.item, styles.category)}>
                 <span className={styles.itemTitle}>Категория</span>
                 <span className={styles.itemData}>{item.category}</span>
               </div>
-              <div className={classNames(styles.item, styles.comment)}>
+              <div className={classnames(styles.item, styles.comment)}>
                 <span className={styles.itemTitle}>Комментарий</span>
                 <span className={styles.itemData}>{item.comment}</span>
               </div>
-              <div className={classNames(styles.item, styles.amount)}>
+              <div className={classnames(styles.item, styles.amount)}>
                 <span className={styles.itemTitle}>Сумма</span>
                 <span
-                  className={classNames(
+                  className={classnames(
                     item.type === INCOME ? styles.colorGreen : styles.colorRed,
                     styles.itemData
                   )}
@@ -73,7 +73,7 @@ export default function TransactionsTable() {
                   {formattingNumber(item.amount)}
                 </span>
               </div>
-              <div className={classNames(styles.item, styles.balanceAfter)}>
+              <div className={classnames(styles.item, styles.balanceAfter)}>
                 <span className={styles.itemTitle}>Баланс</span>
                 <span className={styles.itemData}>
                   {formattingNumber(item.balanceAfter)}

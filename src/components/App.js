@@ -29,7 +29,7 @@ function App() {
   const loading = useSelector(isLoading);
   const isMobileMode = useSelector(isMobile);
   return (
-    <div>
+    <>
       <BrowserRouter>
         <Suspense fallback={<Loader />}>
           <Switch>
@@ -53,7 +53,7 @@ function App() {
       </BrowserRouter>
       <Notification />
       {loading && <Loader />}
-    </div>
+    </>
   );
 }
 
