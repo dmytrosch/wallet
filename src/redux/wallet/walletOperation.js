@@ -26,7 +26,7 @@ const getTransactionsErrorHandler = (errCode) => {
       message = "Ошибка данных";
       break;
     case 401:
-      message = "Выполните перерегистрацию";
+      message = "Ошибка авторизации. Войдите заново";
       break;
     default:
       message = "Что-то пошло не так...";

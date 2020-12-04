@@ -24,7 +24,7 @@ const authPersistConfig = {
 const categoriesPersistConfig = {
   key: "wallet",
   storage,
-  whitelist: ["categories"],
+  whitelist: ["categories", "transactions"],
 };
 
 const store = configureStore({
