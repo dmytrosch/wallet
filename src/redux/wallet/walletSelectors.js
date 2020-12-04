@@ -36,3 +36,26 @@ export const getAllTransactions = createSelector(
         return A > B ? -1 : +1;
       })
 );
+
+export const dropdownIncomeCategoriesSelector = (state) =>
+  state.wallet.categories
+    .filter((category) => category.type === "INCOME")
+    .map((category) => {
+      return {
+        key: category.id,
+        text: category.name,
+        value: category.name,
+        type: category.type,
+      };
+    });
+export const dropdownExpenseCategoriesSelector = (state) =>
+  state.wallet.categories
+    .filter((category) => category.type === "EXPENSE")
+    .map((category) => {
+      return {
+        key: category.id,
+        text: category.name,
+        value: category.name,
+        type: category.type,
+      };
+    });

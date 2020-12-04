@@ -18,7 +18,8 @@ import {
   makeSuccessNotification,
 } from "../../../redux/notifications/notificationOperations";
 import {
-  getCategories,
+  dropdownIncomeCategoriesSelector,
+  dropdownExpenseCategoriesSelector,
   getBalance,
 } from "../../../redux/wallet/walletSelectors";
 
@@ -26,28 +27,8 @@ import "semantic-ui-css/semantic.min.css";
 import "react-datepicker/dist/react-datepicker.css";
 
 function NewTransaction({ onClose }) {
-  const categiries = useSelector(getCategories);
-
-  const categoriesIncome = categiries
-    .filter((category) => category.type === "INCOME")
-    .map((category) => {
-      return {
-        key: category.id,
-        text: category.name,
-        value: category.name,
-        type: category.type,
-      };
-    });
-  const categoriesCost = categiries
-    .filter((category) => category.type === "EXPENSE")
-    .map((category) => {
-      return {
-        key: category.id,
-        text: category.name,
-        value: category.name,
-        type: category.type,
-      };
-    });
+  const categoriesIncome = useSelector(dropdownIncomeCategoriesSelector);
+  const categoriesCost = useSelector(dropdownExpenseCategoriesSelector);
 
   const currentDate = new Date();
 
@@ -55,7 +36,6 @@ function NewTransaction({ onClose }) {
   const [categoryName, setCategory] = useState("");
   const [amount, setAmount] = useState(0);
   const [comment, setComment] = useState("");
-
   const [pickerDate, setPickerDate] = useState(new Date());
 
   const dispatch = useDispatch();
@@ -113,19 +93,6 @@ function NewTransaction({ onClose }) {
 
     dispatch(addTransaction(objToPost));
     onClose();
-    dispatch(makeSuccessNotification("Транзакция успешно добавлена!"));
-  }
-
-  function textIncomeColorSelect() {
-    if (!cost) {
-      return classNames(styles.textGreen);
-    } else return classNames("");
-  }
-
-  function textCostColorSelect() {
-    if (cost) {
-      return classNames(styles.textRose);
-    } else return classNames("");
   }
 
   return (
@@ -138,7 +105,7 @@ function NewTransaction({ onClose }) {
             className={classNames(
               styles.spanText,
               styles.spanTextLeft,
-              textIncomeColorSelect()
+              !cost && styles.textGreen
             )}
           >
             Доход
@@ -155,7 +122,7 @@ function NewTransaction({ onClose }) {
             className={classNames(
               styles.spanText,
               styles.spanTextRight,
-              textCostColorSelect()
+              cost && styles.textRose
             )}
           >
             Расход

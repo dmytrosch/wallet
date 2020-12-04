@@ -15,7 +15,7 @@ import {
 
 import { fetchCurrency } from "../../utils/API/currencyAPI";
 import { loadTransactions, loadCategories } from "../../utils/API/walletAPI";
-import { makeAlertNotification } from "../notifications/notificationOperations";
+import { makeAlertNotification, makeSuccessNotification } from "../notifications/notificationOperations";
 import { addTransactionApi } from "../../utils/API/walletAPI";
 import { pathOr } from "ramda";
 
@@ -62,7 +62,10 @@ export const addTransaction = (transaction) => (dispatch) => {
   dispatch(addTransactionRequest());
 
   addTransactionApi(transaction)
-    .then((resp) => dispatch(addTransactionSuccess(resp.data)))
+    .then((resp) => {
+      dispatch(addTransactionSuccess(resp.data))
+      dispatch(makeSuccessNotification("Транзакция успешно добавлена!"))
+    })
     .catch((error) => {
       const message = addTransactionErrorHandler(pathOr("", ["response", "status"], error));
       dispatch(makeAlertNotification(message));
