@@ -13,12 +13,6 @@ export default function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
   const dispatch = useDispatch();
 
   const handlerSubmit = (e) => {
@@ -40,21 +34,21 @@ export default function LogIn() {
       </div>
       <form className={styles.form} onSubmit={handlerSubmit}>
         <div className={styles.inputWrapper}>
-          <Input
-            type="email"
-            value={email}
-            onChange={updateEmail}
-            error={email.length > 0 && !validator.isEmail(email)}
-            placeholder="E-mail"
-          />
+        <Input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          error={email.length > 0 && !validator.isEmail(email)}
+          placeholder="E-mail"
+        />
         </div>
         <div className={styles.inputWrapper}>
-          <Input
-            type="password"
-            value={password}
-            onChange={updatePassword}
-            placeholder="Пароль"
-          />
+        <Input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Пароль"
+        />
         </div>
         <Button color="green" type="submit">
           вход
