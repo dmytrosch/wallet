@@ -4,7 +4,7 @@ import Button from "../../common/Button";
 import Layout from "../authLayout";
 import TransactionsTable from "../../components/Wallet/TransactionsTable";
 import styles from "./MainView.module.css";
-import ModalPortal from "../../components/Wallet/creatingTransaction/ModalPortal";
+import ModalPortal from "../../common/ModalPortal/ModalPortal";
 import Modal from "../../components/Wallet/creatingTransaction/Modal";
 import NewTransaction from "../../components/Wallet/creatingTransaction/NewTransaction";
 import { isMobile } from "../../redux/clientWidth/clientWidthSelectors";
