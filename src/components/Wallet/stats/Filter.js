@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import {
   transactions,
   getCategories,
@@ -11,175 +11,119 @@ import StatsTable from "./StatsTable";
 import "chartjs-plugin-labels";
 import styles from "./styles/Filter.module.css";
 import { colors, optionsMonth, optionsYear } from "./assetsForStats";
+import {filterDataFromTable, addColor} from '../../../utils/filter';
+import {usePrevious} from '../../../hooks/usePrevious';
 
-class Filter extends Component {
-  state = {
-    currentMonth: moment().format("MMMM"),
-    currentYear: moment().format("YYYY"),
-    selectedMonth: { value: "Месяц", label: "Месяц" },
-    selectedYear: { value: "Год", label: "Год" },
-    months: optionsMonth,
-    years: optionsYear,
-    filteredData: [],
+export default function Filter() {
+  const allTransactions = useSelector(transactions);
+  const Categories = useSelector(getCategories);
+
+  const [currentMonth, setCurrentMonth] = useState(moment().format("MMMM"));
+  const [currentYear, setCurrentYear] = useState(moment().format("YYYY"));
+  const [selectedMonth, setSelectedMonth] = useState({
+    value: currentMonth,
+    label: currentMonth[0].toUpperCase() + currentMonth.substr(1),
+  });
+  const [selectedYear, setSelectedYear] = useState({
+    value: currentYear,
+    label: currentYear,
+  });
+  const [months] = useState(optionsMonth);
+  const [years] = useState(optionsYear);
+  const [filteredData, setFilteredData] = useState([]);
+
+  const prevAllTransactions = usePrevious(allTransactions);
+  const prevCurrentMonth = usePrevious(currentMonth);
+  const prevCurrentYear = usePrevious(currentYear);
+  const prevSelectedMonth = usePrevious(selectedMonth);
+  const prevSelectedYear = usePrevious(selectedYear);
+
+  const allDataOnMount = (data) => {
+    setFilteredData(data);
   };
 
-  componentDidMount() {
-    const { allTransactions } = this.props;
-    this.allDataOnMount(allTransactions);
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const {
-      currentMonth,
-      currentYear,
-      selectedMonth,
-      selectedYear,
-    } = this.state;
-    const { allTransactions } = this.props;
-
-    if (
-      prevProps.allTransactions !== allTransactions ||
-      prevState.currentMonth !== currentMonth ||
-      prevState.currentYear !== currentYear
-    ) {
-      this.filterTransactionData(allTransactions, currentMonth, currentYear);
-    }
-    if (
-      prevState.selectedMonth !== selectedMonth ||
-      prevState.selectedYear !== selectedYear
-    ) {
-      this.changeCurrentMonthOrYear(selectedMonth.value, selectedYear.value);
-    }
-  }
-  allDataOnMount = (data) => {
-    this.setState({
-      filteredData: data,
-    });
-  };
-
-  filterTransactionData = (allTransactions, currentMonth, currentYear) => {
-    this.setState({
-      filteredData: allTransactions
+  const filterTransactionData = (
+    allTransactions,
+    currentMonth,
+    currentYear
+  ) => {
+    setFilteredData(
+      allTransactions
         .filter(
           (el) => moment(el.transactionDate).format("YYYY") === currentYear
         )
         .filter(
           (el) => moment(el.transactionDate).format("MMMM") === currentMonth
-        ),
-    });
+        )
+    );
   };
 
-  filterDataFromTable = (filteredData) =>
-    filteredData
-      .filter((el) => el.type === "EXPENSE")
-      .map((el) => ({
-        category: el.categoryId,
-        amount: el.amount,
-        comment: el.comment,
-      }))
-      .reduce((acc, el) => {
-        if (acc.length > 0) {
-          if (acc.find((item) => item.category === el.category)) {
-            return acc.map((mapItem) =>
-              mapItem.category === el.category
-                ? { ...mapItem, amount: mapItem.amount + el.amount }
-                : mapItem
-            );
-          }
-          return [...acc, el];
-        }
-        return [...acc, el];
-      }, [])
-      .map((el) => ({
-        category: this.props.Categories.filter((e) => e.id === el.category)
-          .map((el) => el.name)
-          .join(),
-        totalAmount: el.amount,
-        comment: el.comment,
-      }));
-
-  changeCurrentMonthOrYear = (newCurrentMonth, newCurrentYear) =>
-    this.setState({
-      currentMonth: newCurrentMonth,
-      currentYear: newCurrentYear,
-    });
-
-  handleChangeMonth = (selectedOption) => {
-    this.setState({ selectedMonth: selectedOption });
+  const changeCurrentMonthOrYear = (newCurrentMonth, newCurrentYear) => {
+    setCurrentMonth(newCurrentMonth);
+    setCurrentYear(newCurrentYear);
   };
 
-  handleChangeYear = (selectedOption) => {
-    this.setState({ selectedYear: selectedOption });
+  const handleChangeMonth = (selectedOption) => {
+    setSelectedMonth(selectedOption);
   };
 
-  addColor = (arr) => {
-    const arrayLength = arr.length;
-    let colorArray = [];
+  const handleChangeYear = (selectedOption) => {
+    setSelectedYear(selectedOption);
+  };
 
-    for(let i = 0; i <= arrayLength; i++){
-      let selectedColor = colors[Math.floor(Math.random() * colors.length)];
-      if(colorArray.includes(selectedColor)){
-        i = i-1;
-      } else{
-        colorArray.push(selectedColor);
-      }
+  useEffect(() => {
+    allDataOnMount(allTransactions);
+  }, []);
+
+  useEffect(() => {
+    if (
+      prevAllTransactions !== allTransactions ||
+      prevCurrentMonth !== currentMonth ||
+      prevCurrentYear !== currentYear
+    ) {
+      filterTransactionData(allTransactions, currentMonth, currentYear);
     }
+    if (
+      prevSelectedMonth !== selectedMonth ||
+      prevSelectedYear !== selectedYear
+    ) {
+      changeCurrentMonthOrYear(selectedMonth.value, selectedYear.value);
+    }
+  }, [prevAllTransactions, allTransactions, prevCurrentMonth, currentMonth, prevCurrentYear, currentYear, prevSelectedMonth, selectedMonth, prevSelectedYear, selectedYear]);
 
-    const itemsArray = arr.map((el, ind) => ({
-      ...el,
-      color: colorArray[ind],
-    }));
+  const totalMonthIncome = filteredData.reduce(
+    (acc, el) => (el.type === "INCOME" ? acc + el.amount : acc),
+    0
+  );
+  const totalMonthExpense = filteredData.reduce(
+    (acc, el) => (el.type === "EXPENSE" ? acc + el.amount : acc),
+    0
+  );
+  const arrData = addColor(filterDataFromTable(filteredData, Categories), colors);
 
-    return itemsArray;
-  };
-  render() {
-    const {
-      months,
-      years,
-      selectedMonth,
-      selectedYear,
-      filteredData,
-    } = this.state;
-    const totalMonthIncome = filteredData.reduce(
-      (acc, el) => (el.type === "INCOME" ? acc + el.amount : acc),
-      0
-    );
-    const totalMonthExpense = filteredData.reduce(
-      (acc, el) => (el.type === "EXPENSE" ? acc + el.amount : acc),
-      0
-    );
-    const arrData = this.addColor(this.filterDataFromTable(filteredData));
-
-    return (
-      <div className={styles.container}>
-        <div className={styles.diagramContainer}>
-          <p className={styles.label}>Cтатистика</p>
-          {arrData.length === 0 && (
-            <p className={styles.notFoundData}>Нет данных за выбраный период!</p>
-          )}
-          {arrData.length > 0 && <StatsGraph arrData={arrData} />}
-        </div>
-        <div className={styles.tableContainer}>
-          <StatsTable
-            totalMonthIncome={totalMonthIncome}
-            totalMonthExpense={totalMonthExpense}
-            availableMonths={months}
-            availableYears={years}
-            selectedMonth={selectedMonth}
-            selectedYear={selectedYear}
-            handleChangeMonth={this.handleChangeMonth}
-            handleChangeYear={this.handleChangeYear}
-            arrDataForTable={arrData}
-          />
-        </div>
+  return (
+    <div className={styles.container}>
+      <div className={styles.diagramContainer}>
+        <p className={styles.label}>Cтатистика</p>
+        {arrData.length === 0 && (
+          <p className={styles.notFoundData}>Нет данных за выбраный период!</p>
+        )}
+        {arrData.length > 0 && <StatsGraph arrData={arrData} />}
       </div>
-    );
-  }
+      <div className={styles.tableContainer}>
+        <StatsTable
+          totalMonthIncome={totalMonthIncome}
+          totalMonthExpense={totalMonthExpense}
+          availableMonths={months}
+          availableYears={years}
+          selectedMonth={selectedMonth}
+          selectedYear={selectedYear}
+          handleChangeMonth={handleChangeMonth}
+          handleChangeYear={handleChangeYear}
+          arrDataForTable={arrData}
+        />
+      </div>
+    </div>
+  );
 }
 
-const mapStateToProps = (state) => ({
-  allTransactions: transactions(state),
-  Categories: getCategories(state),
-});
-
-export default connect(mapStateToProps)(Filter);
