@@ -14,12 +14,6 @@ export default function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
   const dispatch = useDispatch();
 
   const handlerSubmit = (e) => {
@@ -44,7 +38,7 @@ export default function LogIn() {
         <Input
           type="email"
           value={email}
-          onChange={updateEmail}
+          onChange={(e) => setEmail(e.target.value)}
           error={email.length > 0 && !validator.isEmail(email)}
           placeholder="E-mail"
         />
@@ -53,7 +47,7 @@ export default function LogIn() {
         <Input
           type="password"
           value={password}
-          onChange={updatePassword}
+          onChange={(e) => setPassword(e.target.value)}
           placeholder="Пароль"
         />
         </div>

@@ -17,18 +17,6 @@ export default function SignUp() {
   const [confirmedPassword, setConfirmedPasswod] = useState("");
   const [name, setName] = useState("");
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-  const updateConfirmedPassword = (e) => {
-    setConfirmedPasswod(e.target.value);
-  };
-  const updateName = (e) => {
-    setName(e.target.value);
-  };
   const dispatch = useDispatch();
 
   const handlerSubmit = (e) => {
@@ -64,7 +52,7 @@ export default function SignUp() {
         <Input
           type="email"
           value={email}
-          onChange={updateEmail}
+          onChange={(e) => setEmail(e.target.value)}
           error={email.length > 0 && !validator.isEmail(email)}
           placeholder="E-mail"
         />
@@ -73,7 +61,7 @@ export default function SignUp() {
         <Input
           type="password"
           value={password}
-          onChange={updatePassword}
+          onChange={(e) => setPassword(e.target.value)}
           error={password.length > 0 && password.length < 8}
           placeholder="Пароль"
         />
@@ -94,7 +82,7 @@ export default function SignUp() {
         <Input
           type="password"
           value={confirmedPassword}
-          onChange={updateConfirmedPassword}
+          onChange={(e) => setConfirmedPasswod(e.target.value)}
           error={confirmedPassword !== password}
           placeholder="Подтвердите пароль"
         />
@@ -104,7 +92,7 @@ export default function SignUp() {
           type="text"
           name="name"
           value={name}
-          onChange={updateName}
+          onChange={(e) => setName(e.target.value)}
           placeholder="Ваше имя"
         />
         </div>
