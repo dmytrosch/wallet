@@ -80,11 +80,11 @@
     justify-content: start;
     align-items: center;
     margin-bottom: 0;
-    padding: 40px 30px 0 30px;
+    padding-top: 40px;
   }
 
   .mainView {
-    width: 63.67%;
+    min-width: 64%;
     padding: 46px 30px 0 30px;
     border-left: 1px solid #dcdcdf;
   }
