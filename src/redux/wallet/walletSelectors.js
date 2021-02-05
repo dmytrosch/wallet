@@ -40,6 +40,7 @@ export const getAllTransactions = createSelector(
 export const dropdownIncomeCategoriesSelector = (state) =>
   state.wallet.categories
     .filter((category) => category.type === "INCOME")
+    .filter(category => category.name !== 'test income')
     .map((category) => {
       return {
         key: category.id,
@@ -51,6 +52,7 @@ export const dropdownIncomeCategoriesSelector = (state) =>
 export const dropdownExpenseCategoriesSelector = (state) =>
   state.wallet.categories
     .filter((category) => category.type === "EXPENSE")
+    .filter(category => category.name !== 'test expense')
     .map((category) => {
       return {
         key: category.id,
